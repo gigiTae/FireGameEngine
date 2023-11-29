@@ -1,0 +1,10 @@
+^C:\USERS\RLXO8\DOWNLOADS\RTTR-MASTER\RTTR-MASTER\SRC\RTTR\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/rlxo8/Downloads/rttr-master/rttr-master -BC:/Users/rlxo8/Downloads/rttr-master/rttr-master --check-stamp-file C:/Users/rlxo8/Downloads/rttr-master/rttr-master/src/rttr/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

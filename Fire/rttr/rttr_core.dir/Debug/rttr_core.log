@@ -1,0 +1,39 @@
+﻿  Building Custom Rule C:/Users/rlxo8/Downloads/rttr-master/rttr-master/src/rttr/CMakeLists.txt
+  pch.cpp
+  constructor.cpp
+  destructor.cpp
+  enumeration.cpp
+  library.cpp
+  method.cpp
+  parameter_info.cpp
+  policy.cpp
+  property.cpp
+  registration.cpp
+  type.cpp
+  variant.cpp
+  variant_associative_view.cpp
+  variant_sequential_view.cpp
+  visitor.cpp
+  compare_equal.cpp
+  compare_less.cpp
+  standard_types.cpp
+  std_conversion_functions.cpp
+  constructor_wrapper_base.cpp
+  destructor_wrapper_base.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  enumeration_helper.cpp
+  enumeration_wrapper_base.cpp
+  library_win.cpp
+  library_unix.cpp
+  method_wrapper_base.cpp
+  parameter_info_wrapper_base.cpp
+  property_wrapper_base.cpp
+  registration_executer.cpp
+  registration_state_saver.cpp
+  type_data.cpp
+  type_register.cpp
+  variant_compare.cpp
+  코드를 생성하고 있습니다...
+     C:/Users/rlxo8/Downloads/rttr-master/rttr-master/lib/Debug/rttr_core_d.lib 라이브러리 및 C:/Users/rlxo8/Downloads/rttr-master/rttr-master/lib/Debug/rttr_core_d.exp 개체를 생성하고 있습니다.
+  rttr_core.vcxproj -> C:\Users\rlxo8\Downloads\rttr-master\rttr-master\bin\Debug\rttr_core_d.dll

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header\01.World">
+      <UniqueIdentifier>{945f105b-b9ea-4e97-a08a-8a33a7a29bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\01.World">
+      <UniqueIdentifier>{5e06e4f4-0f47-4f1c-bb5c-2b25fe77a2ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\02.Entity">
+      <UniqueIdentifier>{42f914c4-4fea-4ff9-939a-3ef9d3b24f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\02.Entity">
+      <UniqueIdentifier>{d4346fe7-e32a-4aa5-91ce-dfc74a07d5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03.Component">
+      <UniqueIdentifier>{174a6f00-ff05-4389-8441-f272d8b8f98e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\03.Component">
+      <UniqueIdentifier>{a968e919-5752-4865-a818-84f59172901e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\04.System">
+      <UniqueIdentifier>{a07b3234-1b5e-4c40-9acc-c8d251d0d726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\00.Define">
+      <UniqueIdentifier>{78eb67f7-7cda-4306-9e25-9c48e565c61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\04.System">
+      <UniqueIdentifier>{b8b3d014-df1a-43f7-bba3-8ff2c27c6c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\05.Events">
+      <UniqueIdentifier>{c92dd641-f661-44bf-bdf8-7482d834eacb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\05.Events">
+      <UniqueIdentifier>{3733a08c-907b-4acd-8a07-7dc8e3001ce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\06.Serializer">
+      <UniqueIdentifier>{8238afdb-5881-4658-a783-3b57e54bde20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06.Serializer">
+      <UniqueIdentifier>{aeff4abd-1271-4d79-bb3b-96bf859aec80}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="World.h">
+      <Filter>Header\01.World</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponentContainer.h">
+      <Filter>Header\03.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentHandle.h">
+      <Filter>Header\03.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentContainer.h">
+      <Filter>Header\03.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="IEntitySystem.h">
+      <Filter>Header\04.System</Filter>
+    </ClInclude>
+    <ClInclude Include="ECSHeader.h">
+      <Filter>Header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeIndex.h">
+      <Filter>Header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ISubscriber.h">
+      <Filter>Header\04.System</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSubscriber.h">
+      <Filter>Header\04.System</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Header\05.Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityComponentView.h">
+      <Filter>Header\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityComponentIterator.h">
+      <Filter>Header\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityView.h">
+      <Filter>Header\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityIterator.h">
+      <Filter>Header\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="IDataConverter.h">
+      <Filter>Header\06.Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="StringConverter.h">
+      <Filter>Header\06.Serializer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="World.cpp">
+      <Filter>Source\01.World</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentHandle.cpp">
+      <Filter>Source\03.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="IComponentContainer.cpp">
+      <Filter>Source\03.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="IEntitySystem.cpp">
+      <Filter>Source\04.System</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSubscriber.cpp">
+      <Filter>Source\04.System</Filter>
+    </ClCompile>
+    <ClCompile Include="ISubscriber.cpp">
+      <Filter>Source\04.System</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source\05.Events</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityComponentView.cpp">
+      <Filter>Source\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityComponentIterator.cpp">
+      <Filter>Source\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityIterator.cpp">
+      <Filter>Source\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityView.cpp">
+      <Filter>Source\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="StringConverter.cpp">
+      <Filter>Source\06.Serializer</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
