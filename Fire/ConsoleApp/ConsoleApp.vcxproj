@@ -132,7 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApp.cpp" />
-    <ClCompile Include="re.cpp" />
+    <ClCompile Include="tupleReflect.cpp" />
     <ClCompile Include="Serialize.cpp" />
   </ItemGroup>
   <ItemGroup>

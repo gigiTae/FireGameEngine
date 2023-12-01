@@ -19,10 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Reflect.h" />
+    <ClInclude Include="Macro.h" />
+    <ClInclude Include="ReflectionHeader.h" />
+    <ClInclude Include="TypeCheck.h" />
+    <ClInclude Include="TypeDescriptor.h" />
+    <ClInclude Include="TypeDescriptor_Primitive.h" />
+    <ClInclude Include="TypeDescriptor_Struct.h" />
+    <ClInclude Include="TypeResolver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Reflect.cpp" />
+    <ClCompile Include="TypeDescriptor.cpp" />
+    <ClCompile Include="TypeDescriptor_Struct.cpp" />
+    <ClCompile Include="TypeResolver.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

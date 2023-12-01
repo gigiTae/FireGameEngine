@@ -1,27 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="source">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="header">
+    <Filter Include="Header">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Header\00.Define">
+      <UniqueIdentifier>{2ac8a983-e893-42a6-8b15-8dacd716c1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\01.TypeDescriptor">
+      <UniqueIdentifier>{7f640594-a9b0-4cc3-aef6-45a160377c94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\02.TypeResolver">
+      <UniqueIdentifier>{6f03a83d-ef9b-4473-8efe-2e10309521d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\03.PrimitiveType">
+      <UniqueIdentifier>{676c6153-5b3a-4d7b-bbc2-9e880d13d5c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\01.TypeDescriptor">
+      <UniqueIdentifier>{e0297fa6-dc9f-48f2-bd45-74ab5e384065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\02.TypeResolver">
+      <UniqueIdentifier>{63032210-4a9e-4c1b-ac2b-ae400e71a257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03.PrimitiveType">
+      <UniqueIdentifier>{997f0874-eea4-4909-98e5-21ccdb11976f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Reflect.h">
-      <Filter>header</Filter>
+    <ClInclude Include="TypeDescriptor.h">
+      <Filter>Header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeResolver.h">
+      <Filter>Header\02.TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="ReflectionHeader.h">
+      <Filter>Header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_Struct.h">
+      <Filter>Header\03.PrimitiveType</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_Primitive.h">
+      <Filter>Header\03.PrimitiveType</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeCheck.h">
+      <Filter>Header\03.PrimitiveType</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Reflect.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="TypeDescriptor.cpp">
+      <Filter>Source\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeResolver.cpp">
+      <Filter>Source\02.TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_Struct.cpp">
+      <Filter>Source\03.PrimitiveType</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
