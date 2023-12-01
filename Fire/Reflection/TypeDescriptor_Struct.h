@@ -1,6 +1,8 @@
 #pragma once
-#include "TypeDescriptor.h"
 #include <vector>
+#include "TypeDescriptor.h"
+#include "StirngHelper.h"
+
 
 namespace Fire
 {
@@ -38,6 +40,22 @@ namespace Fire
 					data += "\n";
 				}
 				data += std::string(4 * indentLevel, ' ') + "}";
+			}
+
+			void Read(void* obj, std::string& data, size_t begin, size_t end)const override
+			{
+				size_t open = StringHelper::FindOpeningBrace(data,begin);
+				size_t close = StringHelper::FindClosingBrace(data,begin);
+
+				for (const Member& member : members)
+				{
+					size_t memberOpen = StringHelper::FindOpeningBrace(data,open+1);
+					size_t memberClose = StringHelper::FindClosingBrace(data, open+1);
+
+					member.type->Read((char*)obj + member.offset, data, memberOpen+1, memberClose-1);
+				
+					open = memberClose + 1;
+				}
 			}
 		};
 

@@ -21,16 +21,26 @@
   <ItemGroup>
     <ClInclude Include="Macro.h" />
     <ClInclude Include="ReflectionHeader.h" />
+    <ClInclude Include="StirngHelper.h" />
     <ClInclude Include="TypeCheck.h" />
     <ClInclude Include="TypeDescriptor.h" />
     <ClInclude Include="TypeDescriptor_Primitive.h" />
+    <ClInclude Include="TypeDescriptor_StdString.h" />
+    <ClInclude Include="TypeDescriptor_StdVector.h" />
     <ClInclude Include="TypeDescriptor_Struct.h" />
+    <ClInclude Include="TypeMap.h" />
     <ClInclude Include="TypeResolver.h" />
+    <ClInclude Include="TypeResolver_StdVector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="StirngHelper.cpp" />
     <ClCompile Include="TypeDescriptor.cpp" />
+    <ClCompile Include="TypeDescriptor_StdString.cpp" />
+    <ClCompile Include="TypeDescriptor_StdVector.cpp" />
     <ClCompile Include="TypeDescriptor_Struct.cpp" />
+    <ClCompile Include="TypeMap.cpp" />
     <ClCompile Include="TypeResolver.cpp" />
+    <ClCompile Include="TypeResolver_Vector.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -1,12 +1,48 @@
 #pragma once
 
+#include <typeinfo>
+
 #include "TypeDescriptor.h"
 #include "TypeCheck.h"
+
+#define STAR(A) #A
 
 namespace Fire
 {
 	namespace Reflect
 	{
+
+		/// <summary>
+		/// pointer
+		/// </summary>
+		template<typename T>
+		struct TypeDescriptor_Pointer : TypeDescriptor
+		{
+			TypeDescriptor_Pointer() :TypeDescriptor( typeid(T).name(), sizeof(T)) {}
+
+			/// <summary>
+			/// pointer can't write
+			/// </summary>
+			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */)const override
+			{
+				data += typeid(T).name();
+				data += "{nullptr}";
+			}
+
+
+		};
+
+		/// <summary>
+		/// poiter 
+		/// </summary>
+		template <typename T>
+		constexpr TypeDescriptor* GetPrimitiveDescriptor<T*>()
+		{
+			static TypeDescriptor_Pointer<T> typeDesc;
+			return &typeDesc;
+		}
+
+
 		/// <summary>
 		/// int
 		/// </summary>
@@ -20,6 +56,17 @@ namespace Fire
 				const int* val = (const int*)obj;
 				data += std::to_string(*val);
 				data += "}";
+			}
+
+			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
+			{
+				std::string sValue = data.substr(begin, end - begin);
+
+
+				int iValue = std::stoi(sValue);
+				
+				int* iObj = reinterpret_cast<int*>(obj);
+				*iObj = iValue;
 			}
 		};
 

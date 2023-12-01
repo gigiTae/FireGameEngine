@@ -14,9 +14,6 @@
     <Filter Include="Header\02.TypeResolver">
       <UniqueIdentifier>{6f03a83d-ef9b-4473-8efe-2e10309521d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header\03.PrimitiveType">
-      <UniqueIdentifier>{676c6153-5b3a-4d7b-bbc2-9e880d13d5c3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -27,8 +24,17 @@
     <Filter Include="Source\02.TypeResolver">
       <UniqueIdentifier>{63032210-4a9e-4c1b-ac2b-ae400e71a257}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\03.PrimitiveType">
-      <UniqueIdentifier>{997f0874-eea4-4909-98e5-21ccdb11976f}</UniqueIdentifier>
+    <Filter Include="Header\04.TypyMap">
+      <UniqueIdentifier>{5f154071-94d3-416a-a0c6-175dcb18eb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\03.Helper">
+      <UniqueIdentifier>{e9c54420-b2cc-45bb-b505-064327ab8026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\04.TypeMap">
+      <UniqueIdentifier>{6cf05f9d-3a11-49ba-ba7b-0b8aa69b94e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03.Helper">
+      <UniqueIdentifier>{22e269d9-9f16-44bf-8e69-d9a1921ba4aa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,14 +50,29 @@
     <ClInclude Include="ReflectionHeader.h">
       <Filter>Header\00.Define</Filter>
     </ClInclude>
-    <ClInclude Include="TypeDescriptor_Struct.h">
-      <Filter>Header\03.PrimitiveType</Filter>
+    <ClInclude Include="TypeCheck.h">
+      <Filter>Header\03.Helper</Filter>
     </ClInclude>
     <ClInclude Include="TypeDescriptor_Primitive.h">
-      <Filter>Header\03.PrimitiveType</Filter>
+      <Filter>Header\01.TypeDescriptor</Filter>
     </ClInclude>
-    <ClInclude Include="TypeCheck.h">
-      <Filter>Header\03.PrimitiveType</Filter>
+    <ClInclude Include="TypeDescriptor_Struct.h">
+      <Filter>Header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeResolver_StdVector.h">
+      <Filter>Header\02.TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_StdVector.h">
+      <Filter>Header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeMap.h">
+      <Filter>Header\04.TypyMap</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_StdString.h">
+      <Filter>Header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="StirngHelper.h">
+      <Filter>Header\03.Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +83,22 @@
       <Filter>Source\02.TypeResolver</Filter>
     </ClCompile>
     <ClCompile Include="TypeDescriptor_Struct.cpp">
-      <Filter>Source\03.PrimitiveType</Filter>
+      <Filter>Source\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_StdVector.cpp">
+      <Filter>Source\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeMap.cpp">
+      <Filter>Source\04.TypeMap</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeResolver_Vector.cpp">
+      <Filter>Source\02.TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_StdString.cpp">
+      <Filter>Source\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="StirngHelper.cpp">
+      <Filter>Source\03.Helper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
