@@ -21,4 +21,9 @@
       <Filter>App</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="compoent.h">
+      <Filter>App</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

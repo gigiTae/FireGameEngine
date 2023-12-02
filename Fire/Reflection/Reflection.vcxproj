@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="ITypeResolver.h" />
     <ClInclude Include="Macro.h" />
+    <ClInclude Include="ReflectCheck.h" />
     <ClInclude Include="ReflectionHeader.h" />
     <ClInclude Include="StirngHelper.h" />
     <ClInclude Include="TypeCheck.h" />
@@ -35,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ITypeResolver.cpp" />
+    <ClCompile Include="ReflectCheck.cpp" />
     <ClCompile Include="StirngHelper.cpp" />
     <ClCompile Include="ITypeDescriptor.cpp" />
     <ClCompile Include="TypeDescriptor_StdString.cpp" />

@@ -77,6 +77,9 @@
     <ClInclude Include="ITypeResolver.h">
       <Filter>Header\02.TypeResolver</Filter>
     </ClInclude>
+    <ClInclude Include="ReflectCheck.h">
+      <Filter>Header\03.Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ITypeDescriptor.cpp">
@@ -105,6 +108,9 @@
     </ClCompile>
     <ClCompile Include="ITypeResolver.cpp">
       <Filter>Source\02.TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="ReflectCheck.cpp">
+      <Filter>Source\03.Helper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

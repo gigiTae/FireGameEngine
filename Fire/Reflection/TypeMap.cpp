@@ -2,6 +2,7 @@
 #include "ITypeDescriptor.h"
 #include "ITypeResolver.h"
 
+
 namespace Fire
 {
 	namespace Reflect
@@ -13,7 +14,8 @@ namespace Fire
 			if (iter != typeDescritors.end())
 				return;
 
-			typeDescritors.insert(make_pair(typeName, desc));
+			typeDescritors.insert(std::make_pair(typeName, desc));
+			int a = 0;
 		}
 
 		

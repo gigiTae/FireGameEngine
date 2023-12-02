@@ -40,7 +40,7 @@ namespace Fire
 					data += "\n";
 				}
 				data += std::string(4 * indentLevel, ' ') + "}";
-			}
+			} 
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end)const override
 			{

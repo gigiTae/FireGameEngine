@@ -2,6 +2,7 @@
 
 #include "ITypeResolver.h"
 #include "TypeCheck.h"
+#include "ReflectCheck.h"
 
 namespace Fire
 {
@@ -14,9 +15,9 @@ namespace Fire
 		{
 			static ITypeDescriptor* Get()
 			{
-				if constexpr (Check<T>::IsReflected)
+				if constexpr (ReflectCheck<T>::IsReflect)
 				{
-					return &T::Reflection;
+					return &ReflectCheck<T>::Reflection;
 				}
 				else
 				{

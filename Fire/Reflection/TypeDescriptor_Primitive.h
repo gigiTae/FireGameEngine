@@ -6,7 +6,6 @@
 #include "TypeCheck.h"
 #include "TypeMap.h"
 
-#define STAR(A) #A
 
 namespace Fire
 {
@@ -19,7 +18,11 @@ namespace Fire
 		template<typename T>
 		struct TypeDescriptor_Pointer : ITypeDescriptor
 		{
-			TypeDescriptor_Pointer() :ITypeDescriptor( typeid(T).name(), sizeof(T)) {}
+			TypeDescriptor_Pointer() :ITypeDescriptor( typeid(T).name(), sizeof(T)) 
+			{
+				name;
+				int a = 0;
+			}
 
 			/// <summary>
 			/// pointer can't write

@@ -14,3 +14,4 @@
 #include "TypeMap.h"
 
 #include "StirngHelper.h"
+#include "ReflectCheck.h"
