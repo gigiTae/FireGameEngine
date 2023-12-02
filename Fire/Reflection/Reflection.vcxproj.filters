@@ -38,7 +38,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TypeDescriptor.h">
+    <ClInclude Include="ITypeDescriptor.h">
       <Filter>Header\01.TypeDescriptor</Filter>
     </ClInclude>
     <ClInclude Include="Macro.h">
@@ -74,9 +74,12 @@
     <ClInclude Include="StirngHelper.h">
       <Filter>Header\03.Helper</Filter>
     </ClInclude>
+    <ClInclude Include="ITypeResolver.h">
+      <Filter>Header\02.TypeResolver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TypeDescriptor.cpp">
+    <ClCompile Include="ITypeDescriptor.cpp">
       <Filter>Source\01.TypeDescriptor</Filter>
     </ClCompile>
     <ClCompile Include="TypeResolver.cpp">
@@ -99,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="StirngHelper.cpp">
       <Filter>Source\03.Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ITypeResolver.cpp">
+      <Filter>Source\02.TypeResolver</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

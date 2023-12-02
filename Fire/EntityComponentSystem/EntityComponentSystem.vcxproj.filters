@@ -46,7 +46,7 @@
       <UniqueIdentifier>{8238afdb-5881-4658-a783-3b57e54bde20}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\06.Serializer">
-      <UniqueIdentifier>{aeff4abd-1271-4d79-bb3b-96bf859aec80}</UniqueIdentifier>
+      <UniqueIdentifier>{8801a871-5cee-4ab7-bb85-ab980ea5b96a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

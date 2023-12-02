@@ -6,10 +6,10 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		struct TypeDescriptor;
+		struct ITypeDescriptor;
 
 		template<typename T>
-		constexpr TypeDescriptor* GetPrimitiveDescriptor();
+		constexpr ITypeDescriptor* GetPrimitiveDescriptor();
 
 		template <typename T, typename = void>
 		struct Check

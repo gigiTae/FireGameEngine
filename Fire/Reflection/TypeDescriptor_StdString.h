@@ -1,8 +1,9 @@
 #pragma once
 #include <typeinfo>
 
-#include "TypeDescriptor.h"
+#include "ITypeDescriptor.h"
 #include "TypeCheck.h"
+#include "TypeMap.h"
 
 #include <codecvt>
 #include <Windows.h>
@@ -15,9 +16,9 @@ namespace Fire
 		/// string
 		/// </summary>
 		struct TypeDescriptor_StdString :
-			public TypeDescriptor
+			public ITypeDescriptor
 		{
-			TypeDescriptor_StdString() : TypeDescriptor("std::string", sizeof(int)) {}
+			TypeDescriptor_StdString() : ITypeDescriptor("std::string", sizeof(int)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -27,15 +28,26 @@ namespace Fire
 				data += "}";
 			}
 
+			void Read(void* obj, std::string& data, size_t begin, size_t end)const override
+			{
+				std::string str = data.substr(begin, end - begin);
+				
+				std::string value = str;
+
+				std::string* strObj = reinterpret_cast<std::string*>(obj);
+				*strObj = value;
+			}
+
 		};
 
 		/// <summary>
 		/// string
 		/// </summary>
 		template <>
-		TypeDescriptor* GetPrimitiveDescriptor<std::string>()
+		ITypeDescriptor* GetPrimitiveDescriptor<std::string>()
 		{
 			static TypeDescriptor_StdString typeDesc;
+			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
 			return &typeDesc;
 		}
 
@@ -43,33 +55,43 @@ namespace Fire
 		/// wstring
 		/// </summary>
 		struct TypeDescriptor_StdWstring :
-			public TypeDescriptor
+			public ITypeDescriptor
 		{
-			TypeDescriptor_StdWstring() : TypeDescriptor("std::wstring", sizeof(int)) {}
+			TypeDescriptor_StdWstring() : ITypeDescriptor("std::wstring", sizeof(int)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
 				data += "std::wstring{";
 
-				// binary data로 저장
 				const std::wstring* tmp = reinterpret_cast<const std::wstring*>(obj);
-				const wchar_t* tmp2 = tmp->c_str();
-				std::string tmp3(reinterpret_cast<const char*>(tmp2), tmp->size());
+				for (wchar_t ch : *tmp) {
+					data.push_back(static_cast<char>(ch & 0xFF));  // 이진 데이터로 저장, 인코딩에 따라 적절히 수정
+					data.push_back(static_cast<char>((ch >> 8) & 0xFF));
+				}
 
-				data += tmp3;
-				
 				data += "}";
 			}
 
+			void Read(void* obj, std::string& data, size_t begin, size_t end)const override
+			{ 
+				std::wstring* strObj = reinterpret_cast<std::wstring*>(obj);
+				strObj->clear();
+
+				for (size_t i = begin; i < end; i += 2) {
+					wchar_t ch = static_cast<unsigned char>(data[i]) | (static_cast<unsigned char>(data[i + 1]) << 8);
+					strObj->push_back(ch);
+				} 
+			}
 		};
 
 		/// <summary>
 		/// wstring
 		/// </summary>
 		template <>
-		TypeDescriptor* GetPrimitiveDescriptor<std::wstring>()
+		ITypeDescriptor* GetPrimitiveDescriptor<std::wstring>()
 		{
 			static TypeDescriptor_StdWstring typeDesc;
+			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
 			return &typeDesc;
 		}
 

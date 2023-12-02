@@ -2,8 +2,9 @@
 
 #include <typeinfo>
 
-#include "TypeDescriptor.h"
+#include "ITypeDescriptor.h"
 #include "TypeCheck.h"
+#include "TypeMap.h"
 
 #define STAR(A) #A
 
@@ -16,9 +17,9 @@ namespace Fire
 		/// pointer
 		/// </summary>
 		template<typename T>
-		struct TypeDescriptor_Pointer : TypeDescriptor
+		struct TypeDescriptor_Pointer : ITypeDescriptor
 		{
-			TypeDescriptor_Pointer() :TypeDescriptor( typeid(T).name(), sizeof(T)) {}
+			TypeDescriptor_Pointer() :ITypeDescriptor( typeid(T).name(), sizeof(T)) {}
 
 			/// <summary>
 			/// pointer can't write
@@ -29,16 +30,29 @@ namespace Fire
 				data += "{nullptr}";
 			}
 
+			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
+			{
+				/// 포인터는 nullptr 초기화
+				std::string sValue = data.substr(begin, end - begin);
 
+				if (sValue == "nullptr")
+					void* obj = nullptr;
+				else
+				{
+					/// TODO : 다른형식의 포인터 초기화?
+					/// ex) 객체를 생성한다던지? 
+				}
+			}
 		};
 
 		/// <summary>
 		/// poiter 
 		/// </summary>
 		template <typename T>
-		constexpr TypeDescriptor* GetPrimitiveDescriptor<T*>()
+		constexpr ITypeDescriptor* GetPrimitiveDescriptor<T*>()
 		{
 			static TypeDescriptor_Pointer<T> typeDesc;
+			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
 			return &typeDesc;
 		}
 
@@ -46,9 +60,9 @@ namespace Fire
 		/// <summary>
 		/// int
 		/// </summary>
-		struct TypeDescriptor_Int : TypeDescriptor
+		struct TypeDescriptor_Int : ITypeDescriptor
 		{
-			TypeDescriptor_Int() : TypeDescriptor("int", sizeof(int)) {}
+			TypeDescriptor_Int() : ITypeDescriptor("int", sizeof(int)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -62,7 +76,6 @@ namespace Fire
 			{
 				std::string sValue = data.substr(begin, end - begin);
 
-
 				int iValue = std::stoi(sValue);
 				
 				int* iObj = reinterpret_cast<int*>(obj);
@@ -75,18 +88,20 @@ namespace Fire
 		/// int
 		/// </summary>
 		template <>
-		TypeDescriptor* GetPrimitiveDescriptor<int>()
+		ITypeDescriptor* GetPrimitiveDescriptor<int>()
 		{
 			static TypeDescriptor_Int typeDesc;
+			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
+
 			return &typeDesc;
 		}
 
 		/// <summary>
 		/// float
 		/// </summary>
-		struct TypeDescriptor_Float : TypeDescriptor
+		struct TypeDescriptor_Float : ITypeDescriptor
 		{
-			TypeDescriptor_Float() :TypeDescriptor("float", sizeof(float)) {}
+			TypeDescriptor_Float() :ITypeDescriptor("float", sizeof(float)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -95,24 +110,35 @@ namespace Fire
 				data += std::to_string(*val);
 				data += "}";
 			}
+
+			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
+			{
+				std::string sValue = data.substr(begin, end - begin);
+
+				float fValue = std::stof(sValue);
+
+				float* fObj = reinterpret_cast<float*>(obj);
+				*fObj = fValue;
+			}
 		};
 
 		/// <summary>
 		/// float
 		/// </summary>
 		template <>
-		TypeDescriptor* GetPrimitiveDescriptor<float>()
+		ITypeDescriptor* GetPrimitiveDescriptor<float>()
 		{
 			static TypeDescriptor_Float typeDesc;
+			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
 			return &typeDesc;
 		}
 
 		/// <summary>
 		/// double
 		/// </summary>
-		struct TypeDescriptor_Double :TypeDescriptor
+		struct TypeDescriptor_Double :ITypeDescriptor
 		{
-			TypeDescriptor_Double() :TypeDescriptor("double", sizeof(double)) {}
+			TypeDescriptor_Double() :ITypeDescriptor("double", sizeof(double)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -121,15 +147,26 @@ namespace Fire
 				data += std::to_string(*val);
 				data += "}";
 			}
+
+			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
+			{
+				std::string sValue = data.substr(begin, end - begin);
+
+				double dValue = std::stod(sValue);
+
+				double* dObj = reinterpret_cast<double*>(obj);
+				*dObj = dValue;
+			}
 		};
 
 		/// <summary>
 		/// double
 		/// </summary>
 		template<>
-		TypeDescriptor* GetPrimitiveDescriptor<double>()
+		ITypeDescriptor* GetPrimitiveDescriptor<double>()
 		{
 			static TypeDescriptor_Double typeDesc;
+			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
 			return &typeDesc;
 		}
 	}

@@ -1,17 +1,18 @@
 #pragma once
 
+#include "ITypeResolver.h"
 #include "TypeCheck.h"
 
 namespace Fire
 {
 	namespace Reflect
 	{
-		struct TypeDescriptor;
+		struct ITypeDescriptor;
 
 		template <typename T>
-		struct  TypeResolver
+		struct  TypeResolver : public ITypeResolver
 		{
-			static TypeDescriptor* Get()
+			static ITypeDescriptor* Get()
 			{
 				if constexpr (Check<T>::IsReflected)
 				{
@@ -19,10 +20,11 @@ namespace Fire
 				}
 				else
 				{
-					TypeDescriptor* desc = GetPrimitiveDescriptor<T>();
+					ITypeDescriptor* desc = GetPrimitiveDescriptor<T>();
 					return desc;
 				}
 			}
+
 		};
 
 

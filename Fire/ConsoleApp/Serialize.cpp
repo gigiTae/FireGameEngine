@@ -1,12 +1,11 @@
-#include <iostream>
+#include <iostream> 
 #include "ReflectionHeader.h"
 #include <vector>
+#include <locale>
 
 struct Tmp
 {
-	int data;
-	int data2;
-	int data3;
+	std::vector<std::string> key;
 
 	REFLECT();
 };
@@ -14,21 +13,23 @@ struct Tmp
 
 int main()
 {
-	Tmp tmp{ 7657659 };
+	std::wcout.imbue(std::locale(""));
+	Tmp tmp{ {"원영","장원"},};
 
-	Fire::Reflect::TypeDescriptor* desc = Fire::Reflect::TypeResolver<Tmp>::Get();
+	Fire::Reflect::ITypeDescriptor* desc = Fire::Reflect::TypeResolver<Tmp>::Get();
 
+	auto typeMap = Fire::Reflect::TypeMap::GetTypeMap();
+
+	std::string parsingData1{};
+	desc->Write(&tmp, parsingData1);
+	desc->Read(&tmp, parsingData1,0,parsingData1.size());
+
+	std::cout << parsingData1;
 	
-	std::string parsingData{};
-	desc->Write(&tmp, parsingData);
-
-	std::cout << parsingData;
-
+	
 	return 0;
 }
 
 REFLECT_STRUCT_BEGIN(Tmp)
-REFLECT_STRUCT_MEMBER(data)
-REFLECT_STRUCT_MEMBER(data2)
-REFLECT_STRUCT_MEMBER(data3)
-REFLECT_STRUCT_END()
+REFLECT_STRUCT_MEMBER(key)
+REFLECT_STRUCT_END() 

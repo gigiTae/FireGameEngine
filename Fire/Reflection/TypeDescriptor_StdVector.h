@@ -1,5 +1,5 @@
 #pragma once
-#include "TypeDescriptor.h"
+#include "ITypeDescriptor.h"
 #include "TypeResolver.h"
 #include <vector>
 
@@ -7,16 +7,17 @@ namespace Fire
 {
 	namespace Reflect
 	{
+		template<typename T>
 		struct TypeDescriptor_StdVector :
-			public TypeDescriptor
+			public ITypeDescriptor
 		{
-			TypeDescriptor* itemType;
+			ITypeDescriptor* itemType;
 			size_t(*GetSize)(const void*);
 			const void* (*GetItem)(const void*, size_t);
 
 			template <typename ItemType>
 			TypeDescriptor_StdVector(ItemType*)
-				:TypeDescriptor{ "std::vector<>",sizeof(std::vector<ItemType>) },
+				:ITypeDescriptor{ "std::vector<>",sizeof(std::vector<ItemType>) },
 				itemType{ TypeResolver<ItemType>::Get() }
 			{
 				GetSize = [](const void* vecPtr)->size_t
@@ -49,7 +50,7 @@ namespace Fire
 
 				if (vecSize == 0)
 				{
-					data += {};
+					data += "{}";
 				}
 				else
 				{
@@ -65,7 +66,23 @@ namespace Fire
 				}
 			}
 
+			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
+			{
+				std::string subData = data.substr(begin, end - begin);
 
+				std::vector<T>* vec = reinterpret_cast<std::vector<T>*>(obj);
+				vec->clear();
+
+				// {} : vector 내부가 없다.
+				if (begin == end)
+				{
+					return;
+				}
+				else
+				{
+					
+				}
+			}
 		};
 
 

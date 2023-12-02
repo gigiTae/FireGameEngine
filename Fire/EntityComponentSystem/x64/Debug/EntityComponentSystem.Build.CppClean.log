@@ -1,7 +1,6 @@
 c:\users\pc\desktop\fire\fire\lib\entitycomponentsystem.pdb
 c:\users\pc\desktop\fire\fire\lib\entitycomponentsystem.idb
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\world.obj
-c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\stringconverter.obj
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\isubscriber.obj
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\ientitysystem.obj
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\icomponentcontainer.obj
@@ -13,6 +12,7 @@ c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\entitycomponentvie
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\entitycomponentiterator.obj
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\entity.obj
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\componenthandle.obj
+c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\stringconverter.obj
 c:\users\pc\desktop\fire\fire\lib\entitycomponentsystem.lib
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\entityco.bcdfd2a2.tlog\cl.command.1.tlog
 c:\users\pc\desktop\fire\fire\entitycomponentsystem\x64\debug\entityco.bcdfd2a2.tlog\cl.items.tlog

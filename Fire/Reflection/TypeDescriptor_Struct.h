@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "TypeDescriptor.h"
+#include "ITypeDescriptor.h"
 #include "StirngHelper.h"
 
 
@@ -8,24 +8,24 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		struct TypeDescriptor_Struct : TypeDescriptor
+		struct TypeDescriptor_Struct : ITypeDescriptor
 		{
 			struct  Member
 			{
 				std::string_view name;
 				size_t offset;
-				TypeDescriptor* type;
+				ITypeDescriptor* type;
 			};
 
 			std::vector<Member> members;
 
 			TypeDescriptor_Struct(void(*Init)(TypeDescriptor_Struct*))
-				:TypeDescriptor{ "",0 }
+				:ITypeDescriptor{ "",0 }
 			{
 				Init(this);
 			}
 			TypeDescriptor_Struct(std::string_view name, size_t size, const std::initializer_list<Member>& init)
-				:TypeDescriptor{ "",0 }, members{ init } {}
+				:ITypeDescriptor{ "",0 }, members{ init } {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{

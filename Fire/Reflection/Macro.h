@@ -7,7 +7,7 @@
 #define REFLECT_STRUCT_BEGIN(type) \
 		Fire::Reflect::TypeDescriptor_Struct type::Reflection{type::InitReflection};\
 		void type::InitReflection(Fire::Reflect::TypeDescriptor_Struct* typeDesc) { \
-			Fire::Reflect::TypeMap::Get()->AddType(#type,typeDesc); \
+			Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type,typeDesc); \
 			using T = type; \
 			typeDesc->name = #type; \
 			typeDesc->size = sizeof(T); \
