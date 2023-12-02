@@ -69,18 +69,26 @@ namespace Fire
 			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
 			{
 				std::string subData = data.substr(begin, end - begin);
+				
 
 				std::vector<T>* vec = reinterpret_cast<std::vector<T>*>(obj);
-				vec->clear();
+				
+				// 기본 생성자 호출해서 vector의 구현을 모르므로 초기화한다.
+				*vec = std::vector<T>(); 
 
 				// {} : vector 내부가 없다.
 				if (begin == end)
 				{
 					return;
 				}
-				else
+				else // 멤버 변수를 추가한다.
 				{
-					
+					int index = 0;
+					while (false)
+					{
+						
+
+					}
 				}
 			}
 		};

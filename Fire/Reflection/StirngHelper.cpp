@@ -27,3 +27,13 @@ size_t StringHelper::FindOpeningBrace(const std::string& data, size_t start)
 {
 	return data.find('{', start);
 }
+
+size_t StringHelper::FindIndex(const std::string& data, size_t start)
+{
+	FindClosingBrace(data, start);
+
+	 size_t open = data.find('[', start);
+	 size_t close = data.find(']', start);
+
+	return size_t();
+}
