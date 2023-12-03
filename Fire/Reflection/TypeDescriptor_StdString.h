@@ -18,7 +18,7 @@ namespace Fire
 		struct TypeDescriptor_StdString :
 			public ITypeDescriptor
 		{
-			TypeDescriptor_StdString() : ITypeDescriptor("std::string", sizeof(int)) {}
+			TypeDescriptor_StdString() : ITypeDescriptor("std::string", sizeof(std::string)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -57,7 +57,7 @@ namespace Fire
 		struct TypeDescriptor_StdWstring :
 			public ITypeDescriptor
 		{
-			TypeDescriptor_StdWstring() : ITypeDescriptor("std::wstring", sizeof(int)) {}
+			TypeDescriptor_StdWstring() : ITypeDescriptor("std::wstring", sizeof(std::wstring)) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{

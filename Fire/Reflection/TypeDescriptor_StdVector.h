@@ -1,7 +1,10 @@
 #pragma once
+#include <assert.h>
+#include <vector>
+
 #include "ITypeDescriptor.h"
 #include "TypeResolver.h"
-#include <vector>
+#include "StirngHelper.h"
 
 namespace Fire
 {
@@ -70,11 +73,11 @@ namespace Fire
 			{
 				std::string subData = data.substr(begin, end - begin);
 				
-
 				std::vector<T>* vec = reinterpret_cast<std::vector<T>*>(obj);
 				
 				// 기본 생성자 호출해서 vector의 구현을 모르므로 초기화한다.
 				*vec = std::vector<T>(); 
+				vec->clear();
 
 				// {} : vector 내부가 없다.
 				if (begin == end)
@@ -83,11 +86,27 @@ namespace Fire
 				}
 				else // 멤버 변수를 추가한다.
 				{
-					int index = 0;
-					while (false)
-					{
-						
+					int currentIndex = 0;
+					size_t start = begin;
 
+					while (true)
+					{
+						char c = data[start];
+
+					    size_t index = StringHelper::FindIndex(data, start);
+						if(index == std::string::npos)
+							break;
+
+						size_t open = StringHelper::FindOpeningBrace(data, start);
+						size_t close = StringHelper::FindClosingBrace(data, start);
+
+						T member; // 초기화하지않는다.
+
+						itemType->Read((char*)&member, data, open+1,close-1);
+						vec->push_back(member);
+						
+						++currentIndex;
+						start = close + 1;
 					}
 				}
 			}

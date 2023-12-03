@@ -5,8 +5,8 @@
 size_t StringHelper::FindClosingBrace(const std::string& data, size_t start)
 {
 	size_t openingBrace = data.find('{', start);
-	
-	size_t close = openingBrace+1;
+
+	size_t close = openingBrace + 1;
 
 	int openCount = 1;
 
@@ -18,7 +18,7 @@ size_t StringHelper::FindClosingBrace(const std::string& data, size_t start)
 			openCount--;
 
 		++close;
-	} 
+	}
 
 	return close;
 }
@@ -30,10 +30,17 @@ size_t StringHelper::FindOpeningBrace(const std::string& data, size_t start)
 
 size_t StringHelper::FindIndex(const std::string& data, size_t start)
 {
-	FindClosingBrace(data, start);
+	size_t closeBrace = data.find('}',start);
 
-	 size_t open = data.find('[', start);
-	 size_t close = data.find(']', start);
+	size_t open = data.find('[', start);
+	size_t close = data.find(']', start);
 
-	return size_t();
+	if (closeBrace <= open)
+		return std::string::npos;
+
+	std::string strIndex = data.substr(open + 1, close - 1);
+
+	size_t index = std::stoull(strIndex);
+
+	return index;
 }
