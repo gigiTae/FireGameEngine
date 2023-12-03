@@ -1,5 +1,7 @@
 #pragma once
 
+#include "FireGameEngine/Engine.h"
+
 class Application
 {
 public:
@@ -8,5 +10,9 @@ public:
 
 	void Initialize();
 	void Uninitialize();
+
+private:
+	Fire::EngineModule::Engine engine;
+
 };
 
