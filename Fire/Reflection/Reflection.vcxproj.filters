@@ -27,14 +27,14 @@
     <Filter Include="Header\04.TypyMap">
       <UniqueIdentifier>{5f154071-94d3-416a-a0c6-175dcb18eb0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header\03.Helper">
-      <UniqueIdentifier>{e9c54420-b2cc-45bb-b505-064327ab8026}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\04.TypeMap">
       <UniqueIdentifier>{6cf05f9d-3a11-49ba-ba7b-0b8aa69b94e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\03.Helper">
       <UniqueIdentifier>{22e269d9-9f16-44bf-8e69-d9a1921ba4aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\02.TypeResolver\03.Helper">
+      <UniqueIdentifier>{e9c54420-b2cc-45bb-b505-064327ab8026}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +51,7 @@
       <Filter>Header\00.Define</Filter>
     </ClInclude>
     <ClInclude Include="TypeCheck.h">
-      <Filter>Header\03.Helper</Filter>
+      <Filter>Header\02.TypeResolver\03.Helper</Filter>
     </ClInclude>
     <ClInclude Include="TypeDescriptor_Primitive.h">
       <Filter>Header\01.TypeDescriptor</Filter>
@@ -72,13 +72,13 @@
       <Filter>Header\01.TypeDescriptor</Filter>
     </ClInclude>
     <ClInclude Include="StirngHelper.h">
-      <Filter>Header\03.Helper</Filter>
+      <Filter>Header\02.TypeResolver\03.Helper</Filter>
     </ClInclude>
     <ClInclude Include="ITypeResolver.h">
       <Filter>Header\02.TypeResolver</Filter>
     </ClInclude>
     <ClInclude Include="ReflectCheck.h">
-      <Filter>Header\03.Helper</Filter>
+      <Filter>Header\02.TypeResolver\03.Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
