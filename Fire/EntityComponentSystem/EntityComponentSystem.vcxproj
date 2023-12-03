@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClInclude Include="ComponentContainer.h" />
     <ClInclude Include="ComponentHandle.h" />
-    <ClInclude Include="ECSHeader.h" />
+    <ClInclude Include="ECSDefine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityComponentIterator.h" />
     <ClInclude Include="EntityComponentView.h" />

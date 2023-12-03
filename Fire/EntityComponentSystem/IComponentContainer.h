@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ECSHeader.h"
+#include "ECSDefine.h"
+
 
 namespace Fire
 {

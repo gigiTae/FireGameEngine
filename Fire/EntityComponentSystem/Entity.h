@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ECSHeader.h"
 #include "ComponentContainer.h"
 #include "ComponentHandle.h"
 

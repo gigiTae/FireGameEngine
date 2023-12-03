@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ECSHeader.h"
+#include "ECSDefine.h"
 #include "EventSubscriber.h"
 #include "EntityComponentIterator.h"
 #include "EntityComponentView.h"

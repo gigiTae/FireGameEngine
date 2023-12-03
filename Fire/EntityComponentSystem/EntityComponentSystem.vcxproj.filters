@@ -68,7 +68,7 @@
     <ClInclude Include="IEntitySystem.h">
       <Filter>Header\04.System</Filter>
     </ClInclude>
-    <ClInclude Include="ECSHeader.h">
+    <ClInclude Include="ECSDefine.h">
       <Filter>Header\00.Define</Filter>
     </ClInclude>
     <ClInclude Include="TypeIndex.h">

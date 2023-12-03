@@ -1,11 +1,20 @@
 #include "Engine.h"
 #include <assert.h>
 
+size_t Fire::EngineModule::Engine::resizeHegiht = 0;
+size_t Fire::EngineModule::Engine::resizeWidth = 0;
 
 void Fire::EngineModule::Engine::Initialize()
 {
 	InitializeWindow();
 
+	/// 초기화 목록
+	// ECS lib
+	// RendererModule DLL
+	// ToolModule lib
+
+
+	Process();
 }
 
 
@@ -50,6 +59,15 @@ void Fire::EngineModule::Engine::InitializeWindow()
 	UpdateWindow(hWnd);
 }
 
+void Fire::EngineModule::Engine::Process()
+{
+	while (true)
+	{
+
+	}
+}
+
+
 //extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -65,9 +83,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_SIZE:
 		if (wParam == SIZE_MINIMIZED)
 			return 0;
-		//g_resizeWidth = (UINT)LOWORD(lParam); // Queue resize
-		//g_resizeHeight = (UINT)HIWORD(lParam);
+		Fire::EngineModule::Engine::resizeWidth = (UINT)LOWORD(lParam);
+		Fire::EngineModule::Engine::resizeHegiht = (UINT)HIWORD(lParam);
 		return 0;
+
 	case WM_DPICHANGED:
 		//if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
 		//{

@@ -1,6 +1,7 @@
 #pragma once
 #include "IDataConverter.h"
-#include "ECSHeader.h"
+#include "ECSDefine.h"
+
 
 #include <fstream>
 #include "ComponentContainer.h"
