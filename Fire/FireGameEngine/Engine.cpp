@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include <assert.h>
+#include "../ToolModule/ImGuiManager.h"
 
 LONG Fire::EngineModule::Engine::resizeHegiht = 0;
 LONG Fire::EngineModule::Engine::resizeWidth = 0;
@@ -12,14 +13,13 @@ void Fire::EngineModule::Engine::Initialize()
 	// ECS lib
 	// RendererModule 
 
-	renderer = new RendererModule::D3DRenderer();
-	renderer->Initialize(hWnd,screenWidth,screenHeight);
+	rendererModule = new RendererModule::D3DRenderer();
+	rendererModule->Initialize(hWnd,screenWidth,screenHeight);
 
-
-	// ToolModule lib
-
-#if EDITOR_MODE
-
+#ifdef EDITOR_MODE
+	toolModule = new ToolModule::ImGuiManager();
+	toolModule->Initialize(hWnd,
+		rendererModule->GetDevice(), rendererModule->GetDeviceContext());
 #endif 
 
 
@@ -29,6 +29,11 @@ void Fire::EngineModule::Engine::Initialize()
 
 void Fire::EngineModule::Engine::Uninitialize()
 {
+	toolModule->Finalize();
+	delete toolModule;
+
+	rendererModule->Finalize();
+	delete rendererModule;
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
@@ -89,15 +94,24 @@ void Fire::EngineModule::Engine::Process()
 		{
 			if (resizeWidth != 0 && resizeHegiht != 0)
 			{
-				renderer->OnResize(resizeWidth, resizeHegiht);
+				rendererModule->OnResize(resizeWidth, resizeHegiht);
 				resizeHegiht = 0;
 				resizeWidth = 0;
 			}
 
 
-			renderer->BeginRender();
-			renderer->Render();
-			renderer->EndRender();
+#ifdef EDITOR_MODE
+			toolModule->NewFrame();
+#endif
+
+			rendererModule->BeginRender();
+			rendererModule->Render();
+
+#ifdef EDITOR_MODE
+			toolModule->EndRender();
+#endif
+
+			rendererModule->EndRender();
 		}
 
 	}
@@ -126,7 +140,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		Fire::EngineModule::Engine::resizeHegiht = (UINT)HIWORD(lParam);
 		return 0;
 
-#if EDITOR_MODE
+#ifdef EDITOR_MODE
 	case WM_DPICHANGED:
 		if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
 		{

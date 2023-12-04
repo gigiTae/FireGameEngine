@@ -116,7 +116,7 @@
       <Filter>Source\03.Helper</Filter>
     </ClCompile>
     <ClCompile Include="TypeDescriptor_EnumClass.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\01.TypeDescriptor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

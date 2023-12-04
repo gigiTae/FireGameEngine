@@ -48,7 +48,7 @@ void ToolModule::ImGuiManager::NewFrame()
 	ImGui::NewFrame();
 }
 
-void ToolModule::ImGuiManager::EndRnder()
+void ToolModule::ImGuiManager::EndRender()
 {
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

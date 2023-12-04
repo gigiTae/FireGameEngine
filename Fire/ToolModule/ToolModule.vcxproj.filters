@@ -20,9 +20,6 @@
     <ClInclude Include="ImGuiManager.h">
       <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="ToolModuleHeader.h">
-      <Filter>public\imgui</Filter>
-    </ClInclude>
     <ClInclude Include="imstb_truetype.h">
       <Filter>public\imgui</Filter>
     </ClInclude>
@@ -46,6 +43,12 @@
     </ClInclude>
     <ClInclude Include="imconfig.h">
       <Filter>public\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="IToolModule.h">
+      <Filter>public</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolModuleHeader.h">
+      <Filter>public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="imgui_tables.cpp">
       <Filter>private\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="IToolModule.cpp">
+      <Filter>private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
