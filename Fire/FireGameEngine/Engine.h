@@ -4,6 +4,11 @@
 #include <Windows.h>
 #include "RendererModule/RendererHeader.h"
 
+#ifdef EDITOR_MODE
+#include "ToolModule/ToolModuleHeader.h"
+#endif
+
+
 namespace Fire
 {
 	namespace EngineModule
@@ -36,8 +41,8 @@ namespace Fire
 			LONG screenLeft = 0;
 			LONG screenTop = 0;
 
-			RendererModule::D3DRenderer renderer;
-
+		 	RendererModule::D3DRenderer* renderer;
+			
 
 		};
 

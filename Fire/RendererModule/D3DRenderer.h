@@ -27,7 +27,7 @@ namespace RendererModule
 	/// 
 	/// 2023.9.8 23:22 gitae
 	/// </summary>
-class D3DRenderer
+class  D3DRenderer
 {
 public:
 	D3DRenderer();

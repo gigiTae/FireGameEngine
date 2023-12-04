@@ -11,7 +11,9 @@ void Fire::EngineModule::Engine::Initialize()
 	/// 초기화 목록
 	// ECS lib
 	// RendererModule 
-	renderer.Initialize(hWnd,screenWidth,screenHeight);
+
+	renderer = new RendererModule::D3DRenderer();
+	renderer->Initialize(hWnd,screenWidth,screenHeight);
 
 
 	// ToolModule lib
@@ -87,15 +89,15 @@ void Fire::EngineModule::Engine::Process()
 		{
 			if (resizeWidth != 0 && resizeHegiht != 0)
 			{
-				renderer.OnResize(resizeWidth, resizeHegiht);
+				renderer->OnResize(resizeWidth, resizeHegiht);
 				resizeHegiht = 0;
 				resizeWidth = 0;
 			}
 
 
-			renderer.BeginRender();
-			renderer.Render();
-			renderer.EndRender();
+			renderer->BeginRender();
+			renderer->Render();
+			renderer->EndRender();
 		}
 
 	}
