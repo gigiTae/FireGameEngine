@@ -3,6 +3,8 @@
 
 // My Reflection
 
+#pragma region StructMacro
+
 #define REFLECT_CHECK(type)\
 		template<>\
 		class Fire::Reflect::ReflectCheck<type>\
@@ -24,7 +26,7 @@
 				desc->name = #type; \
 				desc->size = sizeof(T); \
 				desc->members = {
-						
+
 #define MEMBER_REFLECTION(name)\
 			{#name, offsetof(T,name), Fire::Reflect::TypeResolver<decltype(T::name)>::Get()},
 
@@ -32,25 +34,35 @@
 		}; \
 	}
 
-// FlexibleReflection Define
+#pragma endregion
 
-//#define  REFLECT() \
-//		static struct Fire::Reflect::TypeDescriptor_Struct Reflection; \
-//		static void InitReflection(Fire::Reflect::TypeDescriptor_Struct*); 
-//
-//#define REFLECT_STRUCT_BEGIN(type) \
-//		Fire::Reflect::TypeDescriptor_Struct type::Reflection{type::InitReflection};\
-//		void type::InitReflection(Fire::Reflect::TypeDescriptor_Struct* typeDesc) { \
-//			Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type,typeDesc); \
-//			using T = type; \
-//			typeDesc->name = #type; \
-//			typeDesc->size = sizeof(T); \
-//			typeDesc->members = {
-//
-//#define REFLECT_STRUCT_MEMBER(name)\
-//			{#name, offsetof(T,name), Fire::Reflect::TypeResolver<decltype(T::name)>::Get()},
-//
-//#define REFLECT_STRUCT_END() \
-//		}; \
-//	}
+#pragma region EnumClassMacro
 
+#define REFLECT_CHECK_ENUM(type)\
+template<>\
+class Fire::Reflect::ReflectCheck<type>\
+{\
+public:\
+	constexpr static bool IsReflect = true;\
+	static struct Fire::Reflect::TypeDescriptor_EnumClass<type> Reflection;\
+	static void InitReflection(Fire::Reflect::TypeDescriptor_EnumClass<type>*);\
+};
+
+#define BEGIN_REFLECTION_ENUM(type)\
+		REFLECT_CHECK_ENUM(type)\
+		Fire::Reflect::TypeDescriptor_EnumClass<COLOR> Fire::Reflect::ReflectCheck<COLOR>::Reflection\
+{ Fire::Reflect::ReflectCheck<COLOR>::InitReflection };\
+void Fire::Reflect::ReflectCheck<COLOR>::InitReflection(Fire::Reflect::TypeDescriptor_EnumClass<COLOR>* desc)\
+{\
+	using T = COLOR;\
+	desc->name = "COLOR";\
+	desc->size = sizeof(T);\
+	Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type, desc);\
+
+#define ENUM_MEMBER_REFLECTION(name)\
+	desc->AddEnumMember(#name, { T::name, static_cast<int>(T::name)});
+
+#define END_REFLECTION_ENUM()\
+		};\
+
+#pragma endregion

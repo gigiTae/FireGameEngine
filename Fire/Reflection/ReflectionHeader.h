@@ -5,6 +5,7 @@
 #include "TypeCheck.h"
 #include "TypeResolver.h"
 #include "TypeDescriptor_Struct.h"
+#include "TypeDescriptor_EnumClass.h"
 
 #include "TypeDescriptor_Primitive.h"
 #include "TypeDescriptor_StdString.h"

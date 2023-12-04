@@ -1,61 +1,42 @@
 #include <iostream> 
 #include "ReflectionHeader.h"
-#include <vector>
-#include "compoent.h"
 
 
-struct Position
+enum class COLOR
 {
-	float x;
-	float y;
-	float z;
+	RED,
+	BLUE,
+	BLACK,
 };
 
-BEGIN_REFLECTION(Position)
-MEMBER_REFLECTION(x)
-MEMBER_REFLECTION(y)
-MEMBER_REFLECTION(z)
-END_REFLECTION()
+BEGIN_REFLECTION_ENUM(COLOR)
+ENUM_MEMBER_REFLECTION(RED)
+ENUM_MEMBER_REFLECTION(BLUE)
+ENUM_MEMBER_REFLECTION(BLACK)
+END_REFLECTION_ENUM()
 
-
-struct Tmp
+struct Player
 {
-	std::vector<std::string> key;
+	float speed;
+	float hp;
 
-	int hp = 10;
-	int mp = 200;
-	int go = 10;
-
-	std::vector<Position> monster;
 };
 
-BEGIN_REFLECTION(Tmp)
-MEMBER_REFLECTION(key)
+BEGIN_REFLECTION(Player)
+MEMBER_REFLECTION(speed)
 MEMBER_REFLECTION(hp)
-MEMBER_REFLECTION(mp)
-MEMBER_REFLECTION(go)
-MEMBER_REFLECTION(monster)
 END_REFLECTION()
 
 
 int main()
 {
-	Tmp tmp{};
 
-	Position p{ 1.f,2.f,3.f };
+	auto map = Fire::Reflect::TypeMap::GetTypeMap();
 
-	tmp.monster.push_back(p);
+	auto name = Fire::Reflect::TypeResolver<COLOR>::Get();
 
-	Fire::Reflect::ITypeDescriptor* desc = Fire::Reflect::TypeResolver<Tmp>::Get();
-
-	auto typeMap = Fire::Reflect::TypeMap::GetTypeMap();
-
-	std::string parsingData{};
-
-	desc->Write(&tmp, parsingData);
-
-	std::cout << parsingData;
-
+	auto desc = Fire::Reflect::ReflectCheck<COLOR>::Reflection;
+	auto enu = desc.GetValueForName("BLUE");
 
 	return 0;
 }

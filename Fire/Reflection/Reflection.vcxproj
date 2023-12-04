@@ -26,6 +26,7 @@
     <ClInclude Include="StirngHelper.h" />
     <ClInclude Include="TypeCheck.h" />
     <ClInclude Include="ITypeDescriptor.h" />
+    <ClInclude Include="TypeDescriptor_EnumClass.h" />
     <ClInclude Include="TypeDescriptor_Primitive.h" />
     <ClInclude Include="TypeDescriptor_StdString.h" />
     <ClInclude Include="TypeDescriptor_StdVector.h" />
@@ -39,6 +40,7 @@
     <ClCompile Include="ReflectCheck.cpp" />
     <ClCompile Include="StirngHelper.cpp" />
     <ClCompile Include="ITypeDescriptor.cpp" />
+    <ClCompile Include="TypeDescriptor_EnumClass.cpp" />
     <ClCompile Include="TypeDescriptor_StdString.cpp" />
     <ClCompile Include="TypeDescriptor_StdVector.cpp" />
     <ClCompile Include="TypeDescriptor_Struct.cpp" />
