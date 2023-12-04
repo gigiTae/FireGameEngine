@@ -27,7 +27,6 @@ MEMBER_REFLECTION(speed)
 MEMBER_REFLECTION(hp)
 END_REFLECTION()
 
-
 int main()
 {
 

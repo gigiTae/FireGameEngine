@@ -1,2 +1,1 @@
-﻿  Serialize.cpp
-  ConsoleApp.vcxproj -> C:\Users\PC\Desktop\Fire\Fire\x64\Debug\ConsoleApp.exe
+﻿LINK : fatal error LNK1104: 'EntityComponentSystem.lib' 파일을 열 수 없습니다.

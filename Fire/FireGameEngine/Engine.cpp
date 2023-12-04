@@ -1,8 +1,8 @@
 #include "Engine.h"
 #include <assert.h>
 
-size_t Fire::EngineModule::Engine::resizeHegiht = 0;
-size_t Fire::EngineModule::Engine::resizeWidth = 0;
+LONG Fire::EngineModule::Engine::resizeHegiht = 0;
+LONG Fire::EngineModule::Engine::resizeWidth = 0;
 
 void Fire::EngineModule::Engine::Initialize()
 {
@@ -10,8 +10,15 @@ void Fire::EngineModule::Engine::Initialize()
 
 	/// 초기화 목록
 	// ECS lib
-	// RendererModule DLL
+	// RendererModule 
+	renderer.Initialize(hWnd,screenWidth,screenHeight);
+
+
 	// ToolModule lib
+
+#if EDITOR_MODE
+
+#endif 
 
 
 	Process();
@@ -61,19 +68,49 @@ void Fire::EngineModule::Engine::InitializeWindow()
 
 void Fire::EngineModule::Engine::Process()
 {
-	while (true)
+	MSG msg;
+	bool isDone = false;
+
+	while (!isDone)
 	{
+		// 픽메세지 함수를 사용해서 메세지를 관리한다.
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			if (msg.message == WM_QUIT)
+			{
+				isDone = true;
+				break;
+			}
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			if (resizeWidth != 0 && resizeHegiht != 0)
+			{
+				renderer.OnResize(resizeWidth, resizeHegiht);
+				resizeHegiht = 0;
+				resizeWidth = 0;
+			}
+
+
+			renderer.BeginRender();
+			renderer.Render();
+			renderer.EndRender();
+		}
 
 	}
 }
 
-
-//extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+#ifdef EDITOR_MODE
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+#endif
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	//if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
-	//	return true;
+#ifdef EDITOR_MODE
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
+		return true;
+#endif
 
 	switch (message)
 	{
@@ -87,15 +124,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		Fire::EngineModule::Engine::resizeHegiht = (UINT)HIWORD(lParam);
 		return 0;
 
+#if EDITOR_MODE
 	case WM_DPICHANGED:
-		//if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
-		//{
-		//	//const int dpi = HIWORD(wParam);
-		//	//printf("WM_DPICHANGED to %d (%.0f%%)\n", dpi, (float)dpi / 96.0f * 100.0f);
-		//	const RECT* suggested_rect = (RECT*)lParam;
-		//	::SetWindowPos(hWnd, nullptr, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
-		//}
+		if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)
+		{
+			//const int dpi = HIWORD(wParam);
+			//printf("WM_DPICHANGED to %d (%.0f%%)\n", dpi, (float)dpi / 96.0f * 100.0f);
+			const RECT* suggested_rect = (RECT*)lParam;
+			::SetWindowPos(hWnd, nullptr, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
+		}
 		break;
+#endif 
+
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 
