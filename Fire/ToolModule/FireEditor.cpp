@@ -13,7 +13,7 @@ void ToolModule::FireEditor::Initialize(HWND hwnd, ID3D11Device* device, ID3D11D
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
 
@@ -44,6 +44,7 @@ void ToolModule::FireEditor::NewFrame()
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
+	
 }
 
 void ToolModule::FireEditor::EndRender()
@@ -63,6 +64,8 @@ void ToolModule::FireEditor::EndRender()
 
 void ToolModule::FireEditor::Load(Fire::ECS::World* world)
 {
+	bool t = true;
+	ImGui::ShowDemoWindow(&t);
 	/// Sysytem 
 	StartSystemEditor(world);
 

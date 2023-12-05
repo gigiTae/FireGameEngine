@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"
 #include "StirngHelper.h"
 
 
@@ -8,24 +8,24 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		struct TypeDescriptor_Struct : ITypeDescriptor
+		struct TypeDescriptor_Struct : TypeDescriptor
 		{
 			struct  Member
 			{
 				std::string_view name;
 				size_t offset;
-				ITypeDescriptor* type;
+				TypeDescriptor* desc;
 			};
 
 			std::vector<Member> members;
 
 			TypeDescriptor_Struct(void(*Init)(TypeDescriptor_Struct*))
-				:ITypeDescriptor{ "",0 }
+				:TypeDescriptor{ "",0 ,TYPE_CATEGORY::STRUCT}
 			{
 				Init(this);
 			}
 			TypeDescriptor_Struct(std::string_view name, size_t size, const std::initializer_list<Member>& init)
-				:ITypeDescriptor{ "",0 }, members{ init } {}
+				:TypeDescriptor{ "",0,TYPE_CATEGORY::STRUCT }, members{ init } {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -36,7 +36,7 @@ namespace Fire
 					data += std::string(4 * (indentLevel + 1), ' ');
 					data += member.name;
 					data += " = ";
-					member.type->Write((char*)obj + member.offset, data, indentLevel + 1);
+					member.desc->Write((char*)obj + member.offset, data, indentLevel + 1);
 					data += "\n";
 				}
 				data += std::string(4 * indentLevel, ' ') + "}";
@@ -52,7 +52,7 @@ namespace Fire
 					size_t memberOpen = StringHelper::FindOpeningBrace(data,open+1);
 					size_t memberClose = StringHelper::FindClosingBrace(data, open+1);
 
-					member.type->Read((char*)obj + member.offset, data, memberOpen+1, memberClose-1);
+					member.desc->Read((char*)obj + member.offset, data, memberOpen+1, memberClose-1);
 				
 					open = memberClose + 1;
 				}

@@ -1,5 +1,5 @@
 #include "TypeMap.h"
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"
 #include "ITypeResolver.h"
 
 
@@ -7,7 +7,7 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		void TypeMap::AddType(const std::string typeName, ITypeDescriptor* desc)
+		void TypeMap::AddType(const std::string typeName, TypeDescriptor* desc)
 		{
 			auto iter = typeDescritors.find(typeName);
 
@@ -32,7 +32,7 @@ namespace Fire
 			return instance;
 		}
 
-		ITypeDescriptor* TypeMap::GetTypeDescriptor(std::type_index index)
+		TypeDescriptor* TypeMap::GetTypeDescriptor(std::type_index index)
 		{
 			auto iter = typeIndexMap.find(index);
 
@@ -42,7 +42,7 @@ namespace Fire
 			return GetTypeDescriptor(iter->second);
 		}
 
-		ITypeDescriptor* TypeMap::GetTypeDescriptor(const std::string& typeName)
+		TypeDescriptor* TypeMap::GetTypeDescriptor(const std::string& typeName)
 		{
 			auto iter = typeDescritors.find(typeName);
 

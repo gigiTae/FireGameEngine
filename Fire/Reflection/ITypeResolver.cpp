@@ -1,2 +1,2 @@
 #include "ITypeResolver.h"
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"

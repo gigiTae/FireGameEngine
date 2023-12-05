@@ -9,4 +9,6 @@ namespace StringHelper
 
 	size_t FindIndex(const std::string& data, size_t start);
 
+	std::string EraseNamespace(const std::string& name);
+
 }

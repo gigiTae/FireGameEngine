@@ -13,8 +13,10 @@ namespace Fire
 		template <typename ComponentType>
 		struct ComponentContainer : public IComponentContainer
 		{
-			ComponentContainer() = default;
-			ComponentContainer(const ComponentType& component) :component(component) {}
+			ComponentContainer():IComponentContainer(&component), component()
+			{};
+			ComponentContainer(const ComponentType& component) :IComponentContainer(&component), component(component)
+			{}
 
 			ComponentType component;
 

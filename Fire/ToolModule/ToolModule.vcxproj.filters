@@ -72,6 +72,9 @@
     <ClInclude Include="ScreenInfo.h">
       <Filter>public</Filter>
     </ClInclude>
+    <ClInclude Include="imgui_stdlib.h">
+      <Filter>public\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui_widgets.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="ScreenInfo.cpp">
       <Filter>private</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_stdlib.cpp">
+      <Filter>private\imgui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

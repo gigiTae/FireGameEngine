@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <vector>
 
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"
 #include "TypeResolver.h"
 #include "StirngHelper.h"
 
@@ -12,15 +12,15 @@ namespace Fire
 	{
 		template<typename T>
 		struct TypeDescriptor_StdVector :
-			public ITypeDescriptor
+			public TypeDescriptor
 		{
-			ITypeDescriptor* itemType;
+			TypeDescriptor* itemType;
 			size_t(*GetSize)(const void*);
 			const void* (*GetItem)(const void*, size_t);
 
 			template <typename ItemType>
 			TypeDescriptor_StdVector(ItemType*)
-				:ITypeDescriptor{ "std::vector<>",sizeof(std::vector<ItemType>) },
+				:TypeDescriptor{ "std::vector<>",sizeof(std::vector<ItemType>),TYPE_CATEGORY::PRIMITIVE },
 				itemType{ TypeResolver<ItemType>::Get() }
 			{
 				GetSize = [](const void* vecPtr)->size_t

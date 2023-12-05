@@ -38,7 +38,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ITypeDescriptor.h">
+    <ClInclude Include="TypeDescriptor.h">
       <Filter>Header\01.TypeDescriptor</Filter>
     </ClInclude>
     <ClInclude Include="Macro.h">
@@ -85,7 +85,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ITypeDescriptor.cpp">
+    <ClCompile Include="TypeDescriptor.cpp">
       <Filter>Source\01.TypeDescriptor</Filter>
     </ClCompile>
     <ClCompile Include="TypeResolver.cpp">
@@ -116,6 +116,9 @@
       <Filter>Source\03.Helper</Filter>
     </ClCompile>
     <ClCompile Include="TypeDescriptor_EnumClass.cpp">
+      <Filter>Source\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_Primitive.cpp">
       <Filter>Source\01.TypeDescriptor</Filter>
     </ClCompile>
   </ItemGroup>

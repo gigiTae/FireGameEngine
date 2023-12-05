@@ -5,7 +5,7 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		struct ITypeDescriptor;
+		struct TypeDescriptor;
 
 		struct ITypeResolver
 		{

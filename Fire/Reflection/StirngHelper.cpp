@@ -44,3 +44,13 @@ size_t StringHelper::FindIndex(const std::string& data, size_t start)
 
 	return index;
 }
+
+std::string StringHelper::EraseNamespace(const std::string& name)
+{
+	size_t spaceStart = name.find_last_of(':', name.size());
+
+	if (spaceStart == std::string::npos)
+		return name;
+
+	return name.substr( spaceStart+1, name.size()-spaceStart);
+}

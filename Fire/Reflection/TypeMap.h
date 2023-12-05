@@ -10,7 +10,7 @@ namespace Fire
 	namespace Reflect
 	{
 		struct ITypeResolver;
-		struct ITypeDescriptor;
+		struct TypeDescriptor;
 
 		/// <summary>
 		/// ΩÃ±€≈Ê ∆–≈œ¿ª ªÁøÎ
@@ -23,7 +23,7 @@ namespace Fire
 		public:
 			static TypeMap* GetTypeMap() { static TypeMap typeMap; return &typeMap; }
 
-			void AddType(const std::string typeName,ITypeDescriptor* desc);
+			void AddType(const std::string typeName,TypeDescriptor* desc);
 			template<typename T>
 			void AddTypeIndex(const std::string& typeName);
 			
@@ -34,12 +34,12 @@ namespace Fire
 			/// </summary>
 			void* Get(const std::string typeName);
 
-			ITypeDescriptor* GetTypeDescriptor(std::type_index index);
-			ITypeDescriptor* GetTypeDescriptor(const std::string& typeName);
+			TypeDescriptor* GetTypeDescriptor(std::type_index index);
+			TypeDescriptor* GetTypeDescriptor(const std::string& typeName);
 
 
 		private:
-			std::unordered_map<TypeName, ITypeDescriptor*> typeDescritors;
+			std::unordered_map<TypeName, TypeDescriptor*> typeDescritors;
 			std::unordered_map<std::type_index, TypeName> typeIndexMap;
 
 			TypeMap() =default;

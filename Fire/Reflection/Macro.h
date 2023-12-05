@@ -24,6 +24,7 @@
 				using T = type; \
 				Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type,desc);\
 				Fire::Reflect::TypeMap::GetTypeMap()->AddTypeIndex<T>(#type);\
+				desc->category = TYPE_CATEGORY::STRUCT;\
 				desc->name = #type; \
 				desc->size = sizeof(T); \
 				desc->members = {
@@ -57,6 +58,7 @@ void Fire::Reflect::ReflectCheck<COLOR>::InitReflection(Fire::Reflect::TypeDescr
 {\
 	using T = COLOR;\
 	desc->name = "COLOR";\
+	desc->type = TYPE_CATEGORY::ENUMCLASS;\
 	desc->size = sizeof(T);\
 	Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type, desc);\
 	Fire::Reflect::TypeMap::GetTypeMap()->AddTypeIndex<T>(#type);

@@ -8,12 +8,12 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		struct ITypeDescriptor;
+		struct TypeDescriptor;
 
 		template <typename T>
 		struct  TypeResolver : public ITypeResolver
 		{
-			static ITypeDescriptor* Get()
+			static TypeDescriptor* Get()
 			{
 				if constexpr (ReflectCheck<T>::IsReflect)
 				{
@@ -21,7 +21,7 @@ namespace Fire
 				}
 				else
 				{
-					ITypeDescriptor* desc = GetPrimitiveDescriptor<T>();
+					TypeDescriptor* desc = GetPrimitiveDescriptor<T>();
 					return desc;
 				}
 			}

@@ -1,7 +1,7 @@
 #pragma once
 #include <typeinfo>
 
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"
 #include "TypeCheck.h"
 #include "TypeMap.h"
 
@@ -16,9 +16,9 @@ namespace Fire
 		/// string
 		/// </summary>
 		struct TypeDescriptor_StdString :
-			public ITypeDescriptor
+			public TypeDescriptor
 		{
-			TypeDescriptor_StdString() : ITypeDescriptor("std::string", sizeof(std::string)) {}
+			TypeDescriptor_StdString() : TypeDescriptor("std::string", sizeof(std::string),TYPE_CATEGORY::PRIMITIVE) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -40,24 +40,15 @@ namespace Fire
 
 		};
 
-		/// <summary>
-		/// string
-		/// </summary>
-		template <>
-		ITypeDescriptor* GetPrimitiveDescriptor<std::string>()
-		{
-			static TypeDescriptor_StdString typeDesc;
-			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-			return &typeDesc;
-		}
+
 
 		/// <summary>
 		/// wstring
 		/// </summary>
 		struct TypeDescriptor_StdWstring :
-			public ITypeDescriptor
+			public TypeDescriptor
 		{
-			TypeDescriptor_StdWstring() : ITypeDescriptor("std::wstring", sizeof(std::wstring)) {}
+			TypeDescriptor_StdWstring() : TypeDescriptor("std::wstring", sizeof(std::wstring), TYPE_CATEGORY::PRIMITIVE) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -84,17 +75,7 @@ namespace Fire
 			}
 		};
 
-		/// <summary>
-		/// wstring
-		/// </summary>
-		template <>
-		ITypeDescriptor* GetPrimitiveDescriptor<std::wstring>()
-		{
-			static TypeDescriptor_StdWstring typeDesc;
-			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-			return &typeDesc;
-		}
-
+		
 
 	}
 }

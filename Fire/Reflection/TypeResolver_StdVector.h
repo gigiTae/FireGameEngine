@@ -10,12 +10,12 @@ namespace Fire
 {
 	namespace Reflect
 	{
-		struct ITypeDescriptor;
+		struct TypeDescriptor;
 
 		template <typename T>
 		struct TypeResolver<std::vector<T>> :public ITypeResolver
 		{
-			static ITypeDescriptor* Get()
+			static TypeDescriptor* Get()
 			{
 				static TypeDescriptor_StdVector<T> typeDesc{ (T*)nullptr };
 				TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);

@@ -51,13 +51,13 @@
     <Filter Include="ECS\Header\06.Serializer">
       <UniqueIdentifier>{8238afdb-5881-4658-a783-3b57e54bde20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component">
+    <Filter Include="BaseComponent">
       <UniqueIdentifier>{16c57262-52f0-43df-9949-cd6697b9e087}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Source">
+    <Filter Include="BaseComponent\Source">
       <UniqueIdentifier>{38eb71d5-86dd-43fc-a633-d1ad0444d29d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Header">
+    <Filter Include="BaseComponent\Header">
       <UniqueIdentifier>{7073f233-100c-4987-a788-ad48d508927c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -114,10 +114,16 @@
       <Filter>ECS\Header\06.Serializer</Filter>
     </ClInclude>
     <ClInclude Include="Name.h">
-      <Filter>Component\Header</Filter>
+      <Filter>BaseComponent\Header</Filter>
     </ClInclude>
     <ClInclude Include="ComponentHeader.h">
-      <Filter>Component</Filter>
+      <Filter>BaseComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>BaseComponent\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>BaseComponent\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +167,13 @@
       <Filter>ECS\Source\06.Serializer</Filter>
     </ClCompile>
     <ClCompile Include="Name.cpp">
-      <Filter>Component\Source</Filter>
+      <Filter>BaseComponent\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>BaseComponent\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>BaseComponent\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

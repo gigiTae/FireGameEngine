@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"
 #include <string>
 #include <assert.h>
 #include <unordered_map>
@@ -11,7 +11,7 @@ namespace Fire
 	{
 
 		template <typename ENUM_TYPE>
-		struct TypeDescriptor_EnumClass : ITypeDescriptor
+		struct TypeDescriptor_EnumClass : TypeDescriptor
 		{
 		public:
 			struct EnumInfo
@@ -21,7 +21,7 @@ namespace Fire
 			};
 
 		public:
-			TypeDescriptor_EnumClass(void(*Init)(TypeDescriptor_EnumClass<ENUM_TYPE>*)) :ITypeDescriptor{ "",0 }
+			TypeDescriptor_EnumClass(void(*Init)(TypeDescriptor_EnumClass<ENUM_TYPE>*)) :TypeDescriptor{ "",0,TYPE_CATEGORY::ENUMCLASS }
 			{
 				Init(this);
 			}

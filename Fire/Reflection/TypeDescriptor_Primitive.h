@@ -2,7 +2,7 @@
 
 #include <typeinfo>
 
-#include "ITypeDescriptor.h"
+#include "TypeDescriptor.h"
 #include "TypeCheck.h"
 #include "TypeMap.h"
 
@@ -16,9 +16,9 @@ namespace Fire
 		/// pointer
 		/// </summary>
 		template<typename T>
-		struct TypeDescriptor_Pointer : ITypeDescriptor
+		struct TypeDescriptor_Pointer : TypeDescriptor
 		{
-			TypeDescriptor_Pointer() :ITypeDescriptor( typeid(T).name(), sizeof(T)) 
+			TypeDescriptor_Pointer() :TypeDescriptor(typeid(T).name(), sizeof(T))
 			{
 				name;
 				int a = 0;
@@ -49,23 +49,11 @@ namespace Fire
 		};
 
 		/// <summary>
-		/// poiter 
-		/// </summary>
-		template <typename T>
-		constexpr ITypeDescriptor* GetPrimitiveDescriptor<T*>()
-		{
-			static TypeDescriptor_Pointer<T> typeDesc;
-			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-			return &typeDesc;
-		}
-
-
-		/// <summary>
 		/// int
 		/// </summary>
-		struct TypeDescriptor_Int : ITypeDescriptor
+		struct TypeDescriptor_Int : TypeDescriptor
 		{
-			TypeDescriptor_Int() : ITypeDescriptor("int", sizeof(int)) {}
+			TypeDescriptor_Int() : TypeDescriptor("int", sizeof(int),TYPE_CATEGORY::PRIMITIVE) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -88,23 +76,11 @@ namespace Fire
 
 
 		/// <summary>
-		/// int
-		/// </summary>
-		template <>
-		ITypeDescriptor* GetPrimitiveDescriptor<int>()
-		{
-			static TypeDescriptor_Int typeDesc;
-			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-
-			return &typeDesc;
-		}
-
-		/// <summary>
 		/// float
 		/// </summary>
-		struct TypeDescriptor_Float : ITypeDescriptor
+		struct TypeDescriptor_Float : TypeDescriptor
 		{
-			TypeDescriptor_Float() :ITypeDescriptor("float", sizeof(float)) {}
+			TypeDescriptor_Float() :TypeDescriptor("float", sizeof(float),TYPE_CATEGORY::PRIMITIVE) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -125,23 +101,13 @@ namespace Fire
 			}
 		};
 
-		/// <summary>
-		/// float
-		/// </summary>
-		template <>
-		ITypeDescriptor* GetPrimitiveDescriptor<float>()
-		{
-			static TypeDescriptor_Float typeDesc;
-			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-			return &typeDesc;
-		}
 
 		/// <summary>
 		/// double
 		/// </summary>
-		struct TypeDescriptor_Double :ITypeDescriptor
+		struct TypeDescriptor_Double :TypeDescriptor
 		{
-			TypeDescriptor_Double() :ITypeDescriptor("double", sizeof(double)) {}
+			TypeDescriptor_Double() :TypeDescriptor("double", sizeof(double),TYPE_CATEGORY::PRIMITIVE) {}
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
@@ -162,16 +128,7 @@ namespace Fire
 			}
 		};
 
-		/// <summary>
-		/// double
-		/// </summary>
-		template<>
-		ITypeDescriptor* GetPrimitiveDescriptor<double>()
-		{
-			static TypeDescriptor_Double typeDesc;
-			TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-			return &typeDesc;
-		}
+
 	}
 }
 
