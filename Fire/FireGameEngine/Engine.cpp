@@ -26,9 +26,6 @@ void Fire::EngineModule::Engine::Initialize()
 	toolModule->Initialize(hWnd,
 		rendererModule->GetDevice(), rendererModule->GetDeviceContext());
 #endif 
-
-
-	Process();
 }
 
 
@@ -52,7 +49,7 @@ void Fire::EngineModule::Engine::InitializeWindow()
 #ifdef EDITOR_MODE
 	ToolModule::ScreenInfo::LoadPosition(screenLeft, screenTop);
 	ToolModule::ScreenInfo::LoadResoltuion(screenWidth, screenHeight);
-#endif // EDITOR_MODE6
+#endif // EDITOR_MODE667
 
 	hInstance = static_cast<HINSTANCE>(GetModuleHandle(NULL));
 
@@ -124,7 +121,6 @@ void Fire::EngineModule::Engine::Process()
 			toolModule->NewFrame();
 			toolModule->Load(world);
 #endif
-
 			rendererModule->BeginRender();
 			rendererModule->Render();
 
@@ -136,6 +132,7 @@ void Fire::EngineModule::Engine::Process()
 		}
 
 	}
+
 }
 
 #ifdef EDITOR_MODE

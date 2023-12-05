@@ -15,9 +15,9 @@ namespace Fire
 				return;
 
 			typeDescritors.insert(std::make_pair(typeName, desc));
-			int a = 0;
 		}
 
+		
 		
 		void* TypeMap::Get(const std::string typeName)
 		{
@@ -30,6 +30,16 @@ namespace Fire
 			void* instance = new char[memorySize];
 
 			return instance;
+		}
+
+		ITypeDescriptor* TypeMap::GetTypeDescriptor(std::type_index index)
+		{
+			auto iter = typeIndexMap.find(index);
+
+			if (iter == typeIndexMap.end())
+				return nullptr;
+
+			return GetTypeDescriptor(iter->second);
 		}
 
 		ITypeDescriptor* TypeMap::GetTypeDescriptor(const std::string& typeName)

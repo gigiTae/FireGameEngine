@@ -21,8 +21,9 @@
 						{Fire::Reflect::ReflectCheck<type>::InitReflection};\
 		void Fire::Reflect::ReflectCheck<type>::InitReflection(Fire::Reflect::TypeDescriptor_Struct* desc)\
 			{\
-				Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type,desc);\
 				using T = type; \
+				Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type,desc);\
+				Fire::Reflect::TypeMap::GetTypeMap()->AddTypeIndex<T>(#type);\
 				desc->name = #type; \
 				desc->size = sizeof(T); \
 				desc->members = {
@@ -31,8 +32,8 @@
 			{#name, offsetof(T,name), Fire::Reflect::TypeResolver<decltype(T::name)>::Get()},
 
 #define END_REFLECTION()\
-		}; \
-	}
+			}; \
+		}
 
 #pragma endregion
 
@@ -58,6 +59,7 @@ void Fire::Reflect::ReflectCheck<COLOR>::InitReflection(Fire::Reflect::TypeDescr
 	desc->name = "COLOR";\
 	desc->size = sizeof(T);\
 	Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type, desc);\
+	Fire::Reflect::TypeMap::GetTypeMap()->AddTypeIndex<T>(#type);
 
 #define ENUM_MEMBER_REFLECTION(name)\
 	desc->AddEnumMember(#name, { T::name, static_cast<int>(T::name)});

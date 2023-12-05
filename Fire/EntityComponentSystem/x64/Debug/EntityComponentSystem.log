@@ -9,7 +9,10 @@
   IComponentContainer.cpp
   IEntitySystem.cpp
   ISubscriber.cpp
+  Name.cpp
   StringConverter.cpp
   World.cpp
   코드를 생성하고 있습니다...
+Name.obj : warning LNK4006: "struct Fire::Reflect::ITypeDescriptor * __cdecl Fire::Reflect::GetPrimitiveDescriptor<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??$GetPrimitiveDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflect@Fire@@YAPEAUITypeDescriptor@01@XZ)이(가) Reflectiond.lib(TypeDescriptor_StdString.obj)에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
+Name.obj : warning LNK4006: "struct Fire::Reflect::ITypeDescriptor * __cdecl Fire::Reflect::GetPrimitiveDescriptor<class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> > >(void)" (??$GetPrimitiveDescriptor@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@Reflect@Fire@@YAPEAUITypeDescriptor@01@XZ)이(가) Reflectiond.lib(TypeDescriptor_StdString.obj)에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
   EntityComponentSystem.vcxproj -> C:\Users\User\Desktop\FireGameEngine\Fire\x64\Debug\EntityComponentSystemd.lib

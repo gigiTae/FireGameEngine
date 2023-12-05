@@ -15,7 +15,6 @@ namespace ToolModule
 	public:
 		void Show(Fire::ECS::Entity* ent);
 
-
 	};
 
 

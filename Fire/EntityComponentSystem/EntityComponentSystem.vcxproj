@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="ComponentContainer.h" />
     <ClInclude Include="ComponentHandle.h" />
+    <ClInclude Include="ComponentHeader.h" />
     <ClInclude Include="ECSDefine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityComponentIterator.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="IDataConverter.h" />
     <ClInclude Include="IEntitySystem.h" />
     <ClInclude Include="ISubscriber.h" />
+    <ClInclude Include="Name.h" />
     <ClInclude Include="StringConverter.h" />
     <ClInclude Include="TypeIndex.h" />
     <ClInclude Include="World.h" />
@@ -49,8 +51,14 @@
     <ClCompile Include="IComponentContainer.cpp" />
     <ClCompile Include="IEntitySystem.cpp" />
     <ClCompile Include="ISubscriber.cpp" />
+    <ClCompile Include="Name.cpp" />
     <ClCompile Include="StringConverter.cpp" />
     <ClCompile Include="World.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Reflection\Reflection.vcxproj">
+      <Project>{e1f64b0d-e717-4dd0-8983-62501afd8ade}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -151,6 +159,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -158,6 +167,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib />
+    <Lib>
+      <AdditionalDependencies>Reflectiond.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -179,7 +192,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <OutputFile>$(SolutionDir)lib\$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>Reflection.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
