@@ -2,6 +2,8 @@
 
 #include <d3d11.h> // dx11 종속적인 tool
 
+#include "../EntityComponentSystem/World.h"
+
 namespace ToolModule
 {
 
@@ -22,6 +24,11 @@ public:
 	/// 종료 함수
 	/// </summary>
 	virtual void Finalize() abstract;
+
+	/// <summary>
+	/// World 데이터를 불러온다  
+	/// </summary>
+	virtual void Load(class Fire::ECS::World* world) abstract;
 
 	/// <summary>
 	/// 새로운 프레임 갱신

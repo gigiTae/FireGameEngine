@@ -5,4 +5,5 @@
 #include "imgui_impl_win32.h"
 
 #include "IToolModule.h"
-#include "ImGuiManager.h"
+#include "FireEditor.h"
+#include "ScreenInfo.h"

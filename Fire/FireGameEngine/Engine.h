@@ -3,8 +3,7 @@
 #include "ExportDefine.h"
 #include <Windows.h>
 #include "RendererModule/RendererHeader.h"
-
-#define EDITOR_MODE
+#include "EntityComponentSystem/World.h"
 
 #ifdef EDITOR_MODE
 #include "ToolModule/ToolModuleHeader.h"
@@ -44,10 +43,15 @@ namespace Fire
 			LONG screenTop = 0;
 
 		 	RendererModule::D3DRenderer* rendererModule = nullptr;
-
+			Fire::ECS::World* world = nullptr;
 
 #ifdef EDITOR_MODE
+		private:
 			ToolModule::IToolModule* toolModule = nullptr;
+
+		public:
+			static LONG newScreenLeft;
+			static LONG newScreenTop;
 #endif // EDITOR_MODE
 
 		};

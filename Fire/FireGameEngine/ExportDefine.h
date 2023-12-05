@@ -1,5 +1,8 @@
 #pragma once
 
+#define EDITOR_MODE
+
+
 #ifdef FIRE_GAME_ENGINE_DLL_EXPROTS
 #define FIRE_ENGNIE_API __declspec(dllexport)
 #else

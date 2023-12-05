@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ComponentEditor.h" />
+    <ClInclude Include="EntityEditor.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="imgui.h" />
-    <ClInclude Include="ImGuiManager.h" />
+    <ClInclude Include="FireEditor.h" />
     <ClInclude Include="imgui_impl_dx11.h" />
     <ClInclude Include="imgui_impl_win32.h" />
     <ClInclude Include="imgui_internal.h" />
@@ -29,11 +31,16 @@
     <ClInclude Include="imstb_textedit.h" />
     <ClInclude Include="imstb_truetype.h" />
     <ClInclude Include="IToolModule.h" />
+    <ClInclude Include="ScreenInfo.h" />
+    <ClInclude Include="SystemEditor.h" />
     <ClInclude Include="ToolModuleHeader.h" />
+    <ClInclude Include="ToolModulepch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ComponentEditor.cpp" />
+    <ClCompile Include="EntityEditor.cpp" />
     <ClCompile Include="imgui.cpp" />
-    <ClCompile Include="ImGuiManager.cpp" />
+    <ClCompile Include="FireEditor.cpp" />
     <ClCompile Include="imgui_demo.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
     <ClCompile Include="imgui_impl_dx11.cpp" />
@@ -41,6 +48,16 @@
     <ClCompile Include="imgui_tables.cpp" />
     <ClCompile Include="imgui_widgets.cpp" />
     <ClCompile Include="IToolModule.cpp" />
+    <ClCompile Include="ScreenInfo.cpp" />
+    <ClCompile Include="SystemEditor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityComponentSystem\EntityComponentSystem.vcxproj">
+      <Project>{bcdfd2a2-f65f-4180-851a-4dc80def36ec}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Reflection\Reflection.vcxproj">
+      <Project>{e1f64b0d-e717-4dd0-8983-62501afd8ade}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -142,6 +159,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -149,6 +167,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib />
+    <Lib>
+      <AdditionalDependencies>EntityComponentSystemd.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

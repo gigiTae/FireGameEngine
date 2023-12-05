@@ -1,23 +1,28 @@
 #include "Engine.h"
 #include <assert.h>
-#include "../ToolModule/ImGuiManager.h"
+#include "../ToolModule/FireEditor.h"
 
 LONG Fire::EngineModule::Engine::resizeHegiht = 0;
 LONG Fire::EngineModule::Engine::resizeWidth = 0;
+
+#ifdef EDITOR_MODE
+LONG Fire::EngineModule::Engine::newScreenLeft = 0;
+LONG Fire::EngineModule::Engine::newScreenTop = 0;
+#endif
 
 void Fire::EngineModule::Engine::Initialize()
 {
 	InitializeWindow();
 
 	/// 초기화 목록
-	// ECS lib
-	// RendererModule 
+	world = new Fire::ECS::World();
 
+	// RendererModule 
 	rendererModule = new RendererModule::D3DRenderer();
-	rendererModule->Initialize(hWnd,screenWidth,screenHeight);
+	rendererModule->Initialize(hWnd, screenWidth, screenHeight);
 
 #ifdef EDITOR_MODE
-	toolModule = new ToolModule::ImGuiManager();
+	toolModule = new ToolModule::FireEditor();
 	toolModule->Initialize(hWnd,
 		rendererModule->GetDevice(), rendererModule->GetDeviceContext());
 #endif 
@@ -29,8 +34,12 @@ void Fire::EngineModule::Engine::Initialize()
 
 void Fire::EngineModule::Engine::Uninitialize()
 {
+	delete world;
+
+#ifdef EDITOR_MODE
 	toolModule->Finalize();
 	delete toolModule;
+#endif
 
 	rendererModule->Finalize();
 	delete rendererModule;
@@ -40,6 +49,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 void Fire::EngineModule::Engine::InitializeWindow()
 {
+#ifdef EDITOR_MODE
+	ToolModule::ScreenInfo::LoadPosition(screenLeft, screenTop);
+	ToolModule::ScreenInfo::LoadResoltuion(screenWidth, screenHeight);
+#endif // EDITOR_MODE6
+
 	hInstance = static_cast<HINSTANCE>(GetModuleHandle(NULL));
 
 	WNDCLASS wndClass{};
@@ -58,13 +72,18 @@ void Fire::EngineModule::Engine::InitializeWindow()
 	RegisterClass(&wndClass);
 
 	RECT rect{ screenLeft, screenTop,
-		screenLeft+ screenWidth, screenTop+ screenHeight };
+		screenLeft + screenWidth, screenTop + screenHeight };
 
 	::AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
+	screenTop = rect.top;
+	screenLeft = rect.left;
+	screenWidth = rect.right - rect.left;
+	screenHeight = rect.bottom - rect.top;
+
 	hWnd = CreateWindow(title, title
 		, WS_OVERLAPPEDWINDOW // 창이 겹침
-		, screenLeft, screenTop, rect.right -rect.left, rect.bottom - rect.top
+		, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top
 		, NULL, NULL, hInstance, NULL);
 
 	assert(hWnd != 0 && "Failed To Start Game");
@@ -95,6 +114,7 @@ void Fire::EngineModule::Engine::Process()
 			if (resizeWidth != 0 && resizeHegiht != 0)
 			{
 				rendererModule->OnResize(resizeWidth, resizeHegiht);
+
 				resizeHegiht = 0;
 				resizeWidth = 0;
 			}
@@ -102,6 +122,7 @@ void Fire::EngineModule::Engine::Process()
 
 #ifdef EDITOR_MODE
 			toolModule->NewFrame();
+			toolModule->Load(world);
 #endif
 
 			rendererModule->BeginRender();
@@ -133,12 +154,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
+
+#ifdef EDITOR_MODE
+	case WM_MOVE:
+	{
+		int left = (int)(short)LOWORD(lParam);
+		int top = (int)(short)HIWORD(lParam);
+
+		ToolModule::ScreenInfo::SavePosition(static_cast<LONG>(left),
+			static_cast<LONG>(top));
+	}
+	break;
+#endif // EDITOR_MODE
+
 	case WM_SIZE:
 		if (wParam == SIZE_MINIMIZED)
 			return 0;
-		Fire::EngineModule::Engine::resizeWidth = (UINT)LOWORD(lParam);
-		Fire::EngineModule::Engine::resizeHegiht = (UINT)HIWORD(lParam);
-		return 0;
+		{
+			Fire::EngineModule::Engine::resizeWidth = (UINT)LOWORD(lParam);
+			Fire::EngineModule::Engine::resizeHegiht = (UINT)HIWORD(lParam);
+
+			ToolModule::ScreenInfo::SaveResoltuion(Fire::EngineModule::Engine::resizeWidth
+				, Fire::EngineModule::Engine::resizeHegiht);
+		}
+		break;
 
 #ifdef EDITOR_MODE
 	case WM_DPICHANGED:

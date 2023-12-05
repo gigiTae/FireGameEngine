@@ -15,11 +15,17 @@
     <Filter Include="public\imgui">
       <UniqueIdentifier>{01fb3442-ab3f-4370-8f02-5f9655aafa7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="private\Editor">
+      <UniqueIdentifier>{3a3c815e-5746-40b9-9a4a-9f3d6584f806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\Editor">
+      <UniqueIdentifier>{64edbf33-d419-43a9-a42f-7c8103789c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="public\Interface">
+      <UniqueIdentifier>{f94f1494-f5bd-4607-8a72-0239531f9940}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImGuiManager.h">
-      <Filter>public</Filter>
-    </ClInclude>
     <ClInclude Include="imstb_truetype.h">
       <Filter>public\imgui</Filter>
     </ClInclude>
@@ -44,17 +50,30 @@
     <ClInclude Include="imconfig.h">
       <Filter>public\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentEditor.h">
+      <Filter>public\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityEditor.h">
+      <Filter>public\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemEditor.h">
+      <Filter>public\Editor</Filter>
+    </ClInclude>
     <ClInclude Include="IToolModule.h">
+      <Filter>public\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="FireEditor.h">
+      <Filter>public\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolModuleHeader.h" />
+    <ClInclude Include="ToolModulepch.h">
       <Filter>public</Filter>
     </ClInclude>
-    <ClInclude Include="ToolModuleHeader.h">
+    <ClInclude Include="ScreenInfo.h">
       <Filter>public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ImGuiManager.cpp">
-      <Filter>private</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_widgets.cpp">
       <Filter>private\imgui</Filter>
     </ClCompile>
@@ -77,6 +96,21 @@
       <Filter>private\imgui</Filter>
     </ClCompile>
     <ClCompile Include="IToolModule.cpp">
+      <Filter>private</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentEditor.cpp">
+      <Filter>private\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityEditor.cpp">
+      <Filter>private\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEditor.cpp">
+      <Filter>private\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="FireEditor.cpp">
+      <Filter>private\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenInfo.cpp">
       <Filter>private</Filter>
     </ClCompile>
   </ItemGroup>
