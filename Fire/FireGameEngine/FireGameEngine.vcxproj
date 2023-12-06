@@ -163,9 +163,6 @@
     <ProjectReference Include="..\MathModule\MathModule.vcxproj">
       <Project>{fab56e85-4bc3-4306-b2c0-3ac78ca3cd29}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Reflection\Reflection.vcxproj">
-      <Project>{e1f64b0d-e717-4dd0-8983-62501afd8ade}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\RendererModule\RendererModule.vcxproj">
       <Project>{1b0ec04e-919c-404a-9a79-96dde98488f3}</Project>
     </ProjectReference>

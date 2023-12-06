@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EntityComponentSystem", "EntityComponentSystem\EntityComponentSystem.vcxproj", "{BCDFD2A2-F65F-4180-851A-4DC80DEF36EC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Reflection", "Reflection\Reflection.vcxproj", "{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FireGameEngine", "FireGameEngine\FireGameEngine.vcxproj", "{E0110C5A-D81B-42CC-ABBE-8F3A77B6D6AF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameApplication", "GameApplication\GameApplication.vcxproj", "{3B53894B-AEBD-4876-970D-456F0CA6C367}"
@@ -33,14 +31,6 @@ Global
 		{BCDFD2A2-F65F-4180-851A-4DC80DEF36EC}.Release|x64.Build.0 = Release|x64
 		{BCDFD2A2-F65F-4180-851A-4DC80DEF36EC}.Release|x86.ActiveCfg = Release|Win32
 		{BCDFD2A2-F65F-4180-851A-4DC80DEF36EC}.Release|x86.Build.0 = Release|Win32
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Debug|x64.ActiveCfg = Debug|x64
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Debug|x64.Build.0 = Debug|x64
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Debug|x86.ActiveCfg = Debug|Win32
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Debug|x86.Build.0 = Debug|Win32
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Release|x64.ActiveCfg = Release|x64
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Release|x64.Build.0 = Release|x64
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Release|x86.ActiveCfg = Release|Win32
-		{E1F64B0D-E717-4DD0-8983-62501AFD8ADE}.Release|x86.Build.0 = Release|Win32
 		{E0110C5A-D81B-42CC-ABBE-8F3A77B6D6AF}.Debug|x64.ActiveCfg = Debug|x64
 		{E0110C5A-D81B-42CC-ABBE-8F3A77B6D6AF}.Debug|x64.Build.0 = Debug|x64
 		{E0110C5A-D81B-42CC-ABBE-8F3A77B6D6AF}.Debug|x86.ActiveCfg = Debug|Win32

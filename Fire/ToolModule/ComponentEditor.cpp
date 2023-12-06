@@ -1,20 +1,39 @@
 #include "ToolModulepch.h"
 #include "ComponentEditor.h"
-#include "../Reflection/ReflectionHeader.h"
+#include "../EntityComponentSystem/ReflectionHeader.h"
+#include "../EntityComponentSystem/ComponentHeader.h"
 
+ToolModule::ComponentEditor::ComponentEditor()
+{
+	/// Reflection Component List
+	for (auto& iter : Fire::Reflect::TypeMap::GetTypeMap()->GetTypeIndexMap())
+	{
+		// 구조체 타입으로 리플렉션된 멤버들을 가져온다.
+		if (Fire::Reflect::TypeMap::GetTypeMap()->GetTypeDescriptor(iter.second)->category != Fire::Reflect::TYPE_CATEGORY::STRUCT)
+			continue;;
+
+		reflectComponents.push_back(iter.second);
+	}
+
+}
 
 void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 {
 	ImGui::Begin("Component");
 	if (ent != nullptr)
 	{
-		std::string entInfo = "ID:" + std::to_string(ent->GetId());
+		std::string entInfo = "Entity ID : " + std::to_string(ent->GetId());
 		ImGui::Text(entInfo.c_str());
 
 		auto& components = ent->GetComponents();
 
 		Fire::Reflect::TypeMap* typeMap = Fire::Reflect::TypeMap::GetTypeMap();
 
+		DisplayAddComponent(ent);
+
+		ImGui::Separator();
+
+		/// Component Relfection 
 		for (auto& iter : components)
 		{
 			auto typeIndex = iter.first;
@@ -23,6 +42,7 @@ void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 			auto& compoent = (*iter.second);
 
 			DisplayUI(compoent.GetAddress(), name, desc);
+			ImGui::Separator();
 		}
 	}
 	ImGui::End();
@@ -159,3 +179,43 @@ void ToolModule::ComponentEditor::DisplayPrimitiveUI(void* obj, const std::strin
 	}
 }
 
+void ToolModule::ComponentEditor::DisplayAddComponent(Fire::ECS::Entity* ent)
+{
+	// TODO:: C++의 아쉬운점이다. 결국에는 한번은 노가다를 해야한다.
+	if (ImGui::Button("AddComponent"))
+	{
+		std::string& componentName = reflectComponents[addComponentIndex];
+
+		if (componentName == "Fire::Component::Transform")
+		{
+			ent->Assign<Fire::Component::Transform>();
+		}
+
+		if (componentName == "Fire::Component::Vector3")
+		{
+			ent->Assign<Fire::Component::Vector3>();
+		}
+	}
+
+	if (ImGui::BeginCombo("ComponentList", reflectComponents[addComponentIndex].c_str()))
+	{
+		for (int i = 0; i < reflectComponents.size(); ++i)
+		{
+			// 각 항목에 대한 선택 가능한 버튼을 생성
+			const bool isSelected = (addComponentIndex == i);
+			if (ImGui::Selectable(reflectComponents[i].c_str(), isSelected))
+			{
+				addComponentIndex = i;
+			}
+
+			// 선택된 항목에 체크 마크 표시
+			if (isSelected)
+			{
+				ImGui::SetItemDefaultFocus(); // 선택된 항목에 초점을 맞춤
+			}
+		}
+
+		ImGui::EndCombo();
+	}
+
+}

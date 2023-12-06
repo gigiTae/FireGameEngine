@@ -34,11 +34,26 @@
     <ClInclude Include="IDataConverter.h" />
     <ClInclude Include="IEntitySystem.h" />
     <ClInclude Include="ISubscriber.h" />
+    <ClInclude Include="ITypeResolver.h" />
+    <ClInclude Include="Macro.h" />
     <ClInclude Include="Name.h" />
     <ClInclude Include="OBJECT_TYPE.h" />
+    <ClInclude Include="ReflectCheck.h" />
+    <ClInclude Include="ReflectionHeader.h" />
+    <ClInclude Include="StirngHelper.h" />
     <ClInclude Include="StringConverter.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="TypeCheck.h" />
+    <ClInclude Include="TypeDescriptor.h" />
+    <ClInclude Include="TypeDescriptor_EnumClass.h" />
+    <ClInclude Include="TypeDescriptor_Primitive.h" />
+    <ClInclude Include="TypeDescriptor_StdString.h" />
+    <ClInclude Include="TypeDescriptor_StdVector.h" />
+    <ClInclude Include="TypeDescriptor_Struct.h" />
     <ClInclude Include="TypeIndex.h" />
+    <ClInclude Include="TypeMap.h" />
+    <ClInclude Include="TypeResolver.h" />
+    <ClInclude Include="TypeResolver_StdVector.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -54,17 +69,24 @@
     <ClCompile Include="IComponentContainer.cpp" />
     <ClCompile Include="IEntitySystem.cpp" />
     <ClCompile Include="ISubscriber.cpp" />
+    <ClCompile Include="ITypeResolver.cpp" />
     <ClCompile Include="Name.cpp" />
     <ClCompile Include="OBJECT_TYPE.cpp" />
+    <ClCompile Include="ReflectCheck.cpp" />
+    <ClCompile Include="StirngHelper.cpp" />
     <ClCompile Include="StringConverter.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="TypeDescriptor.cpp" />
+    <ClCompile Include="TypeDescriptor_EnumClass.cpp" />
+    <ClCompile Include="TypeDescriptor_Primitive.cpp" />
+    <ClCompile Include="TypeDescriptor_StdString.cpp" />
+    <ClCompile Include="TypeDescriptor_StdVector.cpp" />
+    <ClCompile Include="TypeDescriptor_Struct.cpp" />
+    <ClCompile Include="TypeMap.cpp" />
+    <ClCompile Include="TypeResolver.cpp" />
+    <ClCompile Include="TypeResolver_Vector.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="World.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Reflection\Reflection.vcxproj">
-      <Project>{e1f64b0d-e717-4dd0-8983-62501afd8ade}</Project>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "../Reflection/ReflectionHeader.h"
+#include "../EntityComponentSystem/ReflectionHeader.h"
 #include "OBJECT_TYPE.h"
 #include "Transform.h"
 

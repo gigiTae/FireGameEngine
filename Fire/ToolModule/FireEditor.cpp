@@ -65,6 +65,9 @@ void ToolModule::FireEditor::EndRender()
 
 void ToolModule::FireEditor::Load(Fire::ECS::World* world)
 {
+	static bool t = true;
+	ImGui::ShowDemoWindow(&t);
+
 	/// Sysytem 
 	StartSystemEditor(world);
 

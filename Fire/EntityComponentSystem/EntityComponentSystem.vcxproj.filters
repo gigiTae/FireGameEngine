@@ -60,6 +60,42 @@
     <Filter Include="BaseComponent\Header">
       <UniqueIdentifier>{7073f233-100c-4987-a788-ad48d508927c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Reflection">
+      <UniqueIdentifier>{1877bd2d-b245-4de3-9dcb-4b70ac5ed7d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header">
+      <UniqueIdentifier>{812e422d-c8ac-488b-a62d-abb9b64b2119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\src">
+      <UniqueIdentifier>{76adc4ad-96d4-4146-9f6e-39a181b1cd56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header\00.Define">
+      <UniqueIdentifier>{1206d8db-770c-4197-8215-592c315b3d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header\03.TypeMap">
+      <UniqueIdentifier>{4ab4e4f0-5af0-49b6-9aca-133409ddad49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header\04.Helper">
+      <UniqueIdentifier>{625203cf-1161-488d-a404-894323d79289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header\02.TypeResolver">
+      <UniqueIdentifier>{e93ce607-8a62-497b-bf32-a4e36dcb442c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header\01.TypeDescriptor">
+      <UniqueIdentifier>{2d968e52-fd59-4387-9852-df13f7fa9892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\src\01.TypeDescriptor">
+      <UniqueIdentifier>{b638d9a4-ca36-47bc-94b0-6c4878bf23a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\src\02.TypeResolver">
+      <UniqueIdentifier>{74e31234-dd94-4a4e-9420-3aace77fb4a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\src\03.TypeMap">
+      <UniqueIdentifier>{1ddd8b22-1741-46e1-88bb-d92b2f4b4514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\src\04.Helper">
+      <UniqueIdentifier>{379e8242-c408-4cff-bae7-ec921512027c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World.h">
@@ -128,6 +164,51 @@
     <ClInclude Include="OBJECT_TYPE.h">
       <Filter>BaseComponent\Header</Filter>
     </ClInclude>
+    <ClInclude Include="TypeCheck.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_EnumClass.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_Primitive.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_StdString.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_StdVector.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_Struct.h">
+      <Filter>Reflection\header\01.TypeDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="ITypeResolver.h">
+      <Filter>Reflection\header\02.TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeResolver.h">
+      <Filter>Reflection\header\02.TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeResolver_StdVector.h">
+      <Filter>Reflection\header\02.TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Reflection\header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ReflectionHeader.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeMap.h">
+      <Filter>Reflection\header\03.TypeMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ReflectCheck.h">
+      <Filter>Reflection\header\04.Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="StirngHelper.h">
+      <Filter>Reflection\header\04.Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="World.cpp">
@@ -180,6 +261,42 @@
     </ClCompile>
     <ClCompile Include="OBJECT_TYPE.cpp">
       <Filter>BaseComponent\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor.cpp">
+      <Filter>Reflection\src\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_EnumClass.cpp">
+      <Filter>Reflection\src\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_Primitive.cpp">
+      <Filter>Reflection\src\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_StdString.cpp">
+      <Filter>Reflection\src\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_StdVector.cpp">
+      <Filter>Reflection\src\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_Struct.cpp">
+      <Filter>Reflection\src\01.TypeDescriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeResolver_Vector.cpp">
+      <Filter>Reflection\src\02.TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeResolver.cpp">
+      <Filter>Reflection\src\02.TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="ITypeResolver.cpp">
+      <Filter>Reflection\src\02.TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeMap.cpp">
+      <Filter>Reflection\src\03.TypeMap</Filter>
+    </ClCompile>
+    <ClCompile Include="StirngHelper.cpp">
+      <Filter>Reflection\src\04.Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ReflectCheck.cpp">
+      <Filter>Reflection\src\04.Helper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "../Reflection/ReflectionHeader.h"
+#include "ReflectionHeader.h"
 
 namespace Fire
 {

@@ -9,13 +9,39 @@
   IComponentContainer.cpp
   IEntitySystem.cpp
   ISubscriber.cpp
+  ITypeResolver.cpp
   Name.cpp
   OBJECT_TYPE.cpp
+  ReflectCheck.cpp
+  StirngHelper.cpp
   StringConverter.cpp
   Transform.cpp
+  TypeDescriptor.cpp
+  TypeDescriptor_EnumClass.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  TypeDescriptor_Primitive.cpp
+  TypeDescriptor_StdString.cpp
+  TypeDescriptor_StdVector.cpp
+  TypeDescriptor_Struct.cpp
+  TypeMap.cpp
+  TypeResolver.cpp
+  TypeResolver_Vector.cpp
   Vector3.cpp
   World.cpp
   코드를 생성하고 있습니다...
+  x64\Debug\ITypeResolver.obj을(를) 바꾸고 있습니다.
+  x64\Debug\ReflectCheck.obj을(를) 바꾸고 있습니다.
+  x64\Debug\StirngHelper.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeDescriptor.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeDescriptor_EnumClass.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeDescriptor_Primitive.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeDescriptor_StdString.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeDescriptor_StdVector.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeDescriptor_Struct.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeMap.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeResolver.obj을(를) 바꾸고 있습니다.
+  x64\Debug\TypeResolver_Vector.obj을(를) 바꾸고 있습니다.
 Transform.obj : warning LNK4006: "public: static void __cdecl Fire::Reflect::ReflectCheck<struct Fire::Component::Vector3>::InitReflection(struct Fire::Reflect::TypeDescriptor_Struct *)" (?InitReflection@?$ReflectCheck@UVector3@Component@Fire@@@Reflect@Fire@@SAXPEAUTypeDescriptor_Struct@23@@Z)이(가) Vector3.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
 Transform.obj : warning LNK4006: "public: static struct Fire::Reflect::TypeDescriptor_Struct Fire::Reflect::ReflectCheck<struct Fire::Component::Vector3>::Reflection" (?Reflection@?$ReflectCheck@UVector3@Component@Fire@@@Reflect@Fire@@2UTypeDescriptor_Struct@23@A)이(가) Vector3.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
 Name.obj : warning LNK4006: "public: static void __cdecl Fire::Reflect::ReflectCheck<enum OBJECT_TYPE>::InitReflection(struct Fire::Reflect::TypeDescriptor_EnumClass<enum OBJECT_TYPE> *)" (?InitReflection@?$ReflectCheck@W4OBJECT_TYPE@@@Reflect@Fire@@SAXPEAU?$TypeDescriptor_EnumClass@W4OBJECT_TYPE@@@23@@Z)이(가) OBJECT_TYPE.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.

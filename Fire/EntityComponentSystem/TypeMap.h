@@ -37,6 +37,7 @@ namespace Fire
 			TypeDescriptor* GetTypeDescriptor(std::type_index index);
 			TypeDescriptor* GetTypeDescriptor(const std::string& typeName);
 
+			const std::unordered_map<std::type_index, TypeName>& GetTypeIndexMap() const{ return typeIndexMap; }
 
 		private:
 			std::unordered_map<TypeName, TypeDescriptor*> typeDescritors;

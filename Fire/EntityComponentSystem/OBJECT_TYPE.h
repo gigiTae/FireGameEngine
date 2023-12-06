@@ -1,5 +1,5 @@
 #pragma once
-#include "../Reflection/ReflectionHeader.h"
+#include "ReflectionHeader.h"
 
 enum class OBJECT_TYPE
 {

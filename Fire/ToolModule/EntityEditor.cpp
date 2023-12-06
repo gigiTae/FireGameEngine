@@ -21,15 +21,29 @@ void ToolModule::EntityEditor::Show(Fire::ECS::World* world)
 		ent->Assign<Fire::Component::Name>()->name = "component";
 	}
 
+	ImGui::Separator();
+
 	for (Fire::ECS::Entity* ent : world->All(true))
 	{
 		//ImGui::Text()
 		size_t id = ent->GetId();
 		std::string idText = "ID:" + std::to_string(id);
 
+		bool isSelected = (selectEnt == ent);
+
+		if (isSelected)
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.5f, 0.0f, 0.5f, 1.0f));
+		}
+
 		if (ImGui::Button(idText.c_str()))
 		{
 			selectEnt = ent;
+		}
+
+		if (isSelected)
+		{
+			ImGui::PopStyleColor();
 		}
 
 		ImGui::SameLine();
@@ -40,6 +54,7 @@ void ToolModule::EntityEditor::Show(Fire::ECS::World* world)
 			world->Destroy(ent, false);
 		}
 
+		ImGui::Separator();
 	}
 
 	ImGui::End();

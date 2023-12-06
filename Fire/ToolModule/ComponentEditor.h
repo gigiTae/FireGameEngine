@@ -17,7 +17,7 @@ namespace ToolModule
 	class ComponentEditor
 	{
 	public:
-		ComponentEditor() {}
+		ComponentEditor();
 		~ComponentEditor(){}
 
 	public:
@@ -29,5 +29,10 @@ namespace ToolModule
 		/// </summary>
 		void DisplayUI(void* obj,const std::string& name, Fire::Reflect::TypeDescriptor* desc);
 		void DisplayPrimitiveUI(void* obj,const std::string& name, Fire::Reflect::TypeDescriptor* desc);
+		void DisplayAddComponent(Fire::ECS::Entity* ent);
+
+	private:
+		int addComponentIndex = 0;
+		std::vector<std::string> reflectComponents; // 리플렉션된 컴포넌트 
 	};
 }
