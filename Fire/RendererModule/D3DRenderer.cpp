@@ -220,7 +220,8 @@ void RendererModule::D3DRenderer::BeginRender()
 void RendererModule::D3DRenderer::EndRender()
 {
 	/// EndRender 
-	HR(m_swapChain->Present(0, 0));
+	HR(m_swapChain->Present(1, 0));
+	//swapChain->Present(1, 0); // Present with vsync
 }
 
 void RendererModule::D3DRenderer::InitializeD3D()

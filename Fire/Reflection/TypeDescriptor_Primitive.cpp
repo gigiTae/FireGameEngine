@@ -50,3 +50,14 @@ Fire::Reflect::TypeDescriptor* Fire::Reflect::GetPrimitiveDescriptor<double>()
 	TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
 	return &typeDesc;
 }
+
+/// <summary>
+/// bool
+/// </summary>
+template<>
+Fire::Reflect::TypeDescriptor* Fire::Reflect::GetPrimitiveDescriptor<bool>()
+{
+	static TypeDescriptor_Bool typeDesc;
+	TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
+	return &typeDesc;
+}

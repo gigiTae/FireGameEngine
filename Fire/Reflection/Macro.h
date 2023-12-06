@@ -52,13 +52,13 @@ public:\
 
 #define BEGIN_REFLECTION_ENUM(type)\
 		REFLECT_CHECK_ENUM(type)\
-		Fire::Reflect::TypeDescriptor_EnumClass<COLOR> Fire::Reflect::ReflectCheck<COLOR>::Reflection\
-{ Fire::Reflect::ReflectCheck<COLOR>::InitReflection };\
-void Fire::Reflect::ReflectCheck<COLOR>::InitReflection(Fire::Reflect::TypeDescriptor_EnumClass<COLOR>* desc)\
+		Fire::Reflect::TypeDescriptor_EnumClass<type> Fire::Reflect::ReflectCheck<type>::Reflection\
+{ Fire::Reflect::ReflectCheck<type>::InitReflection };\
+void Fire::Reflect::ReflectCheck<type>::InitReflection(Fire::Reflect::TypeDescriptor_EnumClass<type>* desc)\
 {\
-	using T = COLOR;\
-	desc->name = "COLOR";\
-	desc->type = TYPE_CATEGORY::ENUMCLASS;\
+	using T = type;\
+	desc->name = #type;\
+	desc->category = TYPE_CATEGORY::ENUMCLASS;\
 	desc->size = sizeof(T);\
 	Fire::Reflect::TypeMap::GetTypeMap()->AddType(#type, desc);\
 	Fire::Reflect::TypeMap::GetTypeMap()->AddTypeIndex<T>(#type);

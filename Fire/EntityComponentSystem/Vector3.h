@@ -16,6 +16,7 @@ namespace Fire
 	}
 }
 
+
 BEGIN_REFLECTION(Fire::Component::Vector3)
 MEMBER_REFLECTION(x)
 MEMBER_REFLECTION(y)

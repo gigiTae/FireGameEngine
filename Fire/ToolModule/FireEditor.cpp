@@ -18,6 +18,7 @@ void ToolModule::FireEditor::Initialize(HWND hwnd, ID3D11Device* device, ID3D11D
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
 
 	ImGui::StyleColorsDark();
+	io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\malgun.ttf", 18.f, NULL, io.Fonts->GetGlyphRangesKorean());
 
 	ImGuiStyle& style = ImGui::GetStyle();
 
@@ -33,7 +34,7 @@ void ToolModule::FireEditor::Initialize(HWND hwnd, ID3D11Device* device, ID3D11D
 
 void ToolModule::FireEditor::Finalize()
 {
-		// Cleanup
+	// Cleanup
 	ImGui_ImplDX11_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();

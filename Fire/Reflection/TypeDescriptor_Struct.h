@@ -51,7 +51,7 @@ namespace Fire
 				{
 					size_t memberOpen = StringHelper::FindOpeningBrace(data,open+1);
 					size_t memberClose = StringHelper::FindClosingBrace(data, open+1);
-
+ 
 					member.desc->Read((char*)obj + member.offset, data, memberOpen+1, memberClose-1);
 				
 					open = memberClose + 1;

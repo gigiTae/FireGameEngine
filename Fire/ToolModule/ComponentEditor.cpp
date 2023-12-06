@@ -39,6 +39,10 @@ void ToolModule::ComponentEditor::DisplayUI(void* obj, const std::string& name, 
 	{
 	case TYPE_CATEGORY::ENUMCLASS:
 	{
+		//TypeDescriptor_EnumClass* enumDesc = reinterpret_cast<TypeDescriptor_EnumClass*>(desc);
+
+
+		int a = 0;
 
 		break;
 	}
@@ -94,9 +98,18 @@ void ToolModule::ComponentEditor::DisplayPrimitiveUI(void* obj, const std::strin
 
 		ImGui::InputText(name.c_str(), data);
 	}
+	else if (desc->name == "bool")
+	{
+		bool* data = reinterpret_cast<bool*>(obj);
+		ImGui::Checkbox(name.c_str(), data);
+	}
 	else if (desc->name == "std::wstring")
 	{
-
+		
+	}
+	else
+	{
+		int a = 0;
 	}
 }
 

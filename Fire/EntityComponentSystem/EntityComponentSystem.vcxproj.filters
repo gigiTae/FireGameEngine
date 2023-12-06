@@ -125,6 +125,9 @@
     <ClInclude Include="Vector3.h">
       <Filter>BaseComponent\Header</Filter>
     </ClInclude>
+    <ClInclude Include="OBJECT_TYPE.h">
+      <Filter>BaseComponent\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="World.cpp">
@@ -173,6 +176,9 @@
       <Filter>BaseComponent\Source</Filter>
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
+      <Filter>BaseComponent\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT_TYPE.cpp">
       <Filter>BaseComponent\Source</Filter>
     </ClCompile>
   </ItemGroup>

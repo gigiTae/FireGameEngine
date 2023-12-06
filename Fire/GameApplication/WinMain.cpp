@@ -4,6 +4,13 @@
 #include "pch.h"
 #include "Application.h"
 
+struct Fun
+{
+	int x;
+	int y;
+	int z;
+};
+
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -15,7 +22,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	app.Initialize();
 
 	app.Uninitialize();
-
 
 	return 0;
 }
