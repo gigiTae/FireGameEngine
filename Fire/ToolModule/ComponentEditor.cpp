@@ -24,8 +24,6 @@ void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 
 			DisplayUI(compoent.GetAddress(), name, desc);
 		}
-
-
 	}
 	ImGui::End();
 }
@@ -39,10 +37,22 @@ void ToolModule::ComponentEditor::DisplayUI(void* obj, const std::string& name, 
 	{
 	case TYPE_CATEGORY::ENUMCLASS:
 	{
-		//TypeDescriptor_EnumClass* enumDesc = reinterpret_cast<TypeDescriptor_EnumClass*>(desc);
+		auto members = desc->GetEnumMember();
 
+		std::vector<std::string> memberNames{};
 
-		int a = 0;
+		for (auto& member : members)
+		{
+			std::string name = member.first + "(";
+			name += std::to_string(member.second);
+			name += ")";
+
+			memberNames.push_back(name);
+		}
+
+		int size = static_cast<int>(members.size());
+
+		//if (ImGui::Combo(name.c_str(), &size,))	
 
 		break;
 	}

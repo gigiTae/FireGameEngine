@@ -53,10 +53,24 @@ namespace Fire
 				return iter->second.type;
 			}
 
+			std::vector<std::pair<std::string, int>> GetEnumMember()const  override;
+
 		private:
 			std::unordered_map<std::string, EnumInfo> enumMembers;
 		};
 
+		template <typename ENUM_TYPE>
+		std::vector<std::pair<std::string, int>> Fire::Reflect::TypeDescriptor_EnumClass<ENUM_TYPE>::GetEnumMember() const
+		{
+			std::vector<std::pair<std::string, int>> vec;
+
+			for (auto& member : enumMembers)
+			{
+				vec.push_back({ member.first,member.second.castValue });
+			}
+
+			return vec;
+		}
 
 	}
 }
