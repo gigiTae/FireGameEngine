@@ -7,13 +7,13 @@
 /// <summary>
 /// poiter 
 /// </summary>
-template <typename T>
-Fire::Reflect::TypeDescriptor* Fire::Reflect::GetPrimitiveDescriptor<T*>()
-{
-	static TypeDescriptor_Pointer<T> typeDesc;
-	TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
-	return &typeDesc;
-}
+//template <typename T>
+//Fire::Reflect::TypeDescriptor* Fire::Reflect::GetPrimitiveDescriptor<T*>()
+//{
+//	static TypeDescriptor_Pointer<T> typeDesc;
+//	TypeMap::GetTypeMap()->AddType(typeDesc.GetFullName(), &typeDesc);
+//	return &typeDesc;
+//}
 
 
 /// <summary>

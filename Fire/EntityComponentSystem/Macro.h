@@ -16,7 +16,6 @@
 		};
 
 #define BEGIN_REFLECTION(type)\
-		REFLECT_CHECK(type)\
 		Fire::Reflect::TypeDescriptor_Struct Fire::Reflect::ReflectCheck<type>::Reflection\
 						{Fire::Reflect::ReflectCheck<type>::InitReflection};\
 		void Fire::Reflect::ReflectCheck<type>::InitReflection(Fire::Reflect::TypeDescriptor_Struct* desc)\
@@ -51,7 +50,6 @@ public:\
 };
 
 #define BEGIN_REFLECTION_ENUM(type)\
-		REFLECT_CHECK_ENUM(type)\
 		Fire::Reflect::TypeDescriptor_EnumClass<type> Fire::Reflect::ReflectCheck<type>::Reflection\
 { Fire::Reflect::ReflectCheck<type>::InitReflection };\
 void Fire::Reflect::ReflectCheck<type>::InitReflection(Fire::Reflect::TypeDescriptor_EnumClass<type>* desc)\

@@ -15,38 +15,38 @@ namespace Fire
 		/// <summary>
 		/// pointer
 		/// </summary>
-		template<typename T>
-		struct TypeDescriptor_Pointer : TypeDescriptor
-		{
-			TypeDescriptor_Pointer() :TypeDescriptor(typeid(T).name(), sizeof(T))
-			{
-				name;
-				int a = 0;
-			}
+		//template<typename T>
+		//struct TypeDescriptor_Pointer : TypeDescriptor
+		//{
+		//	TypeDescriptor_Pointer() :TypeDescriptor(typeid(T).name(), sizeof(T))
+		//	{
+		//		name;
+		//		int a = 0;
+		//	}
 
-			/// <summary>
-			/// pointer can't write
-			/// </summary>
-			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */)const override
-			{
-				data += typeid(T).name();
-				data += "{nullptr}";
-			}
+		//	/// <summary>
+		//	/// pointer can't write
+		//	/// </summary>
+		//	void Write(const void* obj, std::string& data, int indentLevel /* = 0 */)const override
+		//	{
+		//		data += typeid(T).name();
+		//		data += "{nullptr}";
+		//	}
 
-			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
-			{
-				/// 포인터는 nullptr 초기화
-				std::string sValue = data.substr(begin, end - begin);
+		//	void Read(void* obj, std::string& data, size_t begin, size_t end) const override
+		//	{
+		//		/// 포인터는 nullptr 초기화
+		//		std::string sValue = data.substr(begin, end - begin);
 
-				if (sValue == "nullptr")
-					void* obj = nullptr;
-				else
-				{
-					/// TODO : 다른형식의 포인터 초기화?
-					/// ex) 객체를 생성한다던지? 
-				}
-			}
-		};
+		//		if (sValue == "nullptr")
+		//			void* obj = nullptr;
+		//		else
+		//		{
+		//			/// TODO : 다른형식의 포인터 초기화?
+		//			/// ex) 객체를 생성한다던지? 
+		//		}
+		//	}
+		//};
 
 		/// <summary>
 		/// int

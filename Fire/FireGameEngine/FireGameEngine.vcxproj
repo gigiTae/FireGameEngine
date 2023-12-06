@@ -122,7 +122,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ToolModuled.lib;RendererModuled.lib;MathModuled.lib;EntityComponentSystemd.lib;Reflectiond.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ToolModuled.lib;RendererModuled.lib;MathModuled.lib;EntityComponentSystemd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

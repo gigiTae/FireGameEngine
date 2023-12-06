@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../EntityComponentSystem/ReflectionHeader.h"
+#include "../EntityComponentSystem/ComponentHeader.h"
 #include "ExportDefine.h"
 #include <Windows.h>
 #include "RendererModule/RendererHeader.h"
