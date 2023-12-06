@@ -6,6 +6,7 @@
 #include "ComponentEditor.h"
 #include "EntityEditor.h"
 #include "SystemEditor.h"
+#include "WorldEditor.h"
 
 namespace ToolModule
 {
@@ -28,11 +29,12 @@ namespace ToolModule
 		void StartEntityEditor(class Fire::ECS::World* world);
 		void StartComponentEditor(class Fire::ECS::World* world);
 		void StartSystemEditor(class Fire::ECS::World* world);
+		void StartWorldEditor(class Fire::ECS::World* world);
 
 	private:
 		EntityEditor entityEditor;
 		ComponentEditor compentEditor;
 		SystemEditor systemEditor;
-
+		WorldEditor worldEditor;
 	};
 }

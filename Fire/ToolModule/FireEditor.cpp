@@ -65,8 +65,6 @@ void ToolModule::FireEditor::EndRender()
 
 void ToolModule::FireEditor::Load(Fire::ECS::World* world)
 {
-	bool t = true;
-	ImGui::ShowDemoWindow(&t);
 	/// Sysytem 
 	StartSystemEditor(world);
 
@@ -75,6 +73,9 @@ void ToolModule::FireEditor::Load(Fire::ECS::World* world)
 
 	/// Component
 	StartComponentEditor(world);
+
+	/// World
+	StartWorldEditor(world);
 }
 
 void ToolModule::FireEditor::StartEntityEditor(Fire::ECS::World* world)
@@ -90,5 +91,10 @@ void ToolModule::FireEditor::StartComponentEditor(Fire::ECS::World* world)
 void ToolModule::FireEditor::StartSystemEditor(Fire::ECS::World* world)
 {
 	systemEditor.Show(world);
+}
+
+void ToolModule::FireEditor::StartWorldEditor(class Fire::ECS::World* world)
+{
+	worldEditor.Show(world);
 }
 

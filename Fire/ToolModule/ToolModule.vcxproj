@@ -36,6 +36,7 @@
     <ClInclude Include="SystemEditor.h" />
     <ClInclude Include="ToolModuleHeader.h" />
     <ClInclude Include="ToolModulepch.h" />
+    <ClInclude Include="WorldEditor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentEditor.cpp" />
@@ -52,6 +53,7 @@
     <ClCompile Include="IToolModule.cpp" />
     <ClCompile Include="ScreenInfo.cpp" />
     <ClCompile Include="SystemEditor.cpp" />
+    <ClCompile Include="WorldEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityComponentSystem\EntityComponentSystem.vcxproj">

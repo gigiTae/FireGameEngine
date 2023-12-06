@@ -75,6 +75,9 @@
     <ClInclude Include="imgui_stdlib.h">
       <Filter>public\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="WorldEditor.h">
+      <Filter>public\Editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui_widgets.cpp">
@@ -118,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>private\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldEditor.cpp">
+      <Filter>private\Editor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

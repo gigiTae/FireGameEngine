@@ -121,8 +121,6 @@ void Fire::EngineModule::Engine::Process()
 #ifdef EDITOR_MODE
 			toolModule->NewFrame();
 			toolModule->Load(world);
-			bool t = true;
-			ImGui::ShowDemoWindow(&t);
 #endif
 			rendererModule->BeginRender();
 			rendererModule->Render();

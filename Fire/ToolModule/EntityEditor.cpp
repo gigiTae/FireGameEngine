@@ -34,7 +34,7 @@ void ToolModule::EntityEditor::Show(Fire::ECS::World* world)
 
 		ImGui::SameLine();
 
-		std::string destroyButton = "Destroy " + std::to_string(id);
+		std::string destroyButton = "Destroy##" + std::to_string(id);
 		if( ImGui::Button(destroyButton.c_str()))
 		{
 			world->Destroy(ent, false);
