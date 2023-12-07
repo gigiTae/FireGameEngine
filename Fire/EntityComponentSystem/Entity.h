@@ -40,6 +40,7 @@ namespace Fire
 			template<typename ComponentType>
 			bool RemoveComponent();
 
+			bool RemoveComponent(TypeIndex index);
 			
 
 			/// <summary>

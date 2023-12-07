@@ -30,6 +30,8 @@ void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 		Fire::Reflect::TypeMap* typeMap = Fire::Reflect::TypeMap::GetTypeMap();
 
 		ImGui::Separator();
+		
+		TypeIndex eraseIndex = std::type_index(typeid(int));
 
 		/// Component Relfection 
 		for (auto& iter : components)
@@ -42,14 +44,20 @@ void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 			DisplayUI(compoent.GetAddress(), name, desc);
 
 			ImGui::SameLine();
-			if(ImGui::Button("-"))
+			ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("X").x*2));
+			if(ImGui::Button("X"))
 			{
-				ent->RemoveComponent();
+				eraseIndex = iter.first;
 			}
 			ImGui::Separator();
 		}
 
 		DisplayAddComponent(ent);
+
+		// 삭제할 컴포넌트 삭제
+		if (eraseIndex != std::type_index(typeid(int)))
+			assert(ent->RemoveComponent(eraseIndex));
+
 	}
 
 	ImGui::End();

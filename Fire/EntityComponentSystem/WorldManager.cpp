@@ -23,7 +23,3 @@ void Fire::Manager::WorldManager::LoadWorldData(Fire::ECS::World* world, const s
 
 }
 
-Fire::Manager::WorldManager::WorldManager()
-{
-
-}
