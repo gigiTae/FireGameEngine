@@ -40,6 +40,7 @@
     <ClInclude Include="OBJECT_TYPE.h" />
     <ClInclude Include="ReflectCheck.h" />
     <ClInclude Include="ReflectionHeader.h" />
+    <ClInclude Include="WorldManager.h" />
     <ClInclude Include="StirngHelper.h" />
     <ClInclude Include="StringConverter.h" />
     <ClInclude Include="Transform.h" />
@@ -73,6 +74,7 @@
     <ClCompile Include="Name.cpp" />
     <ClCompile Include="OBJECT_TYPE.cpp" />
     <ClCompile Include="ReflectCheck.cpp" />
+    <ClCompile Include="WorldManager.cpp" />
     <ClCompile Include="StirngHelper.cpp" />
     <ClCompile Include="StringConverter.cpp" />
     <ClCompile Include="Transform.cpp" />

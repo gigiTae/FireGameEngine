@@ -14,6 +14,7 @@ namespace Fire
 			friend class World;	
 		public:
 			Entity(World* world, size_t id) : world(world), id(id) {};
+			~Entity();
 
 			World* GetWorld() const { return world; }
 
@@ -38,6 +39,8 @@ namespace Fire
 
 			template<typename ComponentType>
 			bool RemoveComponent();
+
+			
 
 			/// <summary>
 			/// Remove all compoenets from this entity.

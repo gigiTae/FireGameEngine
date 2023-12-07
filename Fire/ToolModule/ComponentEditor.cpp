@@ -29,8 +29,6 @@ void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 
 		Fire::Reflect::TypeMap* typeMap = Fire::Reflect::TypeMap::GetTypeMap();
 
-		DisplayAddComponent(ent);
-
 		ImGui::Separator();
 
 		/// Component Relfection 
@@ -42,9 +40,18 @@ void ToolModule::ComponentEditor::Show(Fire::ECS::Entity* ent)
 			auto& compoent = (*iter.second);
 
 			DisplayUI(compoent.GetAddress(), name, desc);
+
+			ImGui::SameLine();
+			if(ImGui::Button("-"))
+			{
+				ent->RemoveComponent();
+			}
 			ImGui::Separator();
 		}
+
+		DisplayAddComponent(ent);
 	}
+
 	ImGui::End();
 }
 
@@ -171,7 +178,7 @@ void ToolModule::ComponentEditor::DisplayPrimitiveUI(void* obj, const std::strin
 	}
 	else if (desc->name == "std::wstring")
 	{
-		
+	
 	}
 	else
 	{
@@ -181,23 +188,7 @@ void ToolModule::ComponentEditor::DisplayPrimitiveUI(void* obj, const std::strin
 
 void ToolModule::ComponentEditor::DisplayAddComponent(Fire::ECS::Entity* ent)
 {
-	// TODO:: C++의 아쉬운점이다. 결국에는 한번은 노가다를 해야한다.
-	if (ImGui::Button("AddComponent"))
-	{
-		std::string& componentName = reflectComponents[addComponentIndex];
-
-		if (componentName == "Fire::Component::Transform")
-		{
-			ent->Assign<Fire::Component::Transform>();
-		}
-
-		if (componentName == "Fire::Component::Vector3")
-		{
-			ent->Assign<Fire::Component::Vector3>();
-		}
-	}
-
-	if (ImGui::BeginCombo("ComponentList", reflectComponents[addComponentIndex].c_str()))
+	if (ImGui::BeginCombo("##combo", reflectComponents[addComponentIndex].c_str()))
 	{
 		for (int i = 0; i < reflectComponents.size(); ++i)
 		{
@@ -216,6 +207,24 @@ void ToolModule::ComponentEditor::DisplayAddComponent(Fire::ECS::Entity* ent)
 		}
 
 		ImGui::EndCombo();
+	}
+
+	ImGui::SameLine();
+
+	// TODO:: C++의 아쉬운점이다. 결국에는 한번은 노가다를 해야한다.
+	if (ImGui::Button("+"))
+	{
+		std::string& componentName = reflectComponents[addComponentIndex];
+
+		if (componentName == "Fire::Component::Transform")
+		{
+			ent->Assign<Fire::Component::Transform>();
+		}
+
+		if (componentName == "Fire::Component::Vector3")
+		{
+			ent->Assign<Fire::Component::Vector3>();
+		}
 	}
 
 }

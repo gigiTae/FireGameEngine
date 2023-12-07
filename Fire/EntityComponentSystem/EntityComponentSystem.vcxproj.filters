@@ -96,6 +96,9 @@
     <Filter Include="Reflection\src\04.Helper">
       <UniqueIdentifier>{379e8242-c408-4cff-bae7-ec921512027c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneManager">
+      <UniqueIdentifier>{0b38575f-565e-4edb-b734-47f8811f82dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World.h">
@@ -209,6 +212,9 @@
     <ClInclude Include="StirngHelper.h">
       <Filter>Reflection\header\04.Helper</Filter>
     </ClInclude>
+    <ClInclude Include="WorldManager.h">
+      <Filter>ECS\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="World.cpp">
@@ -297,6 +303,9 @@
     </ClCompile>
     <ClCompile Include="ReflectCheck.cpp">
       <Filter>Reflection\src\04.Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
+      <Filter>ECS\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

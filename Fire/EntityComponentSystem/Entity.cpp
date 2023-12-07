@@ -2,6 +2,11 @@
 #include "Entity.h"
 
 
+Fire::ECS::Entity::~Entity()
+{
+	RemoveAll();
+}
+
 void Fire::ECS::Entity::RemoveAll()
 {
 	for (auto& pair : components)

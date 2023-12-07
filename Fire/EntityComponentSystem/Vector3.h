@@ -16,4 +16,13 @@ namespace Fire
 	}
 }
 
+#ifdef REFLECTION_PROJECT
+
 REFLECT_CHECK(Fire::Component::Vector3)
+BEGIN_REFLECTION(Fire::Component::Vector3)
+MEMBER_REFLECTION(x)
+MEMBER_REFLECTION(y)
+MEMBER_REFLECTION(z)
+END_REFLECTION()
+
+#endif

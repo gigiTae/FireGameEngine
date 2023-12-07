@@ -110,7 +110,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;FIREGAMEENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FIRE_GAME_ENGINE_DLL_EXPROTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;FIREGAMEENGINE_EXPORTS;REFLECTION_PROJECT;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FIRE_GAME_ENGINE_DLL_EXPROTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>

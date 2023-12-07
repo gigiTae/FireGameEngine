@@ -19,5 +19,14 @@ namespace Fire
 	}
 }
 
-REFLECT_CHECK(Fire::Component::Name)
+#ifdef REFLECTION_PROJECT
 
+REFLECT_CHECK(Fire::Component::Name)
+BEGIN_REFLECTION(Fire::Component::Name)
+MEMBER_REFLECTION(name)
+MEMBER_REFLECTION(isConst)
+MEMBER_REFLECTION(category)
+MEMBER_REFLECTION(transform)
+END_REFLECTION()
+
+#endif
