@@ -25,27 +25,61 @@ namespace EngineModule
 		~Entity();
 
 	public:
-		void RemoveAll() override;
+		/// <summary>
+		/// Entity에 할당한 컴포넌트들을 모두 삭제한다.
+		/// </summary>
+		void DestroyAll() override;
 
-		void Remove(TypeIndex index);
+		/// <summary>
+		/// TypeIndex에 해당하는 컴포넌트를 삭제한다.
+		/// </summary>
+		void Destroy(TypeIndex index);
 
+		/// <summary>
+		/// Component들의 Start를 호출한다.
+		/// </summary>
 		void Start() override;
 
+		/// <summary>
+		/// Component들의 Update를 호출한다.
+		/// </summary>
 		void Update() override;
 
+		/// <summary>
+		/// World를 가져온다 
+		/// </summary>
 		World* GetWorld()const { return world; }
 		
+		/// <summary>
+		/// Entity 고유의 ID를 가져온다.
+		/// </summary>
 		size_t GetID()const { return id; }
-		
+
+		/// <summary>
+		/// Entity의 이름을 가져온다.
+		/// </summary>
 		std::string& GetName() { return name; }
 
+		/// <summary>
+		/// Entity의 현재상태를 가져온다.
+		/// </summary>
 		EntityState GetState()const { return state; }
 
+		/// <summary>
+		/// 컴포넌트를 TypeIndex로 가져온다.
+		/// </summary>
 		Component* GetComponent(TypeIndex index);
 		
+		/// <summary>
+		/// T타입에 해당하는 컴포넌트를 가져온다
+		/// </summary>
 		template <typename T>
 		T* GetComponent();
 
+		/// <summary>
+		/// 가변인자 템플릿을 사용해서 T 타입에 해당하는 T(Args...)
+		/// 생성자를 호출하고 Entity에 추가한다.
+		/// </summary>
 		template <typename T, typename... Args>
 		T* AddComponent(Args&&... args);
 

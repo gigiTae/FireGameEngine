@@ -15,7 +15,7 @@ namespace EngineModule
 
 		virtual void Update() abstract;
 
-		virtual void RemoveAll() abstract;
+		virtual void DestroyAll() abstract;
 	};
 
 }
