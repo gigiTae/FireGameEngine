@@ -10,7 +10,7 @@ EngineModule::Entity::Entity(World* world, size_t id)
 EngineModule::Entity::~Entity()
 {}
 
-void EngineModule::Entity::DestroyAll()
+void EngineModule::Entity::DestroyAllComponents()
 {
 	for (auto& iter : components)
 	{
@@ -21,7 +21,7 @@ void EngineModule::Entity::DestroyAll()
 	components.clear();
 }
 
-void EngineModule::Entity::Destroy(TypeIndex index)
+void EngineModule::Entity::DestroyComponent(TypeIndex index)
 {
 	auto iter = components.find(index);
 

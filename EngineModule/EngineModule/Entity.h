@@ -28,12 +28,12 @@ namespace EngineModule
 		/// <summary>
 		/// Entity에 할당한 컴포넌트들을 모두 삭제한다.
 		/// </summary>
-		void DestroyAll() override;
+		void DestroyAllComponents() override;
 
 		/// <summary>
 		/// TypeIndex에 해당하는 컴포넌트를 삭제한다.
 		/// </summary>
-		void Destroy(TypeIndex index);
+		void DestroyComponent(TypeIndex index);
 
 		/// <summary>
 		/// Component들의 Start를 호출한다.
@@ -49,7 +49,7 @@ namespace EngineModule
 		/// World를 가져온다 
 		/// </summary>
 		World* GetWorld()const { return world; }
-		
+
 		/// <summary>
 		/// Entity 고유의 ID를 가져온다.
 		/// </summary>
@@ -69,7 +69,7 @@ namespace EngineModule
 		/// 컴포넌트를 TypeIndex로 가져온다.
 		/// </summary>
 		Component* GetComponent(TypeIndex index);
-		
+
 		/// <summary>
 		/// T타입에 해당하는 컴포넌트를 가져온다
 		/// </summary>
@@ -83,6 +83,15 @@ namespace EngineModule
 		template <typename T, typename... Args>
 		T* AddComponent(Args&&... args);
 
+		/// <summary>
+		/// 컴포넌트를 소유하는지 확인한다.
+		/// </summary>
+		template<typename T>
+		bool HasComponent();
+
+		template<typename T1, typename T2, typename... Types>
+		bool HasComponent();
+
 	private:
 		World* world;
 		size_t id;
@@ -92,6 +101,20 @@ namespace EngineModule
 
 		friend class World;
 	};
+
+	template<typename T1, typename T2, typename... Types>
+	bool EngineModule::Entity::HasComponent()
+	{
+		return HasComponent<T1>() && HasComponent<T2, Types...>();
+	}
+
+	template<typename T>
+	bool EngineModule::Entity::HasComponent()
+	{
+		TypeIndex index = GetTypeIndex();
+
+		return components.find() != components.end();
+	}
 
 	template <typename T, typename... Args>
 	T* EngineModule::Entity::AddComponent(Args&&... args)

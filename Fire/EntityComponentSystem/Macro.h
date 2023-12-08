@@ -5,9 +5,12 @@
 
 #pragma region StructMacro
 
+#define DECLARE_FREIND_WITH_REFECTION(type)\
+		friend class Fire::Reflect::ReflectCheck<type>;
+
 #define REFLECT_CHECK(type)\
 		template<>\
-		class Fire::Reflect::ReflectCheck<type>\
+		struct Fire::Reflect::ReflectCheck<type>\
 		{\
 		public:\
 			constexpr static bool IsReflect = true;\

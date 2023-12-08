@@ -94,7 +94,7 @@ void EngineModule::World::Reset()
 
 	for (Entity* ent : entities)
 	{
-		ent->DestroyAll();
+		ent->DestroyAllComponents();
 		delete ent;
 	}
 

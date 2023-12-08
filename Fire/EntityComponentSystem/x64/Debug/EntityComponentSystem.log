@@ -6,21 +6,25 @@
   EntityView.cpp
   Event.cpp
   EventSubscriber.cpp
+  Serializer.cpp
   IComponentContainer.cpp
   IEntitySystem.cpp
   ISubscriber.cpp
   ITypeResolver.cpp
   Name.cpp
+C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Name.h(22,4): warning C4099: 'Fire::Reflect::ReflectCheck<Fire::Component::Name>': 처음에는 'struct'을(를) 사용하여 형식 이름을 표시했는데 이제는 'class'을(를) 사용하여 표시합니다.
+  (소스 파일 'Name.cpp'을(를) 컴파일하는 중)
+  C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Name.h(22,4):
+  'Fire::Reflect::ReflectCheck<Fire::Component::Name>' 선언을 참조하십시오.
+  
   OBJECT_TYPE.cpp
   ReflectCheck.cpp
-  WorldManager.cpp
   StirngHelper.cpp
-  StringConverter.cpp
   Transform.cpp
   TypeDescriptor.cpp
+  TypeDescriptor_EnumClass.cpp
   코드를 생성하고 있습니다...
   컴파일하고 있습니다...
-  TypeDescriptor_EnumClass.cpp
   TypeDescriptor_Primitive.cpp
   TypeDescriptor_StdString.cpp
   TypeDescriptor_StdVector.cpp

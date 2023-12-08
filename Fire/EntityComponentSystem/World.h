@@ -30,7 +30,6 @@ namespace Fire
 		public:
 			World();
 			~World();
-
 			
 			/// <summary>
 			/// Destroy an entity. this will emit the OnEntityDestroy event.

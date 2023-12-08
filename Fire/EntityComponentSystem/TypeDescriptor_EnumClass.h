@@ -29,12 +29,22 @@ namespace Fire
 
 			void Write(const void* obj, std::string& data, int indentLevel /* = 0 */) const override
 			{
-
+				data += name;
+				data += "{";
+				const int* iObj = (const int*)obj;
+				data += std::to_string(*iObj);
+				data += "}";
 			}
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
 			{
+				int* iObj = reinterpret_cast<int*>(obj);
 
+				std::string sValue = data.substr(begin, end - begin);
+
+				int iValue = std::stoi(sValue);
+
+				*iObj = iValue;	
 			}
 
 			void AddEnumMember(const std::string name, const TypeDescriptor_EnumClass::EnumInfo& info)

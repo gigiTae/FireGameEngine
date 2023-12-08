@@ -30,8 +30,8 @@
     <ClInclude Include="EntityView.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventSubscriber.h" />
+    <ClInclude Include="Serializer.h" />
     <ClInclude Include="IComponentContainer.h" />
-    <ClInclude Include="IDataConverter.h" />
     <ClInclude Include="IEntitySystem.h" />
     <ClInclude Include="ISubscriber.h" />
     <ClInclude Include="ITypeResolver.h" />
@@ -40,9 +40,7 @@
     <ClInclude Include="OBJECT_TYPE.h" />
     <ClInclude Include="ReflectCheck.h" />
     <ClInclude Include="ReflectionHeader.h" />
-    <ClInclude Include="WorldManager.h" />
     <ClInclude Include="StirngHelper.h" />
-    <ClInclude Include="StringConverter.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TypeCheck.h" />
     <ClInclude Include="TypeDescriptor.h" />
@@ -67,6 +65,7 @@
     <ClCompile Include="EntityView.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventSubscriber.cpp" />
+    <ClCompile Include="Serializer.cpp" />
     <ClCompile Include="IComponentContainer.cpp" />
     <ClCompile Include="IEntitySystem.cpp" />
     <ClCompile Include="ISubscriber.cpp" />
@@ -74,9 +73,7 @@
     <ClCompile Include="Name.cpp" />
     <ClCompile Include="OBJECT_TYPE.cpp" />
     <ClCompile Include="ReflectCheck.cpp" />
-    <ClCompile Include="WorldManager.cpp" />
     <ClCompile Include="StirngHelper.cpp" />
-    <ClCompile Include="StringConverter.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="TypeDescriptor.cpp" />
     <ClCompile Include="TypeDescriptor_EnumClass.cpp" />

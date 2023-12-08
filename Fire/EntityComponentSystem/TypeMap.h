@@ -27,7 +27,6 @@ namespace Fire
 			template<typename T>
 			void AddTypeIndex(const std::string& typeName);
 			
-
 			/// <summary>
 			/// Type에 해당하는 인스턴스를 반환. 
 			/// 해당하는 타입으로 캐스팅해서 사용한다.

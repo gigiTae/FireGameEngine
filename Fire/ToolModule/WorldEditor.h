@@ -15,7 +15,7 @@ namespace ToolModule
 
 		void Show(Fire::ECS::World* world);
 	private:
-		
+		bool saveSucessfulPopup = false;
 
 	};
 

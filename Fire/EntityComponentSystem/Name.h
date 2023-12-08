@@ -14,7 +14,12 @@ namespace Fire
 			std::string name;
 			bool isConst;
 			OBJECT_TYPE category;
+
+		private:
 			Transform transform;
+
+
+			DECLARE_FREIND_WITH_REFECTION(Name)
 		};
 	}
 }
