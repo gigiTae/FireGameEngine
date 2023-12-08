@@ -62,8 +62,20 @@ namespace EngineModule
 	template <typename T, typename... Args>
 	T* EngineModule::Entity::AddComponent(Args&&... args)
 	{
-		Component* component = new T(args...);
+		static_assert(std::is_base_of<Component, T>::type, "Component를 상속받아야합니다");
+
+	 	TypeIndex index = GetTypeIndex<T>();
 		
+		// 이미 생성한 컴포넌트는 생성하지 않는다.
+		if (Component* component = GetComponent(index); component !=nullptr)
+		{
+			return component;
+		}
+
+		// 가변인자 템플릿을 사용한 생성자
+		Component* component = new T(args...);
+
+		components.insert(make_pair(index, component));
 
 		return component;
 	}

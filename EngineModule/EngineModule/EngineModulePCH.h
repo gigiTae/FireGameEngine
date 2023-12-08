@@ -13,6 +13,7 @@
 /// RTTI
 #include <typeindex>
 #include <typeinfo>
+#include <type_traits>
 
 #include "TypeIndex.h"
 
