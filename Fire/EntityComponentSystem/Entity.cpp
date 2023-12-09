@@ -1,6 +1,6 @@
 #include "ECSDefine.h"
 #include "Entity.h"
-
+#include "ReflectionHeader.h"
 
 Fire::ECS::Entity::~Entity()
 {
@@ -17,6 +17,20 @@ bool Fire::ECS::Entity::RemoveComponent(TypeIndex index)
 	iter = components.erase(iter);
 
 	return true;
+}
+
+void Fire::ECS::Entity::Assign(TypeIndex index)
+{
+	using namespace Fire::Reflect;
+
+	if (components.find(index) != components.end())
+		return;
+
+	// 리플렉션
+	TypeDescriptor* desc = TypeMap::GetTypeMap()->GetTypeDescriptor(index);
+	IComponentContainer* container =  desc->GetComponent();
+
+	components.insert({ index, container });
 }
 
 void Fire::ECS::Entity::RemoveAll()

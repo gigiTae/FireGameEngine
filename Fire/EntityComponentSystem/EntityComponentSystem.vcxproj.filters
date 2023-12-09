@@ -206,6 +206,9 @@
     <ClInclude Include="Serializer.h">
       <Filter>Serialize</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ECS\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="World.cpp">
@@ -294,6 +297,9 @@
     </ClCompile>
     <ClCompile Include="Serializer.cpp">
       <Filter>Serialize</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>ECS\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

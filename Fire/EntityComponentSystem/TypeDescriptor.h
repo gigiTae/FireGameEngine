@@ -2,6 +2,8 @@
 
 #include <string>
 #include <vector>
+#include <functional>
+#include "ComponentContainer.h"
 
 namespace Fire
 {
@@ -20,6 +22,7 @@ namespace Fire
 			TYPE_CATEGORY category = TYPE_CATEGORY::NONE;
 			std::string_view name;
 			size_t size;
+			std::function<Fire::ECS::IComponentContainer*()> GetComponent;
 
 			TypeDescriptor(std::string_view name, size_t size, TYPE_CATEGORY type)
 				:name{ name }, size{ size } ,category(type)
@@ -35,6 +38,7 @@ namespace Fire
 			{
 				return std::vector<std::pair<std::string, int>>();
 			};
+
 		};
 
 	}

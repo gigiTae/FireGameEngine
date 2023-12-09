@@ -30,6 +30,7 @@
     <ClInclude Include="EntityView.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventSubscriber.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Serializer.h" />
     <ClInclude Include="IComponentContainer.h" />
     <ClInclude Include="IEntitySystem.h" />
@@ -65,6 +66,7 @@
     <ClCompile Include="EntityView.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventSubscriber.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Serializer.cpp" />
     <ClCompile Include="IComponentContainer.cpp" />
     <ClCompile Include="IEntitySystem.cpp" />

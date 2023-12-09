@@ -33,6 +33,8 @@ namespace Fire
 			/// </summary>
 			void* Get(const std::string typeName);
 
+			std::type_index GetTypeIndex(const std::string typeName);
+
 			TypeDescriptor* GetTypeDescriptor(std::type_index index);
 			TypeDescriptor* GetTypeDescriptor(const std::string& typeName);
 

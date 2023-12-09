@@ -4,7 +4,10 @@
 
 void Fire::File::LoadEntity(Fire::ECS::Entity* ent, const std::filesystem::path& path)
 {
-	
+	assert(ent != nullptr && "Save가 불가능합니다.");
+
+
+
 }
 
 void Fire::File::SaveEntity(Fire::ECS::Entity* ent, const std::filesystem::path& path)
@@ -13,7 +16,9 @@ void Fire::File::SaveEntity(Fire::ECS::Entity* ent, const std::filesystem::path&
 
 	Fire::Reflect::TypeMap* typeMap = Fire::Reflect::TypeMap::GetTypeMap();
 
-	std::string output{};
+	std::string output = "Entity Serialize ID:";
+	output +=  std::to_string(ent->GetId());
+	output += "\n";
 
 	for (auto& iter : ent->GetComponents())
 	{
@@ -22,6 +27,7 @@ void Fire::File::SaveEntity(Fire::ECS::Entity* ent, const std::filesystem::path&
 		Fire::ECS::IComponentContainer* container = iter.second;
 
 		desc->Write(container->GetAddress(), output);
+		output += "\n";
 	}
 
 	std::ofstream out(path);

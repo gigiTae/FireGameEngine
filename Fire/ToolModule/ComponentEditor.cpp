@@ -223,16 +223,10 @@ void ToolModule::ComponentEditor::DisplayAddComponent(Fire::ECS::Entity* ent)
 	if (ImGui::Button("+"))
 	{
 		std::string& componentName = reflectComponents[addComponentIndex];
+		
+		auto index = Fire::Reflect::TypeMap::GetTypeMap()->GetTypeIndex(componentName);
 
-		if (componentName == "Fire::Component::Transform")
-		{
-			ent->Assign<Fire::Component::Transform>();
-		}
-
-		if (componentName == "Fire::Component::Vector3")
-		{
-			ent->Assign<Fire::Component::Vector3>();
-		}
+		ent->Assign(index);
 	}
 
 }

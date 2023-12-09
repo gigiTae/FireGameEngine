@@ -1,6 +1,7 @@
 #include "TypeMap.h"
 #include "TypeDescriptor.h"
 #include "ITypeResolver.h"
+#include <assert.h>
 
 
 namespace Fire
@@ -30,6 +31,22 @@ namespace Fire
 			void* instance = new char[memorySize];
 
 			return instance;
+		}
+
+		
+		std::type_index TypeMap::GetTypeIndex(const std::string typeName)
+		{
+			for (auto& iter : typeIndexMap)
+			{
+				if (typeName == iter.second)
+				{
+					return iter.first;
+				}
+
+			}
+
+			assert("해당하는 TypeIndex가 없습니다");
+			return std::type_index(typeid(int));
 		}
 
 		TypeDescriptor* TypeMap::GetTypeDescriptor(std::type_index index)

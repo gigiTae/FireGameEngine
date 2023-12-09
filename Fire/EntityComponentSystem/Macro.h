@@ -6,7 +6,7 @@
 #pragma region StructMacro
 
 #define DECLARE_FREIND_WITH_REFECTION(type)\
-		friend class Fire::Reflect::ReflectCheck<type>;
+		friend struct Fire::Reflect::ReflectCheck<type>;
 
 #define REFLECT_CHECK(type)\
 		template<>\
@@ -29,6 +29,7 @@
 				desc->category = TYPE_CATEGORY::STRUCT;\
 				desc->name = #type; \
 				desc->size = sizeof(T); \
+				desc->GetComponent = []()->Fire::ECS::IComponentContainer*{return new Fire::ECS::ComponentContainer<T>();};	\
 				desc->members = {
 
 #define MEMBER_REFLECTION(name)\

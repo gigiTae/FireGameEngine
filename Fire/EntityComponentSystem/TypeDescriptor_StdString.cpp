@@ -15,8 +15,8 @@ Fire::Reflect::TypeDescriptor* Fire::Reflect::GetPrimitiveDescriptor<std::string
 
 
 /// <summary>
-		/// wstring
-		/// </summary>
+/// wstring
+/// </summary>
 template <>
 Fire::Reflect::TypeDescriptor* Fire::Reflect::GetPrimitiveDescriptor<std::wstring>()
 {

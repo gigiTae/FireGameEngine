@@ -89,6 +89,9 @@ namespace EngineModule
 		template<typename T>
 		bool HasComponent();
 
+		/// <summary>
+		/// 컴포넌트들을 소유하는지 확인한다.
+		/// </summary>
 		template<typename T1, typename T2, typename... Types>
 		bool HasComponent();
 

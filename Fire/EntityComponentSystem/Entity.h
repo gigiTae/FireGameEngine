@@ -42,6 +42,8 @@ namespace Fire
 
 			bool RemoveComponent(TypeIndex index);
 			
+			/// TypeIndex와 리플렉션을 사용해서 Component를 만든다
+			void Assign(TypeIndex index);
 
 			/// <summary>
 			/// Remove all compoenets from this entity.
