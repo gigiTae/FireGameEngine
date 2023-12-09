@@ -19,18 +19,20 @@ bool Fire::ECS::Entity::RemoveComponent(TypeIndex index)
 	return true;
 }
 
-void Fire::ECS::Entity::Assign(TypeIndex index)
+Fire::ECS::IComponentContainer* Fire::ECS::Entity::Assign(TypeIndex index)
 {
 	using namespace Fire::Reflect;
 
 	if (components.find(index) != components.end())
-		return;
+		return nullptr;
 
 	// 리플렉션
 	TypeDescriptor* desc = TypeMap::GetTypeMap()->GetTypeDescriptor(index);
 	IComponentContainer* container =  desc->GetComponent();
 
 	components.insert({ index, container });
+
+	return container;
 }
 
 void Fire::ECS::Entity::RemoveAll()

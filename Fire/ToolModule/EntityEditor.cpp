@@ -1,6 +1,8 @@
 #include "ToolModulepch.h"
 #include "EntityEditor.h"
 #include "../EntityComponentSystem/ComponentHeader.h"
+#include "../EntityComponentSystem/Serializer.h"
+
 
 ToolModule::EntityEditor::EntityEditor()
 {
@@ -20,6 +22,8 @@ void ToolModule::EntityEditor::Show(Fire::ECS::World* world)
 		Fire::ECS::Entity* ent = world->Create();
 		ent->Assign<Fire::Component::Name>()->name = "component";
 	}
+
+	LoadEntity(world);
 
 	ImGui::Separator();
 
@@ -62,4 +66,33 @@ void ToolModule::EntityEditor::Show(Fire::ECS::World* world)
 	// 삭제예정이면 nullptr
 	if (selectEnt && selectEnt->IsPedingDestroy())
 		selectEnt = nullptr;
+}
+
+void ToolModule::EntityEditor::LoadEntity(Fire::ECS::World* world)
+{
+	
+	ImGui::InputText("Path", &loadPath);
+
+	ImGui::SameLine();
+
+	if (ImGui::Button("Load"))
+	{
+		std::filesystem::path filePath(loadPath);
+		
+		// 유효한 경로이다.
+
+		if(std::filesystem::exists(filePath) && filePath.extension() == ".txt")
+		{ 
+			Fire::ECS::Entity* ent = world->Create();
+			Fire::File::LoadEntity(ent, filePath.c_str());
+		}
+		else // 유효한 경로가 아니다
+		{
+			int a = 0;
+
+		}
+	}
+
+
+
 }

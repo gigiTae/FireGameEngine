@@ -11,4 +11,6 @@ namespace StringHelper
 
 	std::string EraseNamespace(const std::string& name);
 
+	std::string GetTypeName(const std::string& data, size_t start);
+
 }

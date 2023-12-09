@@ -54,3 +54,12 @@ std::string StringHelper::EraseNamespace(const std::string& name)
 
 	return name.substr( spaceStart+1, name.size()-spaceStart);
 }
+
+std::string StringHelper::GetTypeName(const std::string& data, size_t start)
+{
+	size_t openIndex = FindOpeningBrace(data, start);
+
+	std::string typeName = data.substr(start, openIndex - 1 - start);
+
+	return typeName;
+}

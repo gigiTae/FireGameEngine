@@ -11,7 +11,7 @@ namespace Fire
 		{
 			Fire::Component::Vector3 position;
 			Fire::Component::Vector3 rotation;
-			Fire::Component::Vector3 scale;
+			Fire::Component::Vector3 scale{ 1.f,1.f,.1f };
 		};
 	}
 }

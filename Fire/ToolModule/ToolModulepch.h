@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <stdexcept>
+#include <filesystem>
 
 #include "imgui.h"
 #include "imgui_stdlib.h"

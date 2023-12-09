@@ -6,7 +6,48 @@ void Fire::File::LoadEntity(Fire::ECS::Entity* ent, const std::filesystem::path&
 {
 	assert(ent != nullptr && "Save가 불가능합니다.");
 
+	std::string line;
+	std::ifstream readData(path);
+	if (readData.is_open())
+	{
+		std::getline(readData, line);
 
+		if (line != "Entity Serialize ID:1")
+			assert("잘못된 데이터를 읽었습니다");
+
+		std::string fileContent((std::istreambuf_iterator<char>(readData)),
+			std::istreambuf_iterator<char>());
+	
+		size_t nowRead = 0;
+		size_t open = 0;
+		size_t close = 0;
+
+		line = StringHelper::GetTypeName(fileContent, nowRead);
+		do 
+		{
+
+			TypeIndex index = Fire::Reflect::TypeMap::GetTypeMap()->GetTypeIndex(line);
+			assert(index.name() != "int");
+
+			Fire::ECS::IComponentContainer* container = ent->Assign(index);
+
+			Fire::Reflect::TypeDescriptor*  desc = 
+				Fire::Reflect::TypeMap::GetTypeMap()->GetTypeDescriptor(line);
+
+			open = StringHelper::FindOpeningBrace(fileContent, nowRead);
+			close = StringHelper::FindClosingBrace(fileContent, nowRead);
+			nowRead = close + 1;
+
+			desc->Read(container->GetAddress(), fileContent, open, close);
+
+			line = StringHelper::GetTypeName(fileContent, nowRead);
+
+		} while (!line.empty());
+
+	}
+
+
+	
 
 }
 
