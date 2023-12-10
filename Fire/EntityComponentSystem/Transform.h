@@ -9,8 +9,8 @@ namespace Fire
 	{
 		struct Transform
 		{
-			Fire::Component::Vector3 position;
-			Fire::Component::Vector3 rotation;
+			Fire::Component::Vector3 position{ 0.f,0.f,0.f };
+			Fire::Component::Vector3 rotation{ 0.f,0.f,0.f };
 			Fire::Component::Vector3 scale{ 1.f,1.f,.1f };
 		};
 	}

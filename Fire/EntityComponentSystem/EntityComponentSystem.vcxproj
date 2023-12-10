@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="ComponentContainer.h" />
     <ClInclude Include="ComponentHandle.h" />
     <ClInclude Include="ComponentHeader.h" />
     <ClInclude Include="ECSDefine.h" />
+    <ClInclude Include="ECSHeader.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityComponentIterator.h" />
     <ClInclude Include="EntityComponentView.h" />
@@ -41,6 +43,7 @@
     <ClInclude Include="OBJECT_TYPE.h" />
     <ClInclude Include="ReflectCheck.h" />
     <ClInclude Include="ReflectionHeader.h" />
+    <ClInclude Include="SphereMesh.h" />
     <ClInclude Include="StirngHelper.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TypeCheck.h" />
@@ -58,6 +61,7 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ComponentHandle.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityComponentIterator.cpp" />
@@ -75,6 +79,7 @@
     <ClCompile Include="Name.cpp" />
     <ClCompile Include="OBJECT_TYPE.cpp" />
     <ClCompile Include="ReflectCheck.cpp" />
+    <ClCompile Include="SphereMesh.cpp" />
     <ClCompile Include="StirngHelper.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="TypeDescriptor.cpp" />

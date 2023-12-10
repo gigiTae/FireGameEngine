@@ -1,6 +1,6 @@
+#include "FireGameEnginepch.h"
 #include "Engine.h"
-#include <assert.h>
-#include "../ToolModule/FireEditor.h"
+#include "RenderingSystem.h"
 
 LONG Fire::EngineModule::Engine::resizeHegiht = 0;
 LONG Fire::EngineModule::Engine::resizeWidth = 0;
@@ -26,11 +26,17 @@ void Fire::EngineModule::Engine::Initialize()
 	toolModule->Initialize(hWnd,
 		rendererModule->GetDevice(), rendererModule->GetDeviceContext());
 #endif 
+
+	renderingSystem = new Fire::ECS::RenderingSystem(rendererModule);
+
+	world->RegisterSystem(renderingSystem);
 }
 
 
 void Fire::EngineModule::Engine::Uninitialize()
 {
+	delete renderingSystem;
+
 	delete world;
 
 #ifdef EDITOR_MODE
@@ -124,6 +130,8 @@ void Fire::EngineModule::Engine::Process()
 #endif
 			rendererModule->BeginRender();
 			rendererModule->Render();
+
+			world->Tick(0.1f);
 
 #ifdef EDITOR_MODE
 			toolModule->EndRender();

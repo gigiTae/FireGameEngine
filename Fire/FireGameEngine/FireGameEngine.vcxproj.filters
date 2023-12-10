@@ -9,20 +9,38 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Header\01.Engine">
+      <UniqueIdentifier>{7e783c54-ce6e-4496-acb7-fc5e6db210e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\01.Engine">
+      <UniqueIdentifier>{c99e1bcd-3eb2-4a7b-bb72-47dbd6f02d71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\02.Rendering">
+      <UniqueIdentifier>{16bafd7d-bce5-4fb7-b11a-45669937b074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\02.Rendering">
+      <UniqueIdentifier>{a95cd6ac-b5ff-476a-b0ad-e6da5c4e7e20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="ExportDefine.h" />
     <ClInclude Include="FireGameEnginepch.h">
       <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header\01.Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingSystem.h">
+      <Filter>Header\02.Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Engine.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\01.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderingSystem.cpp">
+      <Filter>Source\02.Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

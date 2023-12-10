@@ -18,13 +18,18 @@ namespace Fire
 		};
 	}
 }
+#ifndef NAME_H
+#define NAME_H
 
 #ifdef REFLECTION_PROJECT
+
 
 REFLECT_CHECK(Fire::Component::Name)
 BEGIN_REFLECTION(Fire::Component::Name)
 MEMBER_REFLECTION(name)
 MEMBER_REFLECTION(category)
 END_REFLECTION()
+
+#endif // !NAME_H
 
 #endif

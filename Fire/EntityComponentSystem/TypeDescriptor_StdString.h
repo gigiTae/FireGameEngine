@@ -30,7 +30,8 @@ namespace Fire
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end)const override
 			{
-				std::string str = data.substr(begin+1, end - begin);
+				// 이런형태로data가넘어온다 {MyString}
+				std::string str = data.substr(begin+1, end - begin-1);
 				
 				std::string value = str;
 

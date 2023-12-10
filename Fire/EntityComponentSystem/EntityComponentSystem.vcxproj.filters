@@ -206,8 +206,17 @@
     <ClInclude Include="Serializer.h">
       <Filter>Serialize</Filter>
     </ClInclude>
+    <ClInclude Include="ECSHeader.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>BaseComponent\Header</Filter>
+    </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>ECS\Header</Filter>
+      <Filter>BaseComponent\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereMesh.h">
+      <Filter>BaseComponent\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -298,8 +307,14 @@
     <ClCompile Include="Serializer.cpp">
       <Filter>Serialize</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>BaseComponent\Source</Filter>
+    </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>ECS\Source</Filter>
+      <Filter>BaseComponent\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereMesh.cpp">
+      <Filter>BaseComponent\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

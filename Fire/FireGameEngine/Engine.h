@@ -1,19 +1,13 @@
 #pragma once
 
-#include "../EntityComponentSystem/ReflectionHeader.h"
-#include "../EntityComponentSystem/ComponentHeader.h"
-#include "ExportDefine.h"
-#include <Windows.h>
-#include "RendererModule/RendererHeader.h"
-#include "EntityComponentSystem/World.h"
-
-#ifdef EDITOR_MODE
-#include "ToolModule/ToolModuleHeader.h"
-#endif
-
 
 namespace Fire
 {
+	namespace ECS
+	{
+		class RenderingSystem;
+	}
+
 	namespace EngineModule
 	{
 		class FIRE_ENGNIE_API Engine
@@ -46,6 +40,7 @@ namespace Fire
 
 		 	RendererModule::D3DRenderer* rendererModule = nullptr;
 			Fire::ECS::World* world = nullptr;
+			Fire::ECS::RenderingSystem* renderingSystem = nullptr;
 
 #ifdef EDITOR_MODE
 		private:

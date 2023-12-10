@@ -1,3 +1,4 @@
+C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Camera.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Camera.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\ComponentHandle.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\ComponentHandle.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Entity.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Entity.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\EntityComponentIterator.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\EntityComponentIterator.obj
@@ -15,6 +16,7 @@ C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\ITypeResolver.cpp;C:\Users\P
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Name.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Name.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\OBJECT_TYPE.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\OBJECT_TYPE.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\ReflectCheck.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\ReflectCheck.obj
+C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\SphereMesh.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\SphereMesh.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\StirngHelper.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\StirngHelper.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Transform.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Transform.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\TypeDescriptor.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\TypeDescriptor.obj

@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>_DEBUG;FIREGAMEENGINE_EXPORTS;REFLECTION_PROJECT;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FIRE_GAME_ENGINE_DLL_EXPROTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>FireGameEnginepch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -150,11 +150,13 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="RenderingSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExportDefine.h" />
     <ClInclude Include="FireGameEnginepch.h" />
+    <ClInclude Include="RenderingSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityComponentSystem\EntityComponentSystem.vcxproj">
