@@ -40,7 +40,7 @@ namespace Fire
 			{
 				int* iObj = reinterpret_cast<int*>(obj);
 
-				std::string sValue = data.substr(begin, end - begin);
+				std::string sValue = data.substr(begin+1, end - begin);
 
 				int iValue = std::stoi(sValue);
 

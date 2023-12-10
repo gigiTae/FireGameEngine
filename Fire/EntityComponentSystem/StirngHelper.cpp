@@ -17,6 +17,9 @@ size_t StringHelper::FindClosingBrace(const std::string& data, size_t start)
 		else if (data[close] == '}')
 			openCount--;
 
+		if (openCount == 0)
+			return close;
+
 		++close;
 	}
 

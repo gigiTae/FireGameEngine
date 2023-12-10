@@ -78,9 +78,6 @@
     <Filter Include="Reflection\header\02.TypeResolver">
       <UniqueIdentifier>{e93ce607-8a62-497b-bf32-a4e36dcb442c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Reflection\header\01.TypeDescriptor">
-      <UniqueIdentifier>{2d968e52-fd59-4387-9852-df13f7fa9892}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Reflection\src">
       <UniqueIdentifier>{76adc4ad-96d4-4146-9f6e-39a181b1cd56}</UniqueIdentifier>
     </Filter>
@@ -95,6 +92,9 @@
     </Filter>
     <Filter Include="Reflection\src\04.Helper">
       <UniqueIdentifier>{379e8242-c408-4cff-bae7-ec921512027c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\header\01.TypeDescriptor">
+      <UniqueIdentifier>{2d968e52-fd59-4387-9852-df13f7fa9892}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

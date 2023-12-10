@@ -65,7 +65,7 @@ namespace Fire
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
 			{
-				std::string sValue = data.substr(begin, end - begin);
+				std::string sValue = data.substr(begin+1, end - begin);
 
 				int iValue = std::stoi(sValue);
 
@@ -92,7 +92,7 @@ namespace Fire
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
 			{
-				std::string sValue = data.substr(begin, end - begin);
+				std::string sValue = data.substr(begin+1, end - begin);
 
 				float fValue = std::stof(sValue);
 
@@ -119,7 +119,7 @@ namespace Fire
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
 			{
-				std::string sValue = data.substr(begin, end - begin);
+				std::string sValue = data.substr(begin+1, end - begin);
 
 				double dValue = std::stod(sValue);
 
@@ -153,7 +153,7 @@ namespace Fire
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end) const override
 			{
-				std::string sValue = data.substr(begin, end - begin);
+				std::string sValue = data.substr(begin+1, end - begin);
 				bool* dObj = reinterpret_cast<bool*>(obj);
 
 				if (sValue.c_str() == "0")

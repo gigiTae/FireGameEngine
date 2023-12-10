@@ -25,7 +25,6 @@ void Fire::File::LoadEntity(Fire::ECS::Entity* ent, const std::filesystem::path&
 		line = StringHelper::GetTypeName(fileContent, nowRead);
 		do 
 		{
-
 			TypeIndex index = Fire::Reflect::TypeMap::GetTypeMap()->GetTypeIndex(line);
 			assert(index.name() != "int");
 
@@ -36,10 +35,16 @@ void Fire::File::LoadEntity(Fire::ECS::Entity* ent, const std::filesystem::path&
 
 			open = StringHelper::FindOpeningBrace(fileContent, nowRead);
 			close = StringHelper::FindClosingBrace(fileContent, nowRead);
-			nowRead = close + 1;
+			
+			///DEBUG
+			std::string subData = fileContent.substr(nowRead, close - nowRead+1);
+			///
 
-			desc->Read(container->GetAddress(), fileContent, open, close);
+			/// *** str[0] 부터 시작이므로 close +1 해야한다.
+			desc->Read(container->GetAddress(), fileContent, nowRead, close);
 
+			// Component }\nComponentName 이므로 +2
+			nowRead = close + 2;
 			line = StringHelper::GetTypeName(fileContent, nowRead);
 
 		} while (!line.empty());

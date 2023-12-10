@@ -30,7 +30,7 @@ namespace Fire
 
 			void Read(void* obj, std::string& data, size_t begin, size_t end)const override
 			{
-				std::string str = data.substr(begin, end - begin);
+				std::string str = data.substr(begin+1, end - begin);
 				
 				std::string value = str;
 
@@ -68,7 +68,7 @@ namespace Fire
 				std::wstring* strObj = reinterpret_cast<std::wstring*>(obj);
 				strObj->clear();
 
-				for (size_t i = begin; i < end; i += 2) {
+				for (size_t i = begin+1; i < end; i += 2) {
 					wchar_t ch = static_cast<unsigned char>(data[i]) | (static_cast<unsigned char>(data[i + 1]) << 8);
 					strObj->push_back(ch);
 				} 

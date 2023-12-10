@@ -197,7 +197,8 @@
     </Link>
     <Lib />
     <Lib>
-      <AdditionalDependencies>Reflectiond.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>

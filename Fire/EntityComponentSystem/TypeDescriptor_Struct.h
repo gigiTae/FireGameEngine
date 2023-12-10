@@ -47,12 +47,14 @@ namespace Fire
 				size_t open = StringHelper::FindOpeningBrace(data,begin);
 				size_t close = StringHelper::FindClosingBrace(data,begin);
 
+				std::string dataSub = data.substr(open, close-open+1);
 				for (const Member& member : members)
 				{
 					size_t memberOpen = StringHelper::FindOpeningBrace(data,open+1);
 					size_t memberClose = StringHelper::FindClosingBrace(data, open+1);
  
-					member.desc->Read((char*)obj + member.offset, data, memberOpen+1, memberClose-1);
+					std::string dataSub = data.substr(memberOpen, memberClose - memberOpen + 1);
+					member.desc->Read((char*)obj + member.offset, data, memberOpen, memberClose);
 				
 					open = memberClose + 1;
 				}
