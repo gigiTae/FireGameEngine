@@ -212,9 +212,6 @@
     <ClInclude Include="Camera.h">
       <Filter>BaseComponent\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>BaseComponent\Header</Filter>
-    </ClInclude>
     <ClInclude Include="SphereMesh.h">
       <Filter>BaseComponent\Header</Filter>
     </ClInclude>
@@ -308,9 +305,6 @@
       <Filter>Serialize</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>BaseComponent\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
       <Filter>BaseComponent\Source</Filter>
     </ClCompile>
     <ClCompile Include="SphereMesh.cpp">

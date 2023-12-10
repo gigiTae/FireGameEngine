@@ -1,5 +1,7 @@
 #pragma once
 
+#include "FireGameEnginepch.h"
+
 
 namespace Fire
 {

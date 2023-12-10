@@ -113,7 +113,8 @@
       <PreprocessorDefinitions>_DEBUG;FIREGAMEENGINE_EXPORTS;REFLECTION_PROJECT;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);FIRE_GAME_ENGINE_DLL_EXPROTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>FireGameEnginepch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -148,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DefineReflection.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="RenderingSystem.cpp" />

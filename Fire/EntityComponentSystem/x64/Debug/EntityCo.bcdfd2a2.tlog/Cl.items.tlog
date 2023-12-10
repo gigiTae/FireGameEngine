@@ -7,7 +7,6 @@ C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\EntityIterator.cpp;C:\Users\
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\EntityView.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\EntityView.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Event.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Event.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\EventSubscriber.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\EventSubscriber.obj
-C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Player.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Player.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\Serializer.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\Serializer.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\IComponentContainer.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\IComponentContainer.obj
 C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\IEntitySystem.cpp;C:\Users\PC\Desktop\Fire\Fire\EntityComponentSystem\x64\Debug\IEntitySystem.obj

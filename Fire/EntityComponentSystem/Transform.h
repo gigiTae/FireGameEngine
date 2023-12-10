@@ -15,14 +15,3 @@ namespace Fire
 		};
 	}
 }
-
-#ifdef REFLECTION_PROJECT
-
-REFLECT_CHECK(Fire::Component::Transform)
-BEGIN_REFLECTION(Fire::Component::Transform)
-MEMBER_REFLECTION(position)
-MEMBER_REFLECTION(rotation)
-MEMBER_REFLECTION(scale)
-END_REFLECTION()
-
-#endif

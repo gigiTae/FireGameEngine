@@ -42,5 +42,8 @@
     <ClCompile Include="RenderingSystem.cpp">
       <Filter>Source\02.Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="DefineReflection.cpp">
+      <Filter>Header</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

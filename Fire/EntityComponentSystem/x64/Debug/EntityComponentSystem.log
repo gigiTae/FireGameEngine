@@ -7,7 +7,6 @@
   EntityView.cpp
   Event.cpp
   EventSubscriber.cpp
-  Player.cpp
   Serializer.cpp
   IComponentContainer.cpp
   IEntitySystem.cpp
@@ -18,9 +17,9 @@
   ReflectCheck.cpp
   SphereMesh.cpp
   StirngHelper.cpp
+  Transform.cpp
   코드를 생성하고 있습니다...
   컴파일하고 있습니다...
-  Transform.cpp
   TypeDescriptor.cpp
   TypeDescriptor_EnumClass.cpp
   TypeDescriptor_Primitive.cpp
