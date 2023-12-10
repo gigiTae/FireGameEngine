@@ -149,16 +149,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CameraSystem.cpp" />
     <ClCompile Include="DefineReflection.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="RenderingSystem.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraSystem.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExportDefine.h" />
     <ClInclude Include="FireGameEnginepch.h" />
+    <ClInclude Include="InputEnumClass.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="RenderingSystem.h" />
+    <ClInclude Include="TimeManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityComponentSystem\EntityComponentSystem.vcxproj">

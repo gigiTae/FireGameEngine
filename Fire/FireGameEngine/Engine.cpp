@@ -1,6 +1,9 @@
 
 #include "Engine.h"
 #include "RenderingSystem.h"
+#include "CameraSystem.h"
+#include "InputManager.h"
+#include "TimeManager.h"
 
 LONG Fire::EngineModule::Engine::resizeHegiht = 0;
 LONG Fire::EngineModule::Engine::resizeWidth = 0;
@@ -27,14 +30,24 @@ void Fire::EngineModule::Engine::Initialize()
 		rendererModule->GetDevice(), rendererModule->GetDeviceContext());
 #endif 
 
+	/// System
 	renderingSystem = new Fire::ECS::RenderingSystem(rendererModule);
+	cameraSystem = new Fire::ECS::CameraSystem(rendererModule->GetCamera());
 
 	world->RegisterSystem(renderingSystem);
+	world->RegisterSystem(cameraSystem);
+
+	/// Manager
+	InputManager::GetInstance()->Initalize(hWnd);
+	TimeManager::GetInstance()->Initialize();
 }
 
 
 void Fire::EngineModule::Engine::Uninitialize()
 {
+	InputManager::GetInstance()->Finalize();
+	TimeManager::GetInstance()->Finalize();
+
 	delete renderingSystem;
 
 	delete world;
@@ -123,6 +136,9 @@ void Fire::EngineModule::Engine::Process()
 				resizeWidth = 0;
 			}
 
+			/// Manager
+			InputManager::GetInstance()->Update();
+			float dt = TimeManager::GetInstance()->Update();
 
 #ifdef EDITOR_MODE
 			toolModule->NewFrame();
@@ -131,7 +147,7 @@ void Fire::EngineModule::Engine::Process()
 			rendererModule->BeginRender();
 			rendererModule->Render();
 
-			world->Tick(0.1f);
+			world->Tick(dt);
 
 #ifdef EDITOR_MODE
 			toolModule->EndRender();

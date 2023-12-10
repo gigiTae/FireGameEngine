@@ -8,6 +8,7 @@ namespace Fire
 	namespace ECS
 	{
 		class RenderingSystem;
+		class CameraSystem;
 	}
 
 	namespace EngineModule
@@ -43,6 +44,7 @@ namespace Fire
 		 	RendererModule::D3DRenderer* rendererModule = nullptr;
 			Fire::ECS::World* world = nullptr;
 			Fire::ECS::RenderingSystem* renderingSystem = nullptr;
+			Fire::ECS::CameraSystem* cameraSystem = nullptr;
 
 #ifdef EDITOR_MODE
 		private:

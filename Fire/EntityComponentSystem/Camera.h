@@ -10,7 +10,7 @@ namespace Fire
 		struct Camera
 		{
 			bool isMain = true;
-		
+			float cameraSpeed = 10.f;
 		};
 	}
 }

@@ -256,3 +256,63 @@ void RendererModule::Camera::UpdateViewMatrix()
 	m_view(2, 3) = 0.0f;
 	m_view(3, 3) = 1.0f;
 }
+
+DirectX::XMFLOAT3 RendererModule::Camera::GetRotationFromViewMatrix()
+{
+	XMFLOAT3 zero = { 0.f,0.f,0.f };
+
+	// Create a view matrix using the camera's basis vectors
+	XMMATRIX viewMatrix = XMMatrixLookAtLH(XMLoadFloat3(&zero), XMLoadFloat3(&m_look), XMLoadFloat3(&m_up));
+
+	// Invert the view matrix to get the camera's transformation matrix
+	XMMATRIX invViewMatrix = XMMatrixInverse(nullptr, viewMatrix);
+
+	// Extract rotation angles from the transformation matrix
+	XMFLOAT4X4 rotationMatrix;
+	XMStoreFloat4x4(&rotationMatrix, invViewMatrix);
+
+	float pitch, yaw, roll;
+	if (rotationMatrix._32 < 1.0f)
+	{
+		if (rotationMatrix._32 > -1.0f)
+		{
+			// Calculate pitch, yaw, and roll angles
+			pitch = asin(-rotationMatrix._32);
+			yaw = atan2(rotationMatrix._31, rotationMatrix._33);
+			roll = atan2(rotationMatrix._12, rotationMatrix._22);
+		}
+		else
+		{
+			// Gimbal lock case
+			pitch = XM_PI / 2.0f;
+			yaw = -atan2(-rotationMatrix._21, rotationMatrix._11);
+			roll = 0.0f;
+		}
+	}
+	else
+	{
+		// Gimbal lock case
+		pitch = -XM_PI / 2.0f;
+		yaw = atan2(-rotationMatrix._21, rotationMatrix._11);
+		roll = 0.0f;
+	}
+
+	return XMFLOAT3(pitch, yaw, roll);
+}
+
+void RendererModule::Camera::GetBasisFromRotation(const XMFLOAT3& rotation)
+{
+	// Create a rotation matrix from the given Euler angles (pitch, yaw, roll)
+	XMMATRIX rotationMatrix = XMMatrixRotationRollPitchYaw(rotation.x, rotation.y, rotation.z);
+
+	// Extract the basis vectors from the rotation matrix
+	XMFLOAT3 xAxis, yAxis, zAxis;
+	XMStoreFloat3(&xAxis, rotationMatrix.r[0]);
+	XMStoreFloat3(&yAxis, rotationMatrix.r[1]);
+	XMStoreFloat3(&zAxis, rotationMatrix.r[2]);
+
+	// Set the output vectors
+	m_right = xAxis;
+	m_up = yAxis;
+	m_look = zAxis;
+}

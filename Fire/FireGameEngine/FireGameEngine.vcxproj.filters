@@ -21,6 +21,21 @@
     <Filter Include="Source\02.Rendering">
       <UniqueIdentifier>{a95cd6ac-b5ff-476a-b0ad-e6da5c4e7e20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header\03.Manager">
+      <UniqueIdentifier>{0cb4b45c-df0a-4b0d-b1d9-111a2d46b24e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03.Manager">
+      <UniqueIdentifier>{6da8193a-1655-48ac-8515-4bcbb8dbc7db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\00.Define">
+      <UniqueIdentifier>{4ed55eb7-cb9a-492b-aa82-273e772d0131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\04.System">
+      <UniqueIdentifier>{ec256f80-ff96-4d0f-b334-2576f92b3027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\04.System">
+      <UniqueIdentifier>{ec8c25af-a02d-4045-9471-d75d088cb65b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExportDefine.h" />
@@ -33,6 +48,18 @@
     <ClInclude Include="RenderingSystem.h">
       <Filter>Header\02.Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Header\03.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header\03.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputEnumClass.h">
+      <Filter>Header\03.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSystem.h">
+      <Filter>Header\04.System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -42,8 +69,17 @@
     <ClCompile Include="RenderingSystem.cpp">
       <Filter>Source\02.Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source\03.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Source\03.Manager</Filter>
+    </ClCompile>
     <ClCompile Include="DefineReflection.cpp">
-      <Filter>Header</Filter>
+      <Filter>Source\00.Define</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSystem.cpp">
+      <Filter>Source\04.System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
