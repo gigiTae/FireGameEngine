@@ -18,7 +18,6 @@ void GeoSphere::Initilize(float radius, UINT numSubdivisions)
 {
 	m_radius = radius;
 
-
 	BulidBuffers(radius, numSubdivisions);
 	BuildEffect();
 	BuildLayout();

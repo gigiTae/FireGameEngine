@@ -31,6 +31,36 @@
     <Filter Include="Private">
       <UniqueIdentifier>{e71404bf-7a1c-47ee-8c67-d3bda62fe30d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public\01.Renderer">
+      <UniqueIdentifier>{66b417c6-3211-4b4d-849f-fecee46244c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\02.Pipeline">
+      <UniqueIdentifier>{7757ac40-81ef-4acd-bc47-d28686a28b23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\03.Camera">
+      <UniqueIdentifier>{7748ccbf-eee8-422b-a207-6c9c4aa9967f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\00.Define">
+      <UniqueIdentifier>{68bdd788-d4f9-489d-8fc6-5c8ccc97df5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\04.Loader">
+      <UniqueIdentifier>{c015aae5-e783-4384-9ec2-54b0fe024712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\01.Renderer">
+      <UniqueIdentifier>{e194b0f8-6e4f-4052-93f1-3a5be48f6991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\02.Pipeline">
+      <UniqueIdentifier>{48edef8e-da03-4036-bdb8-84397d30ac62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\03.Camera">
+      <UniqueIdentifier>{17915cc0-45c4-4d8d-8a3d-4dd93ad53dd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\04.Loader">
+      <UniqueIdentifier>{31e05c91-3b77-4782-81e2-32dcde94f418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\00.Define">
+      <UniqueIdentifier>{ac632f02-6ccb-49fb-b691-2bce100340eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp">
@@ -76,26 +106,29 @@
     <ClCompile Include="Crate.cpp">
       <Filter>Resource\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="RendererPCH.cpp">
-      <Filter>Private</Filter>
+    <ClCompile Include="D3DRenderer.cpp">
+      <Filter>Private\01.Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="FileLoader.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
-    <ClCompile Include="FL\DDSTextureLoader.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraObject.cpp">
-      <Filter>Private</Filter>
+    <ClCompile Include="RenderingPipeline.cpp">
+      <Filter>Private\02.Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Private</Filter>
+      <Filter>Private\03.Camera</Filter>
     </ClCompile>
-    <ClCompile Include="D3DRenderer.cpp">
-      <Filter>Private</Filter>
+    <ClCompile Include="CameraObject.cpp">
+      <Filter>Private\03.Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="FileLoader.cpp">
+      <Filter>Private\04.Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="FL\DDSTextureLoader.cpp">
+      <Filter>Private\04.Loader</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>Private</Filter>
+      <Filter>Private\04.Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererPCH.cpp">
+      <Filter>Private\00.Define</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,35 +174,38 @@
     <ClInclude Include="Crate.h">
       <Filter>Resource\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="TextManager.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="D3DRenderer.h">
-      <Filter>Public</Filter>
+      <Filter>Public\01.Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="RendererPCH.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="RendererHeader.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="HRDefine.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="FileLoader.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="FL\DDSTextureLoader.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraObject.h">
-      <Filter>Public</Filter>
+    <ClInclude Include="RenderingPipeline.h">
+      <Filter>Public\02.Pipeline</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Public</Filter>
+      <Filter>Public\03.Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraObject.h">
+      <Filter>Public\03.Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="HRDefine.h">
+      <Filter>Public\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererHeader.h">
+      <Filter>Public\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererPCH.h">
+      <Filter>Public\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="FL\DDSTextureLoader.h">
+      <Filter>Public\04.Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoader.h">
+      <Filter>Public\04.Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Public\04.Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="TextManager.h">
+      <Filter>Public\04.Loader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

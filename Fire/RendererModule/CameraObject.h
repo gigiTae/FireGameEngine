@@ -41,7 +41,6 @@ private:
 	XMVECTOR m_cameraDirection; // 카메라가 바라보는 방향 벡터 z축
 	XMVECTOR m_worldUp;
 
-
 	float m_fovAngleY;   // 시야각 
 	float m_aspectRatio;
 	float m_nearZ;
