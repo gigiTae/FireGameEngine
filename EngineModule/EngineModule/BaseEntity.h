@@ -1,6 +1,6 @@
 #pragma once
 
-namespace EngineModule
+namespace ImpEngineModule
 {
 
 	/// <summary>

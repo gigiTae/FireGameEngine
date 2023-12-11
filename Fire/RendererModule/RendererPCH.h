@@ -93,3 +93,5 @@ using Microsoft::WRL::ComPtr; //편하지만 지양해야한다. 4학기 엔진�
 
 #include "MathModule/MathHeader.h"
 #include "../RendererModule/FL/DDSTextureLoader.h"
+#include "PipelineEnum.h"
+

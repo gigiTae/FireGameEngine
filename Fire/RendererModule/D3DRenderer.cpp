@@ -12,6 +12,7 @@
 #include "Crate.h"
 #include "BasicEffect.h"
 #include "Camera.h"
+#include "RenderingPipeline.h"
 
 RendererModule::D3DRenderer::D3DRenderer()
 	:m_d3dDevice(nullptr)
@@ -64,7 +65,7 @@ void RendererModule::D3DRenderer::Initialize(HWND hWnd, int screenWidth, int scr
 	/// 매니져 초기화
 	m_resourceManager->Initialize(m_d3dDevice.Get());
 	m_textManager->Initialize(m_d3dDevice.Get(), m_rasterizerState[1].Get(), m_depthStencilState.Get());
-
+	pipeline->Initialize();
 
 	/// 임시
 	InitializeObject();
@@ -380,7 +381,6 @@ void RendererModule::D3DRenderer::InitializeResource()
 	m_inputLayout = std::make_unique<InputLayout>();
 
 	m_inputLayout->Initailize(m_d3dDevice.Get());
-
 
 	// 래스터라이즈 설정
 	D3D11_RASTERIZER_DESC rasterizerDesc;

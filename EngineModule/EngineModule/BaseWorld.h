@@ -2,7 +2,7 @@
 
 
 
-namespace EngineModule
+namespace ImpEngineModule
 {
 	class Entity;
 
@@ -13,16 +13,6 @@ namespace EngineModule
 	{
 	public:
 		virtual ~BaseWorld() {}
-
-		virtual Entity* CreateEntity() abstract;
-
-		virtual void DestroyEntity(Entity* ent, bool immediate = false) abstract;
-
-		virtual void DestroyEntity(size_t id, bool immediate= false) abstract;
-
-		virtual Entity* GetEntity(size_t id)const abstract;
-
-		virtual Entity* GetEntity(const std::string& name)const abstract;
 
 		virtual void Reset() abstract;
 

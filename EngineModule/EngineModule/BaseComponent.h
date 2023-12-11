@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace EngineModule
+namespace ImpEngineModule
 {
 
 	/// <summary>
@@ -12,12 +12,9 @@ namespace EngineModule
 	public:
 		virtual ~BaseComponent() {}
 
-
 		virtual void Start() abstract;
 
 		virtual void Update() abstract;
-
-		virtual void UnInitialize() abstract;
 	};
 
 }

@@ -13,7 +13,7 @@ namespace Fire
 		private:
 			void Tick(World* world, float dt) override;
 
-
+			
 			RendererModule::Camera* cameraModule;
 		};
 

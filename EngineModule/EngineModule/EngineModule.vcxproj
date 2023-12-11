@@ -145,10 +145,13 @@
     <ClInclude Include="BaseEntity.h" />
     <ClInclude Include="BaseWorld.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentHandle.h" />
     <ClInclude Include="EngineModuleHeader.h" />
     <ClInclude Include="EngineModulePCH.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityIterator.h" />
+    <ClInclude Include="EntityView.h" />
     <ClInclude Include="TypeIndex.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -157,7 +160,10 @@
     <ClCompile Include="BaseEntity.cpp" />
     <ClCompile Include="BaseWorld.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentHandle.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityIterator.cpp" />
+    <ClCompile Include="EntityView.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

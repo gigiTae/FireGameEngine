@@ -66,6 +66,7 @@ REFLECT_CHECK(Fire::Component::Camera)
 BEGIN_REFLECTION(Fire::Component::Camera)
 MEMBER_REFLECTION(isMain)
 MEMBER_REFLECTION(cameraSpeed)
+MEMBER_REFLECTION(sensitivity)
 END_REFLECTION()
 
 #endif 

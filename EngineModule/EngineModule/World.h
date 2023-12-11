@@ -1,7 +1,7 @@
 #pragma once
 #include "BaseWorld.h"
 
-namespace EngineModule
+namespace ImpEngineModule
 {
 	class Entity;
 	
@@ -19,49 +19,36 @@ namespace EngineModule
 		World& operator =(const World& other) = delete;
 
 	public:
-		/// <summary>
 		/// Entity 생성
-		/// </summary>
-		Entity* CreateEntity() override;
+		Entity* CreateEntity();
 
-		/// <summary>
 		/// Entity 삭제
-		/// </summary>
-		void DestroyEntity(Entity* ent, bool immediate = false) override;
+		void DestroyEntity(Entity* ent, bool immediate = false);
 		
-		/// <summary>
 		/// Entity 삭제
-		/// </summary>
-		void DestroyEntity(size_t id, bool immediate = false) override;
+		void DestroyEntity(size_t id, bool immediate = false);
 
-		/// <summary>
 		/// Entity ID로 탐색
-		/// </summary>
-		Entity* GetEntity(size_t id)const override;
+		Entity* GetEntity(size_t id)const;
 
-		/// <summary>
 		/// Entity 이름으로 탐색
-		/// </summary>
-		Entity* GetEntity(const std::string& name)const override;
+		Entity* GetEntity(const std::string& name)const;
 
-		/// <summary>
 		/// World Reset
-		/// </summary>
 		void Reset() override;
 
-		/// <summary>
 		/// World 시작전에 호출
-		/// </summary>
 		void Start() override;
 
-		/// <summary>
 		/// 매 프레임 호출 
-		/// </summary>
 		void Update() override;
 
+		/// LastEntity ID 획득
+		size_t GetLastEntityID()const { return m_lastEntityID; }
+
 	private:
-		size_t lastEntityID = 0;
-		std::vector<Entity*> entities;
+		size_t m_lastEntityID = 0;
+		std::vector<Entity*> m_entities;
 
 	};
 }

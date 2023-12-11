@@ -130,6 +130,9 @@
     <ClCompile Include="RendererPCH.cpp">
       <Filter>Private\00.Define</Filter>
     </ClCompile>
+    <ClCompile Include="PipelineEnum.cpp">
+      <Filter>Private\00.Define</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h">
@@ -206,6 +209,9 @@
     </ClInclude>
     <ClInclude Include="TextManager.h">
       <Filter>Public\04.Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="PipelineEnum.h">
+      <Filter>Public\00.Define</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

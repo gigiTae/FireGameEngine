@@ -17,13 +17,13 @@ Fire::ECS::CameraSystem::~CameraSystem()
 void Fire::ECS::CameraSystem::Tick(World* world, float dt)
 {
 	using namespace Fire::Component;
-	
+
 	// 람다캡처
 	RendererModule::Camera* renderCamera = cameraModule;
 
-	InputManager* input  = InputManager::GetInstance();
+	InputManager* input = InputManager::GetInstance();
 
-	world->Each<Camera, Transform>([input, renderCamera,dt](Entity* ent,
+	world->Each<Camera, Transform>([input, renderCamera, dt](Entity* ent,
 		ComponentHandle<Camera> camera, ComponentHandle<Transform> transform)
 		{
 			Vector3 pos = transform->position;
@@ -35,8 +35,8 @@ void Fire::ECS::CameraSystem::Tick(World* world, float dt)
 			if (!camera->isMain)
 				return;
 
-			/// 카메라 키입력 처리 LMOUSE 버튼을 누르고 있으면 움직인다.
-			if (input->IsKeyState(KEY::LMOUSE, KEY_STATE::HOLD))
+			/// 카메라 키입력 처리 RMOUSE 버튼을 누르고 있으면 움직인다.
+			if (input->IsKeyState(KEY::RMOUSE, KEY_STATE::HOLD))
 			{
 				if (input->IsKeyState(KEY::W, KEY_STATE::HOLD))
 				{
@@ -61,18 +61,20 @@ void Fire::ECS::CameraSystem::Tick(World* world, float dt)
 
 				/// 시선 회전
 				POINT dt = input->GetDeltaMousePosition();
-				
-				renderCamera->Pitch(dt.y);
-				renderCamera->RotateY(dt.x);
-				
+
+				float senssitivity = camera->sensitivity;
+
+				float dX = static_cast<float>(dt.x) / senssitivity;
+				float dY = static_cast<float>(dt.y) / senssitivity;
+
+				renderCamera->Pitch(dY);
+				renderCamera->RotateY(dX);
+
 				XMFLOAT3 pos = renderCamera->GetPosition();
 				transform->position = { pos.x,pos.y,pos.z };
 
 				XMFLOAT3 rot = renderCamera->GetRotationFromViewMatrix();
 				transform->rotation = { rot.x,rot.y,rot.z };
 			}
-
-
-
 		}, false);
 }

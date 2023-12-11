@@ -64,6 +64,15 @@
     <ClInclude Include="TypeIndex.h">
       <Filter>Public\00.Define</Filter>
     </ClInclude>
+    <ClInclude Include="EntityView.h">
+      <Filter>Public\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityIterator.h">
+      <Filter>Public\02.Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentHandle.h">
+      <Filter>Public\03.Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -89,6 +98,15 @@
     </ClCompile>
     <ClCompile Include="TypeIndex.cpp">
       <Filter>Private\00.Define</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityView.cpp">
+      <Filter>Private\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityIterator.cpp">
+      <Filter>Private\02.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentHandle.cpp">
+      <Filter>Private\03.Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

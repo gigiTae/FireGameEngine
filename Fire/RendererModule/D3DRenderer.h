@@ -17,6 +17,7 @@ class InputLayout;
 class ResourceManager;
 class TextManager;
 class Camera;
+class RenderingPipeline;
 }
 
 namespace RendererModule
@@ -59,7 +60,7 @@ private:
 	bool m_enable4xMass; // 4XMSAA를 사용한다면 true로 설정
 	UINT m_4xMsaaQuality;
 
-
+	std::unique_ptr<RenderingPipeline> pipeline;
 	std::unique_ptr<ResourceManager> m_resourceManager;
 	std::unique_ptr<TextManager> m_textManager;
 

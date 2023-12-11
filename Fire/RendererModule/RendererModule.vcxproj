@@ -167,6 +167,7 @@
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="PipelineEnum.h" />
     <ClInclude Include="RendererPCH.h" />
     <ClInclude Include="RendererHeader.h" />
     <ClInclude Include="RenderingPipeline.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="PipelineEnum.cpp" />
     <ClCompile Include="RendererPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

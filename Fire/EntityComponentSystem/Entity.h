@@ -12,6 +12,7 @@ namespace Fire
 		class Entity
 		{
 			friend class World;	
+
 		public:
 			Entity(World* world, size_t id) : world(world), id(id) {};
 			~Entity();

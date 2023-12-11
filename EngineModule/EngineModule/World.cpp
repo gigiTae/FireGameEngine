@@ -2,59 +2,59 @@
 #include "World.h"
 #include "Entity.h"
 
-EngineModule::World::World()
-	:lastEntityID(0) ,entities()
+ImpEngineModule::World::World()
+	:m_lastEntityID(0) ,m_entities()
 {
 
 }
 
-EngineModule::World::~World()
+ImpEngineModule::World::~World()
 {
 
 }
 
-EngineModule::Entity* EngineModule::World::CreateEntity()
+ImpEngineModule::Entity* ImpEngineModule::World::CreateEntity()
 {
 	/// TODO : 나중에는 오브젝트 풀을 사용해서 관리한다.
 
-	Entity* ent = new Entity(this, lastEntityID);
-	++lastEntityID;
-	entities.push_back(ent);
+	Entity* ent = new Entity(this, m_lastEntityID);
+	++m_lastEntityID;
+	m_entities.push_back(ent);
 
 	return ent;
 }
 
-void EngineModule::World::DestroyEntity(Entity* ent, bool immediate /*= false*/)
+void ImpEngineModule::World::DestroyEntity(Entity* ent, bool immediate /*= false*/)
 {
 	if (ent == nullptr)
 	{
 		return; 
 	}
 
-	if (ent->state == Entity::EntityState::TO_BE_DESTROYED)
+	if (ent->m_state == Entity::EntityState::TO_BE_DESTROYED)
 	{
 		if (immediate)
 		{
-			entities.erase(std::remove(entities.begin(), entities.end(), ent), entities.end());
+			m_entities.erase(std::remove(m_entities.begin(), m_entities.end(), ent), m_entities.end());
 			delete ent;
 		}
 
 		return;
 	}
 
-	ent->state = Entity::EntityState::TO_BE_DESTROYED;
+	ent->m_state = Entity::EntityState::TO_BE_DESTROYED;
 	// TODO:: Destroy call back
 	
 	if (immediate)
 	{
-		entities.erase(std::remove(entities.begin(), entities.end(), ent), entities.end());
+		m_entities.erase(std::remove(m_entities.begin(), m_entities.end(), ent), m_entities.end());
 		delete ent;
 	}
 }
 
-void EngineModule::World::DestroyEntity(size_t id, bool immediate /*= false*/)
+void ImpEngineModule::World::DestroyEntity(size_t id, bool immediate /*= false*/)
 {
-	if (id > lastEntityID)
+	if (id > m_lastEntityID)
 	{
 		return;
 	}
@@ -64,11 +64,11 @@ void EngineModule::World::DestroyEntity(size_t id, bool immediate /*= false*/)
 	DestroyEntity(ent);
 }
 
-EngineModule::Entity* EngineModule::World::GetEntity(const std::string& name) const
+ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(const std::string& name) const
 {
-	for (Entity* ent : entities)
+	for (Entity* ent : m_entities)
 	{
-		if (name == ent->name)
+		if (name == ent->m_name)
 		{
 			return ent;
 		}
@@ -76,11 +76,11 @@ EngineModule::Entity* EngineModule::World::GetEntity(const std::string& name) co
 	return nullptr;
 }
 
-EngineModule::Entity* EngineModule::World::GetEntity(size_t id) const
+ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(size_t id) const
 {
-	for (Entity* ent : entities)
+	for (Entity* ent : m_entities)
 	{
-		if (id == ent->id)
+		if (id == ent->m_id)
 		{
 			return ent;
 		}
@@ -88,30 +88,30 @@ EngineModule::Entity* EngineModule::World::GetEntity(size_t id) const
 	return nullptr;
 }
 
-void EngineModule::World::Reset()
+void ImpEngineModule::World::Reset()
 {
-	lastEntityID = 0;
+	m_lastEntityID = 0;
 
-	for (Entity* ent : entities)
+	for (Entity* ent : m_entities)
 	{
 		ent->DestroyAllComponents();
 		delete ent;
 	}
 
-	entities.clear();
+	m_entities.clear();
 }
 
-void EngineModule::World::Start()
+void ImpEngineModule::World::Start()
 {
-	for (Entity* ent : entities)
+	for (Entity* ent : m_entities)
 	{
 		ent->Start();
 	}
 }
 
-void EngineModule::World::Update()
+void ImpEngineModule::World::Update()
 {
-	for (Entity* ent : entities)
+	for (Entity* ent : m_entities)
 	{
 		ent->Update();
 	}

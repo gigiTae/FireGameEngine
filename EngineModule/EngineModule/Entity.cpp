@@ -2,52 +2,48 @@
 #include "Entity.h"
 #include "Component.h"
 
-EngineModule::Entity::Entity(World* world, size_t id)
-	:world(world), id(id), state(EntityState::ACTIVE),
-	name("Entity" + std::to_string(id))
+ImpEngineModule::Entity::Entity(World* world, size_t id)
+	:m_world(world), m_id(id), m_state(EntityState::ACTIVE),
+	m_name("Entity" + std::to_string(id))
 {}
 
-EngineModule::Entity::~Entity()
+ImpEngineModule::Entity::~Entity()
 {}
 
-void EngineModule::Entity::DestroyAllComponents()
+void ImpEngineModule::Entity::DestroyAllComponents()
 {
-	for (auto& iter : components)
+	for (auto& iter : m_components)
 	{
 		iter.second->UnInitialize();
 		delete iter.second;
 	}
 
-	components.clear();
+	m_components.clear();
 }
 
-void EngineModule::Entity::DestroyComponent(TypeIndex index)
+void ImpEngineModule::Entity::DestroyComponent(TypeIndex index)
 {
-	auto iter = components.find(index);
+	auto iter = m_components.find(index);
 
-	if (iter != components.end())
+	if (iter != m_components.end())
 	{
 		Component* component = iter->second;
 		component->UnInitialize();
 		delete component;
-
-		// TODO :: Remove Call Back? 
 	}
-
-
 }
 
-void EngineModule::Entity::Start()
+void ImpEngineModule::Entity::Start()
 {
-	for (auto& iter : components)
+	for (auto& iter : m_components)
 	{
 		iter.second->Start();
 	}
 }
 
-void EngineModule::Entity::Update()
+void ImpEngineModule::Entity::Update()
 {
-	for (auto& iter : components)
+	for (auto& iter : m_components)
 	{
 		Component* comp = iter.second;
 
@@ -58,11 +54,11 @@ void EngineModule::Entity::Update()
 	}
 }
 
-EngineModule::Component* EngineModule::Entity::GetComponent(TypeIndex index)
+ImpEngineModule::Component* ImpEngineModule::Entity::GetComponent(TypeIndex index)
 {
-	auto iter = components.find(index);
+	auto iter = m_components.find(index);
 
-	if (iter != components.end())
+	if (iter != m_components.end())
 	{
 		return iter->second;
 	}

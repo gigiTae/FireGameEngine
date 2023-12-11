@@ -11,6 +11,7 @@ namespace Fire
 		{
 			bool isMain = true;
 			float cameraSpeed = 10.f;
+			float sensitivity = 50.f;
 		};
 	}
 }
