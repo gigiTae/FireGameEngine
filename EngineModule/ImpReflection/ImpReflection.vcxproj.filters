@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="header">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="source\00.Define">
+      <UniqueIdentifier>{af45e184-9e0f-41ee-b8aa-b0843a8b0745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\00.Define">
+      <UniqueIdentifier>{96f3364c-70b8-4594-ab5c-efd7b487316d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\01.Type">
+      <UniqueIdentifier>{95d2e47b-5347-41cc-91c0-c48f7785ae0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\01.Type">
+      <UniqueIdentifier>{63900399-7fa4-4d7f-9a1c-5d482dfd1c7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\02.Variant">
+      <UniqueIdentifier>{3fcc7e54-8ae6-46af-9477-2bb02d2b65b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\02.Variant">
+      <UniqueIdentifier>{b44bc907-d3bd-4785-b597-bdbef8be93d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImpReflectionHeader.h" />
+    <ClInclude Include="ImpReflectionPCH.h" />
+    <ClInclude Include="Type.h">
+      <Filter>header\01.Type</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseVariant.h">
+      <Filter>header\02.Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="Variant.h">
+      <Filter>header\02.Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeCategoryEnumClass.h">
+      <Filter>header\00.Define</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ImpReflectionPCH.cpp">
+      <Filter>source\00.Define</Filter>
+    </ClCompile>
+    <ClCompile Include="Type.cpp">
+      <Filter>source\01.Type</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseVariant.cpp">
+      <Filter>source\02.Variant</Filter>
+    </ClCompile>
+    <ClCompile Include="Variant.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -51,6 +51,12 @@
     <Filter Include="source\01.EntityComponentSystem\05.System">
       <UniqueIdentifier>{800a9a4c-02ad-4d0f-a891-3b0f0401fd82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="header\02.Manager">
+      <UniqueIdentifier>{2341bb05-8c97-4a83-80e0-d07e0d324bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\02.Manager">
+      <UniqueIdentifier>{349f35f4-5980-44e4-964c-c6ed1c4348cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h">
@@ -96,6 +102,15 @@
     </ClInclude>
     <ClInclude Include="System.h">
       <Filter>header\01.EntityComponentSystem\05.System</Filter>
+    </ClInclude>
+    <ClInclude Include="InputEnumClass.h">
+      <Filter>header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>header\02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>header\02.Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +158,12 @@
     </ClCompile>
     <ClCompile Include="System.cpp">
       <Filter>source\01.EntityComponentSystem\05.System</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>source\02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>source\02.Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineModule", "EngineModul
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{88AC9A23-17F2-4862-BAEE-955B0BABA858}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImpReflection", "ImpReflection\ImpReflection.vcxproj", "{811D721D-E9CA-4C14-A941-622532F2E6AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{88AC9A23-17F2-4862-BAEE-955B0BABA858}.Release|x64.Build.0 = Release|x64
 		{88AC9A23-17F2-4862-BAEE-955B0BABA858}.Release|x86.ActiveCfg = Release|Win32
 		{88AC9A23-17F2-4862-BAEE-955B0BABA858}.Release|x86.Build.0 = Release|Win32
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Debug|x64.ActiveCfg = Debug|x64
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Debug|x64.Build.0 = Debug|x64
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Debug|x86.ActiveCfg = Debug|Win32
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Debug|x86.Build.0 = Debug|Win32
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Release|x64.ActiveCfg = Release|x64
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Release|x64.Build.0 = Release|x64
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Release|x86.ActiveCfg = Release|Win32
+		{811D721D-E9CA-4C14-A941-622532F2E6AA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
