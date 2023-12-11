@@ -108,8 +108,9 @@ namespace ImpEngineModule
 		}
 
 		// 가변인자 템플릿을 사용한 생성자
-		Component* component = new T(args...);
+		T* component = new T(args...);
 		component->Set(GetWorld(), this);
+
 		_components.insert(make_pair(index, component));
 
 		return component;

@@ -1,11 +1,11 @@
 #include "EngineModulePCH.h"
 #include "World.h"
 #include "Entity.h"
+#include "System.h"
 
 ImpEngineModule::World::World()
-	:_lastEntityID(0) ,_entities()
+	:_lastEntityID(0) ,_entities{}, _systems{}
 {
-
 }
 
 ImpEngineModule::World::~World()
@@ -50,6 +50,14 @@ void ImpEngineModule::World::DestroyEntity(Entity* ent, bool immediate /*= false
 		_entities.erase(std::remove(_entities.begin(), _entities.end(), ent), _entities.end());
 		delete ent;
 	}
+}
+
+ImpEngineModule::Entity* ImpEngineModule::World::GetByIndex(size_t index) const
+{
+	if (_entities.size() <= index)
+		return nullptr;
+
+	return _entities[index];
 }
 
 void ImpEngineModule::World::DestroyEntity(size_t id, bool immediate /*= false*/)
@@ -114,5 +122,49 @@ void ImpEngineModule::World::Update(float dt)
 	for (Entity* ent : _entities)
 	{
 		ent->Update(dt);
+	}
+
+	for (System* system : _systems)
+	{
+		system->Update(this, dt);
+	}
+}
+
+void ImpEngineModule::World::RegisterSystem(System* system)
+{
+	// 중복체크
+	for (System* _system : _systems)
+	{
+		if (_system == system)
+			return;
+	}
+
+	_systems.push_back(system);
+}
+
+void ImpEngineModule::World::UnregisterSystem(System* system)
+{
+	_systems.erase(std::remove(_systems.begin(), _systems.end(), system), _systems.end());
+}
+
+void ImpEngineModule::World::DisableSystem(System* system)
+{
+	for (System* _system : _systems)
+	{
+		if (system == _system)
+		{
+			_system->_isEnable = false;
+		}
+	}
+}
+
+void ImpEngineModule::World::EnableSystem(System* system)
+{
+	for (System* _system : _systems)
+	{
+		if (system == _system)
+		{
+			_system->_isEnable = true;
+		}
 	}
 }

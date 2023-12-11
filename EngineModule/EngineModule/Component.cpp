@@ -3,7 +3,7 @@
 
 
 ImpEngineModule::Component::Component()
-	:_world(nullptr),_entity(nullptr),_isActive(false)
+	:_world(nullptr),_entity(nullptr),_isActive(true)
 {}
 
 ImpEngineModule::Component::~Component()

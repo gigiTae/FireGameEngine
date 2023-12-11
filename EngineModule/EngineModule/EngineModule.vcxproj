@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseEntity.h" />
+    <ClInclude Include="BaseSystem.h" />
     <ClInclude Include="BaseWorld.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentHandle.h" />
@@ -154,12 +155,14 @@
     <ClInclude Include="EntityComponentView.h" />
     <ClInclude Include="EntityIterator.h" />
     <ClInclude Include="EntityView.h" />
+    <ClInclude Include="System.h" />
     <ClInclude Include="TypeIndex.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp" />
     <ClCompile Include="BaseEntity.cpp" />
+    <ClCompile Include="BaseSystem.cpp" />
     <ClCompile Include="BaseWorld.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentHandle.cpp" />
@@ -174,6 +177,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="System.cpp" />
     <ClCompile Include="TypeIndex.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

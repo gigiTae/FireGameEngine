@@ -11,6 +11,8 @@ namespace ImpEngineModule
     /// </summary>
     class Component :public BaseComponent
     {
+        friend class Entity;
+
     public:
         Component();
         ~Component() override;

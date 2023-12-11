@@ -2,6 +2,8 @@
 
 namespace ImpEngineModule
 {
+	class Entity;
+	
 	namespace Internal
 	{
 		template<typename... Types>
@@ -40,11 +42,13 @@ namespace ImpEngineModule
 			const EntityComponentIterator<Types...>& last)
 			:_firstIterator(first),_lastIterator(last)
 		{
-
-
-
-
-
+			if (_firstIterator.Get() == nullptr || 
+				(_firstIterator.Get()->GetState() != ImpEngineModule::Entity::EntityState::Active &&
+				!_firstIterator.IsIncludeToBeDestroyed()) ||
+				!_firstIterator.Get()->template HasComponent<Types...>())
+			{
+				++_firstIterator;
+			}
 		}
 		
 	}

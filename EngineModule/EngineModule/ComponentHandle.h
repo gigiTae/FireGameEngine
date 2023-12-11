@@ -4,8 +4,6 @@
 
 namespace ImpEngineModule
 {	
-	namespace Internal
-	{
 		template <typename T>
 		class ComponentHandle
 		{
@@ -20,6 +18,4 @@ namespace ImpEngineModule
 		private:
 			T* _component;
 		};
-
-	}
 }

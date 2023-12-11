@@ -102,19 +102,27 @@ namespace ImpEngineModule
 			World* world, size_t index, bool isEnd, bool isIncldueToBeDestroyed)
 			:_world(world), _index(index), _isEnd(isEnd), _isIncludeToBeDestroyed(isIncldueToBeDestroyed)
 		{
-
+			if (_index >= _world->GetSize())
+			{
+				_isEnd = true;
+			}
 		}
 
 		template <typename...Types>
 		Entity* ImpEngineModule::Internal::EntityComponentIterator<Types...>::Get() const
 		{
+			if (IsEnd())
+			{
+				return nullptr;
+			}
 
+			return _world->GetByIndex(_index);
 		}
 
 		template <typename... Types>
 		bool ImpEngineModule::Internal::EntityComponentIterator<Types...>::IsEnd() const
 		{
-
+			return _index >= _world->GetSize() || _isEnd;
 		}
 
 	}
