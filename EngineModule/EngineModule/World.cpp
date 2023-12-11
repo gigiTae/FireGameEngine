@@ -3,7 +3,7 @@
 #include "Entity.h"
 
 ImpEngineModule::World::World()
-	:m_lastEntityID(0) ,m_entities()
+	:_lastEntityID(0) ,_entities()
 {
 
 }
@@ -16,10 +16,10 @@ ImpEngineModule::World::~World()
 ImpEngineModule::Entity* ImpEngineModule::World::CreateEntity()
 {
 	/// TODO : 나중에는 오브젝트 풀을 사용해서 관리한다.
+	++_lastEntityID;
+	Entity* ent = new Entity(this, _lastEntityID);
 
-	Entity* ent = new Entity(this, m_lastEntityID);
-	++m_lastEntityID;
-	m_entities.push_back(ent);
+	_entities.push_back(ent);
 
 	return ent;
 }
@@ -31,30 +31,30 @@ void ImpEngineModule::World::DestroyEntity(Entity* ent, bool immediate /*= false
 		return; 
 	}
 
-	if (ent->m_state == Entity::EntityState::TO_BE_DESTROYED)
+	if (ent->_state == Entity::EntityState::ToBeDestroyed)
 	{
 		if (immediate)
 		{
-			m_entities.erase(std::remove(m_entities.begin(), m_entities.end(), ent), m_entities.end());
+			_entities.erase(std::remove(_entities.begin(), _entities.end(), ent), _entities.end());
 			delete ent;
 		}
 
 		return;
 	}
 
-	ent->m_state = Entity::EntityState::TO_BE_DESTROYED;
+	ent->_state = Entity::EntityState::ToBeDestroyed;
 	// TODO:: Destroy call back
 	
 	if (immediate)
 	{
-		m_entities.erase(std::remove(m_entities.begin(), m_entities.end(), ent), m_entities.end());
+		_entities.erase(std::remove(_entities.begin(), _entities.end(), ent), _entities.end());
 		delete ent;
 	}
 }
 
 void ImpEngineModule::World::DestroyEntity(size_t id, bool immediate /*= false*/)
 {
-	if (id > m_lastEntityID)
+	if (id >= _lastEntityID)
 	{
 		return;
 	}
@@ -66,9 +66,9 @@ void ImpEngineModule::World::DestroyEntity(size_t id, bool immediate /*= false*/
 
 ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(const std::string& name) const
 {
-	for (Entity* ent : m_entities)
+	for (Entity* ent : _entities)
 	{
-		if (name == ent->m_name)
+		if (name == ent->_name)
 		{
 			return ent;
 		}
@@ -78,9 +78,9 @@ ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(const std::string& na
 
 ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(size_t id) const
 {
-	for (Entity* ent : m_entities)
+	for (Entity* ent : _entities)
 	{
-		if (id == ent->m_id)
+		if (id == ent->_id)
 		{
 			return ent;
 		}
@@ -90,29 +90,29 @@ ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(size_t id) const
 
 void ImpEngineModule::World::Reset()
 {
-	m_lastEntityID = 0;
+	_lastEntityID = 0;
 
-	for (Entity* ent : m_entities)
+	for (Entity* ent : _entities)
 	{
 		ent->DestroyAllComponents();
 		delete ent;
 	}
 
-	m_entities.clear();
+	_entities.clear();
 }
 
 void ImpEngineModule::World::Start()
 {
-	for (Entity* ent : m_entities)
+	for (Entity* ent : _entities)
 	{
 		ent->Start();
 	}
 }
 
-void ImpEngineModule::World::Update()
+void ImpEngineModule::World::Update(float dt)
 {
-	for (Entity* ent : m_entities)
+	for (Entity* ent : _entities)
 	{
-		ent->Update();
+		ent->Update(dt);
 	}
 }

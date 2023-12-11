@@ -1,6 +1,9 @@
 #pragma once
 #include "BaseWorld.h"
 
+#include "ComponentHandle.h"
+#include "EntityComponentView.h"
+
 namespace ImpEngineModule
 {
 	class Entity;
@@ -19,6 +22,8 @@ namespace ImpEngineModule
 		World& operator =(const World& other) = delete;
 
 	public:
+
+#pragma region Enitty
 		/// Entity 생성
 		Entity* CreateEntity();
 
@@ -34,6 +39,28 @@ namespace ImpEngineModule
 		/// Entity 이름으로 탐색
 		Entity* GetEntity(const std::string& name)const;
 
+		/// LastEntity ID 획득
+		size_t GetLastEntityID()const { return _lastEntityID; }
+
+		/// enitity size
+		size_t GetSize()const { return _entities.size(); }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <typeparam name="...Types">쿼리할 컴포넌트 타입들</typeparam>
+		/// <param name="viewFunc">람다함수</param>
+		/// <param name="isIncludeToBeDestroyed">삭제예정인 Entity 포함여부</param>
+		template<typename... Types>
+		void Each(typename std::common_type<std::function<void(Entity*, Internal::ComponentHandle<Types>...)>>::type viewFunc,
+			bool isIncludeToBeDestroyed = false);
+
+
+		template<typename... Types>
+		Internal::EntityComponentView<Types...> Each(bool isIncludeToBeDestroyed);
+
+#pragma endregion Entity
+
 		/// World Reset
 		void Reset() override;
 
@@ -41,15 +68,36 @@ namespace ImpEngineModule
 		void Start() override;
 
 		/// 매 프레임 호출 
-		void Update() override;
+		void Update(float dt) override;
 
-		/// LastEntity ID 획득
-		size_t GetLastEntityID()const { return m_lastEntityID; }
 
 	private:
-		size_t m_lastEntityID = 0;
-		std::vector<Entity*> m_entities;
-
+		size_t _lastEntityID = 0;
+		std::vector<Entity*> _entities;
 	};
+
+	template<typename... Types>
+	Internal::EntityComponentView<Types...>
+		ImpEngineModule::World::Each(bool isIncludeToBeDestroyed)
+	{
+		ImpEngineModule::Internal::EntityComponentIterator<Types...> 
+			first(this, 0, false, isIncludeToBeDestroyed);
+
+		ImpEngineModule::Internal::EntityComponentIterator<Types...>
+			last(this, GetSize(), true, isIncludeToBeDestroyed);
+
+		return Internal::EntityComponentView<Types...>(first, last);
+	}
+
+	template<typename...Types>
+	void ImpEngineModule::World::Each(typename std::common_type<std::function<void(Entity*, Internal::ComponentHandle<Types>...)>>::type viewFunc,
+		bool isIncludeToBeDestroyed /*= false*/)
+	{
+		for (Entity* ent : Each<Types...>(isIncludeToBeDestroyed))
+		{
+			viewFunc(ent, ent->template GetComponent<Types>()...);
+		}
+	}
+
 }
 

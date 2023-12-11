@@ -9,6 +9,7 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <functional>
 
 /// RTTI
 #include <typeindex>

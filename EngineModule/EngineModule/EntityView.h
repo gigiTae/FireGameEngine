@@ -4,20 +4,25 @@
 
 namespace ImpEngineModule
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	class EntityView
+	namespace Internal
 	{
-	public:
-		EntityView(const EntityIterator& first, const EntityIterator& last);
+		/// <summary>
+		/// range-for를 위한 EntityView 클래스
+		/// </summary>
+		class EntityView
+		{
+		public:
+			EntityView(const EntityIterator& first, const EntityIterator& last);
 
-		const EntityIterator& begin() const { return m_firstIter; }
-		const EntityIterator& end() const { return m_lastIter; }
+			/// firstIterator 반환
+			const EntityIterator& begin() const { return _firstIterator; }
+			/// lastIterator 반환
+			const EntityIterator& end() const { return _lastIterator; }
 
-	private:
-		EntityIterator m_firstIter;
-		EntityIterator m_lastIter;
-	};
+		private:
+			EntityIterator _firstIterator;
+			EntityIterator _lastIterator;
+		};
 
+	}
 }

@@ -18,7 +18,7 @@ namespace ImpEngineModule
 
 		virtual void Start() abstract;
 
-		virtual void Update() abstract;
+		virtual void Update(float dt) abstract;
 	};
 
 }

@@ -33,10 +33,10 @@
     <Filter Include="Public\03.Component">
       <UniqueIdentifier>{87237ce0-0748-42f9-a486-eae50056419d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Private\04.Manager">
-      <UniqueIdentifier>{1cfd4437-efd2-40fd-b647-261e2151acff}</UniqueIdentifier>
+    <Filter Include="Private\04.Internal">
+      <UniqueIdentifier>{d5f1a3d0-7558-4400-8189-970e71360c31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Public\04.Manager">
+    <Filter Include="Public\04.Internal">
       <UniqueIdentifier>{3e8fe2e4-a57e-4305-ad9d-578c1489d950}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -65,19 +65,22 @@
       <Filter>Public\00.Define</Filter>
     </ClInclude>
     <ClInclude Include="EntityView.h">
-      <Filter>Public\02.Entity</Filter>
+      <Filter>Public\04.Internal</Filter>
     </ClInclude>
     <ClInclude Include="EntityIterator.h">
-      <Filter>Public\02.Entity</Filter>
+      <Filter>Public\04.Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityComponentView.h">
+      <Filter>Public\04.Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityComponentIterator.h">
+      <Filter>Public\04.Internal</Filter>
     </ClInclude>
     <ClInclude Include="ComponentHandle.h">
-      <Filter>Public\03.Component</Filter>
+      <Filter>Public\04.Internal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
     <ClCompile Include="BaseComponent.cpp">
       <Filter>Private\03.Component</Filter>
     </ClCompile>
@@ -100,13 +103,22 @@
       <Filter>Private\00.Define</Filter>
     </ClCompile>
     <ClCompile Include="EntityView.cpp">
-      <Filter>Private\02.Entity</Filter>
+      <Filter>Private\04.Internal</Filter>
     </ClCompile>
     <ClCompile Include="EntityIterator.cpp">
-      <Filter>Private\02.Entity</Filter>
+      <Filter>Private\04.Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityComponentView.cpp">
+      <Filter>Private\04.Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityComponentIterator.cpp">
+      <Filter>Private\04.Internal</Filter>
     </ClCompile>
     <ClCompile Include="ComponentHandle.cpp">
-      <Filter>Private\03.Component</Filter>
+      <Filter>Private\04.Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Private\00.Define</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

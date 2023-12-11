@@ -1,48 +1,75 @@
 #include "EngineModulePCH.h"
 #include "EntityIterator.h"
 #include "World.h"
+#include "Entity.h"
 
-ImpEngineModule::EntityIterator::EntityIterator(ImpEngineModule::World* world,
+ImpEngineModule::Internal::EntityIterator::EntityIterator(ImpEngineModule::World* world,
 	size_t index, bool isEnd, bool isIncludeToBeDestroyed)
-	:m_world(world),m_index(index),m_isEnd(isEnd),
-	m_isIncludeToBeDestroyed(isIncludeToBeDestroyed)
+	:_world(world),_index(index),_isEnd(isEnd),
+	_isIncludeToBeDestroyed(isIncludeToBeDestroyed)
 {
-	if (m_index >= world->GetLastEntityID())
+	if (_index >= world->GetSize())
 	{
-		m_isEnd = true;
+		_isEnd = true;
 	}
 }
 
-
-ImpEngineModule::EntityIterator& ImpEngineModule::EntityIterator::operator++()
-{
-	++m_index;
-
-	
-	return *this;
-}
-
-ImpEngineModule::Entity* ImpEngineModule::EntityIterator::Get() const
+ImpEngineModule::Entity* ImpEngineModule::Internal::EntityIterator::Get() const
 {
 	if (IsEnd())
 		return nullptr;
 
-	return m_world->GetEntity(m_index);
+	return _world->GetEntity(_index);
 }
 
-bool ImpEngineModule::EntityIterator::IsEnd() const
+bool ImpEngineModule::Internal::EntityIterator::IsEnd() const
 {
-	return m_isEnd || m_index >= m_world->GetLastEntityID();
+	return _isEnd || _index >= _world->GetSize();
 }
 
-bool ImpEngineModule::EntityIterator::operator==(const EntityIterator& other)
+ImpEngineModule::Internal::EntityIterator& ImpEngineModule::Internal::EntityIterator::operator++()
 {
-	if (m_world != other.m_world)
+	++_index;
+	while (_index < _world->GetSize() && (Get() == nullptr ||
+		(Get()->GetState() != Entity::EntityState::Active && !_isIncludeToBeDestroyed)))
+	{
+		++_index;
+	}
+
+	if (_index >= _world->GetSize())
+	{
+		_isEnd = true;
+	}
+
+	return *this;
+}
+
+bool ImpEngineModule::Internal::EntityIterator::operator==(const EntityIterator& other) const
+{
+	if (_world != other._world)
 	{
 		return false;
 	}
 
-	
-	
+	if (IsEnd())
+	{
+		return other.IsEnd();
+	}
 
+	return _index == other._index;
+}
+
+bool ImpEngineModule::Internal::EntityIterator::operator!=(const EntityIterator& other) const
+{
+	if (_world != other._world)
+	{
+		return true;
+	}
+
+	if (IsEnd())
+	{
+		return !other.IsEnd();
+	}
+
+	return _index == other._index;
 }
