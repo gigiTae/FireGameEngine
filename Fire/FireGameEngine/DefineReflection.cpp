@@ -8,6 +8,7 @@ REFLECT_CHECK(Fire::Component::Name)
 BEGIN_REFLECTION(Fire::Component::Name)
 MEMBER_REFLECTION(name)
 MEMBER_REFLECTION(category)
+MEMBER_REFLECTION(vecI)
 END_REFLECTION()
 
 #endif

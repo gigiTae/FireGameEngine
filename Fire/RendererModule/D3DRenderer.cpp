@@ -65,7 +65,7 @@ void RendererModule::D3DRenderer::Initialize(HWND hWnd, int screenWidth, int scr
 	/// 매니져 초기화
 	m_resourceManager->Initialize(m_d3dDevice.Get());
 	m_textManager->Initialize(m_d3dDevice.Get(), m_rasterizerState[1].Get(), m_depthStencilState.Get());
-	pipeline->Initialize();
+	//pipeline->Initialize();
 
 	/// 임시
 	InitializeObject();

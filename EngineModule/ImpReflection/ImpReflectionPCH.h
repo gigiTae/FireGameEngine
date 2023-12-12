@@ -10,6 +10,9 @@
 #include <unordered_map>
 #include <typeindex>
 #include <typeinfo>
+#include <codecvt>
+#include <typeindex>
+#include <typeinfo>
 
 /// Reflection
 #include "TypeCategoryEnumClass.h"

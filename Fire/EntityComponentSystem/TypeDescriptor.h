@@ -27,7 +27,6 @@ namespace Fire
 			TypeDescriptor(std::string_view name, size_t size, TYPE_CATEGORY type)
 				:name{ name }, size{ size } ,category(type)
 			{
-				type;
 			}
 
 			virtual ~TypeDescriptor() {}

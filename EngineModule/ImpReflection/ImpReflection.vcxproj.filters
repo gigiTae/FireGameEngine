@@ -21,27 +21,60 @@
     <Filter Include="source\01.Type">
       <UniqueIdentifier>{63900399-7fa4-4d7f-9a1c-5d482dfd1c7a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="header\02.Variant">
-      <UniqueIdentifier>{3fcc7e54-8ae6-46af-9477-2bb02d2b65b2}</UniqueIdentifier>
+    <Filter Include="source\02.TypeConverter">
+      <UniqueIdentifier>{e8f62b28-eb86-4c1c-83c2-86e1cf2d80d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\02.Variant">
-      <UniqueIdentifier>{b44bc907-d3bd-4785-b597-bdbef8be93d7}</UniqueIdentifier>
+    <Filter Include="header\02.TypeConverter">
+      <UniqueIdentifier>{783ae2eb-0a6d-4703-9fbc-8e96d01390a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\03.TypeManager">
+      <UniqueIdentifier>{3ca41bbd-7bb5-4636-9586-b55824e46e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\03.TypeManager">
+      <UniqueIdentifier>{8c8948b8-519f-444b-83b1-77d96ba38f42}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImpReflectionHeader.h" />
     <ClInclude Include="ImpReflectionPCH.h" />
+    <ClInclude Include="TypeCategoryEnumClass.h">
+      <Filter>header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveType.h">
+      <Filter>header\01.Type</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveFunciton.h">
+      <Filter>header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumClassType.h">
+      <Filter>header\01.Type</Filter>
+    </ClInclude>
+    <ClInclude Include="StringType.h">
+      <Filter>header\01.Type</Filter>
+    </ClInclude>
     <ClInclude Include="Type.h">
       <Filter>header\01.Type</Filter>
     </ClInclude>
-    <ClInclude Include="BaseVariant.h">
-      <Filter>header\02.Variant</Filter>
+    <ClInclude Include="BaseTypeConverter.h">
+      <Filter>header\02.TypeConverter</Filter>
     </ClInclude>
-    <ClInclude Include="Variant.h">
-      <Filter>header\02.Variant</Filter>
+    <ClInclude Include="TypeConverter.h">
+      <Filter>header\02.TypeConverter</Filter>
     </ClInclude>
-    <ClInclude Include="TypeCategoryEnumClass.h">
+    <ClInclude Include="ClassType.h">
+      <Filter>header\01.Type</Filter>
+    </ClInclude>
+    <ClInclude Include="ReflectionMacro.h">
       <Filter>header\00.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpReflectionHeader.h" />
+    <ClInclude Include="Meta.h">
+      <Filter>header\02.TypeConverter</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeManager.h">
+      <Filter>header\03.TypeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorType.h">
+      <Filter>header\01.Type</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,11 +84,32 @@
     <ClCompile Include="Type.cpp">
       <Filter>source\01.Type</Filter>
     </ClCompile>
-    <ClCompile Include="BaseVariant.cpp">
-      <Filter>source\02.Variant</Filter>
+    <ClCompile Include="PrimitiveType.cpp">
+      <Filter>source\01.Type</Filter>
     </ClCompile>
-    <ClCompile Include="Variant.cpp">
-      <Filter>source</Filter>
+    <ClCompile Include="EnumClassType.cpp">
+      <Filter>source\01.Type</Filter>
+    </ClCompile>
+    <ClCompile Include="StringType.cpp">
+      <Filter>source\01.Type</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseTypeConverter.cpp">
+      <Filter>source\02.TypeConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeConverter.cpp">
+      <Filter>source\02.TypeConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="Meta.cpp">
+      <Filter>source\02.TypeConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassType.cpp">
+      <Filter>source\01.Type</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeManager.cpp">
+      <Filter>source\03.TypeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorType.cpp">
+      <Filter>source\01.Type</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

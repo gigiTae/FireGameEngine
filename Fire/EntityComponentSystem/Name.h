@@ -13,6 +13,7 @@ namespace Fire
 		{
 			std::string name;
 			OBJECT_TYPE category;
+			std::vector<int> vecI;
 
 			DECLARE_FREIND_WITH_REFECTION(Name)
 		};

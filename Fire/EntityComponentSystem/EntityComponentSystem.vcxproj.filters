@@ -1,50 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ECS">
-      <UniqueIdentifier>{417b3372-75b7-4383-8b9f-0848af086662}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Source">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ECS\Source\01.World">
-      <UniqueIdentifier>{5e06e4f4-0f47-4f1c-bb5c-2b25fe77a2ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Source\02.Entity">
-      <UniqueIdentifier>{d4346fe7-e32a-4aa5-91ce-dfc74a07d5ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Source\03.Component">
-      <UniqueIdentifier>{174a6f00-ff05-4389-8441-f272d8b8f98e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Source\04.System">
-      <UniqueIdentifier>{b8b3d014-df1a-43f7-bba3-8ff2c27c6c66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Source\05.Events">
-      <UniqueIdentifier>{3733a08c-907b-4acd-8a07-7dc8e3001ce2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Header">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="ECS\Header\01.World">
-      <UniqueIdentifier>{945f105b-b9ea-4e97-a08a-8a33a7a29bc2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Header\02.Entity">
-      <UniqueIdentifier>{42f914c4-4fea-4ff9-939a-3ef9d3b24f98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Header\03.Component">
-      <UniqueIdentifier>{a968e919-5752-4865-a818-84f59172901e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Header\04.System">
-      <UniqueIdentifier>{a07b3234-1b5e-4c40-9acc-c8d251d0d726}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Header\00.Define">
-      <UniqueIdentifier>{78eb67f7-7cda-4306-9e25-9c48e565c61c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\Header\05.Events">
-      <UniqueIdentifier>{c92dd641-f661-44bf-bdf8-7482d834eacb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="BaseComponent">
       <UniqueIdentifier>{16c57262-52f0-43df-9949-cd6697b9e087}</UniqueIdentifier>
     </Filter>
@@ -95,6 +51,50 @@
     </Filter>
     <Filter Include="Reflection\header\01.TypeDescriptor">
       <UniqueIdentifier>{2d968e52-fd59-4387-9852-df13f7fa9892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{417b3372-75b7-4383-8b9f-0848af086662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ECS\Source\01.World">
+      <UniqueIdentifier>{5e06e4f4-0f47-4f1c-bb5c-2b25fe77a2ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Source\02.Entity">
+      <UniqueIdentifier>{d4346fe7-e32a-4aa5-91ce-dfc74a07d5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Source\03.Component">
+      <UniqueIdentifier>{174a6f00-ff05-4389-8441-f272d8b8f98e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Source\04.System">
+      <UniqueIdentifier>{b8b3d014-df1a-43f7-bba3-8ff2c27c6c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Source\05.Events">
+      <UniqueIdentifier>{3733a08c-907b-4acd-8a07-7dc8e3001ce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Header">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="ECS\Header\01.World">
+      <UniqueIdentifier>{945f105b-b9ea-4e97-a08a-8a33a7a29bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Header\02.Entity">
+      <UniqueIdentifier>{42f914c4-4fea-4ff9-939a-3ef9d3b24f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Header\03.Component">
+      <UniqueIdentifier>{a968e919-5752-4865-a818-84f59172901e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Header\04.System">
+      <UniqueIdentifier>{a07b3234-1b5e-4c40-9acc-c8d251d0d726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Header\00.Define">
+      <UniqueIdentifier>{78eb67f7-7cda-4306-9e25-9c48e565c61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Header\05.Events">
+      <UniqueIdentifier>{c92dd641-f661-44bf-bdf8-7482d834eacb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
