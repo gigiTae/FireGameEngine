@@ -1,3 +1,4 @@
+#include "Meta.h"
 
 #pragma once
 namespace ImpReflection
@@ -17,7 +18,7 @@ namespace ImpReflection
 		};
 
 #pragma region Singleton
-	
+
 	public:
 		static TypeManager* GetInstance() { TypeManager mgr; return &mgr; }
 	private:
@@ -28,6 +29,7 @@ namespace ImpReflection
 
 	public:
 		/// Type이름으로 TypeIndex를 찾는 함수
+		/// 찾지못한 경우 Exception type_index를 반환한다.
 		std::type_index GetTypeIndex(const std::string& name)const;
 
 		/// Type이름으로 Type을 찾는 함수
@@ -36,9 +38,13 @@ namespace ImpReflection
 		/// TypeIndex로 Type을 찾는 함수
 		ImpReflection::Type* GetType(std::type_index index)const;
 
+		/// TypeIndex로 Type이름 찾는 함수
+		const std::string& GetName(std::type_index index)const;
 
 	private:
 		std::unordered_map<std::string, TypeInfomation> _infomations;
+
+		template <typename T> friend class ImpReflection::Meta;
 	};
 
 }

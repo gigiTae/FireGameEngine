@@ -16,5 +16,6 @@
 
 /// Reflection
 #include "TypeCategoryEnumClass.h"
+#include "Execption.h"
 
 #endif //PCH_H

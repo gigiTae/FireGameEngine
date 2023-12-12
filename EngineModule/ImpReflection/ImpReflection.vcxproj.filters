@@ -1,16 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="source">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="header">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="source\00.Define">
-      <UniqueIdentifier>{af45e184-9e0f-41ee-b8aa-b0843a8b0745}</UniqueIdentifier>
     </Filter>
     <Filter Include="header\00.Define">
       <UniqueIdentifier>{96f3364c-70b8-4594-ab5c-efd7b487316d}</UniqueIdentifier>
@@ -18,17 +11,24 @@
     <Filter Include="header\01.Type">
       <UniqueIdentifier>{95d2e47b-5347-41cc-91c0-c48f7785ae0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\01.Type">
-      <UniqueIdentifier>{63900399-7fa4-4d7f-9a1c-5d482dfd1c7a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\02.TypeConverter">
-      <UniqueIdentifier>{e8f62b28-eb86-4c1c-83c2-86e1cf2d80d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="header\02.TypeConverter">
       <UniqueIdentifier>{783ae2eb-0a6d-4703-9fbc-8e96d01390a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="header\03.TypeManager">
       <UniqueIdentifier>{3ca41bbd-7bb5-4636-9586-b55824e46e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="source\00.Define">
+      <UniqueIdentifier>{af45e184-9e0f-41ee-b8aa-b0843a8b0745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\01.Type">
+      <UniqueIdentifier>{63900399-7fa4-4d7f-9a1c-5d482dfd1c7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\02.TypeConverter">
+      <UniqueIdentifier>{e8f62b28-eb86-4c1c-83c2-86e1cf2d80d1}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\03.TypeManager">
       <UniqueIdentifier>{8c8948b8-519f-444b-83b1-77d96ba38f42}</UniqueIdentifier>
@@ -76,6 +76,9 @@
     <ClInclude Include="VectorType.h">
       <Filter>header\01.Type</Filter>
     </ClInclude>
+    <ClInclude Include="Execption.h">
+      <Filter>header\00.Define</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImpReflectionPCH.cpp">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="VectorType.cpp">
       <Filter>source\01.Type</Filter>
+    </ClCompile>
+    <ClCompile Include="Execption.cpp">
+      <Filter>source\00.Define</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

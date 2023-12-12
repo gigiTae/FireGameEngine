@@ -144,6 +144,7 @@
     <ClInclude Include="BaseTypeConverter.h" />
     <ClInclude Include="ClassType.h" />
     <ClInclude Include="EnumClassType.h" />
+    <ClInclude Include="Execption.h" />
     <ClInclude Include="ImpReflectionHeader.h" />
     <ClInclude Include="ImpReflectionPCH.h" />
     <ClInclude Include="Meta.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="BaseTypeConverter.cpp" />
     <ClCompile Include="ClassType.cpp" />
     <ClCompile Include="EnumClassType.cpp" />
+    <ClCompile Include="Execption.cpp" />
     <ClCompile Include="ImpReflectionPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
