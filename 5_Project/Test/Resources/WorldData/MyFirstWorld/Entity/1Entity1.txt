@@ -1,0 +1,11 @@
+Postion{
+  x = float{112}
+  y = float{2}
+  y = float{20}
+  data = std::string{이거는 저장하는 시스템이다.}
+  data2 = std::wstring{횰???? 쑲%퇨?? }
+  mius = std::unordered_map<std::string,std::string>{
+        [std::string{key}]std::string{value}
+        [std::string{key2}]std::string{tTime}
+    }
+}

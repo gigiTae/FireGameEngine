@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{0c4eccc9-fa25-4ea6-833b-a1e79a25387d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{b4bd8acd-e88f-4804-9afe-c89349228e91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Process">
+      <UniqueIdentifier>{957cd7a1-b24e-4aa4-ab51-014fa6ab7111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseWindow">
+      <UniqueIdentifier>{685495d8-663d-4de2-b545-8ecab70066ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{782ca0e7-e4dc-47e6-a90c-4a6a2547f958}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="Process.cpp">
+      <Filter>Process</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="Process.h">
+      <Filter>Process</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>BaseWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="개발일지.txt" />
+    <Text Include="할일.txt" />
+  </ItemGroup>
+</Project>

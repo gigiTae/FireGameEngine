@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="pch">
+      <UniqueIdentifier>{7ad1ce89-e094-4351-a6e5-454cafbda44c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{e6dc8610-f9a6-4f28-adc5-781e6065c5ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicsEngine">
+      <UniqueIdentifier>{20dad60d-1d34-4146-86d3-8c7a7ce2c478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX11">
+      <UniqueIdentifier>{c5cb6e96-47db-4772-b970-4c589834a66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{1ee1b389-75de-4c2b-aba0-310294f42871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Object">
+      <UniqueIdentifier>{47633421-fd57-4d0e-9e9a-ae4cd69e60bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Object\Mesh">
+      <UniqueIdentifier>{cb610ff1-eb19-4f45-bf3c-9e17222db1ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Temp">
+      <UniqueIdentifier>{b641b143-f2bc-4cb5-9108-45a888526516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Management">
+      <UniqueIdentifier>{6b46a59c-a853-49a1-82be-258a9fa8b1af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{90020fba-00f7-4410-8cda-3386291a7477}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpD3D11Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpCamera.h">
+      <Filter>Resource\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="IImpGraphicsEngine.h">
+      <Filter>GraphicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Resource\Object\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="IImp3DRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpGraphicsEngine.h">
+      <Filter>GraphicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpDevice.h">
+      <Filter>DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpRenderTarget.h">
+      <Filter>DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpRenderState.h">
+      <Filter>DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Resource\Object\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="IBuilder.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshObjectBuilder.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.h">
+      <Filter>Resource\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects.h">
+      <Filter>DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Resource\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshObject.h">
+      <Filter>Resource\Object\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpShader.h">
+      <Filter>DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildInfo.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Builder.h">
+      <Filter>Resource\Management</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpD3D11Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpCamera.cpp">
+      <Filter>Resource\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Resource\Object\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpGraphicsEngine.cpp">
+      <Filter>GraphicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpDevice.cpp">
+      <Filter>DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpRenderTarget.cpp">
+      <Filter>DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpRenderState.cpp">
+      <Filter>DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Resource\Object\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Resource\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Resource\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshObjectBuilder.cpp">
+      <Filter>Resource\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Resource\Management</Filter>
+    </ClCompile>
+    <ClCompile Include="IObject.cpp">
+      <Filter>Resource\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects.cpp">
+      <Filter>DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Resource\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshObject.cpp">
+      <Filter>Resource\Object\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpShader.cpp">
+      <Filter>DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="Builder.cpp">
+      <Filter>Resource\Management</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Resource\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>Resource\Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

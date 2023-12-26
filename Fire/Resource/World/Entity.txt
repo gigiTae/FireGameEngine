@@ -1,22 +1,28 @@
 Entity Serialize ID:1
 Fire::Component::Transform {
     position = Fire::Component::Vector3 {
-        x = float{102.000000}
-        y = float{103.000000}
-        z = float{140.000000}
+        x = float{2.725719}
+        y = float{26.762018}
+        z = float{-15.058721}
     }
     rotation = Fire::Component::Vector3 {
-        x = float{11.000000}
-        y = float{22.000000}
-        z = float{33.000000}
+        x = float{1.055468}
+        y = float{-0.399025}
+        z = float{0.000001}
     }
     scale = Fire::Component::Vector3 {
-        x = float{44.000000}
-        y = float{55.000000}
-        z = float{66.000000}
+        x = float{1.000000}
+        y = float{1.000000}
+        z = float{0.100000}
     }
 }
 Fire::Component::Name {
-    name = std::string{cccomponent}
-    category = OBJECT_TYPE{3}
+    name = std::string{component}
+    category = OBJECT_TYPE{0}
+    vecI = std::vector<int>{}
+}
+Fire::Component::Camera {
+    isMain = bool{1}
+    cameraSpeed = float{10.000000}
+    sensitivity = float{50.000000}
 }
