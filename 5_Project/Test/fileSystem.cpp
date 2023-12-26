@@ -42,7 +42,7 @@ int main()
 
 	//mgr.Initialize(L"dd", &world);
 
-	mgr.LoadWorld(L"MyFirstWorld");
+//	mgr.LoadWorld(L"MyFirstWorld");
 
 	Entity* ent =  world.GetByIndex(0);
 

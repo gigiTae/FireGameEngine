@@ -104,6 +104,7 @@ std::vector<std::filesystem::path> ImpEngineModule::PathManager::GetStartEntityL
 
 	std::vector<std::filesystem::path> startEntityList;
 
+
 	for (const auto& entry : std::filesystem::directory_iterator(startEntityListPath))
 	{
 		startEntityList.push_back(entry.path());

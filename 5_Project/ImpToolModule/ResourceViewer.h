@@ -17,10 +17,11 @@ namespace ImpToolModule
 		void Update();
 
 	private:
-		void EntityTabBar();
+		void ProjectTabBar();
 
 	public:
-		std::filesystem::path _entityPath;
+		std::filesystem::path _resourcesPath;
+		std::filesystem::path _currentPath;
 
 	};
 

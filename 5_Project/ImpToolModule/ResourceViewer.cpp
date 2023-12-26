@@ -13,8 +13,8 @@ ImpToolModule::ResourceViewer::~ResourceViewer()
 
 void ImpToolModule::ResourceViewer::Initalize()
 {
-	_entityPath = ImpEngineModule::PathManager::GetEntityDataPath();
-
+	_resourcesPath = ImpEngineModule::PathManager::GetResourcesPath();
+	_currentPath = ImpEngineModule::PathManager::GetResourcesPath();
 }
 
 void ImpToolModule::ResourceViewer::Update()
@@ -26,20 +26,14 @@ void ImpToolModule::ResourceViewer::Update()
 	{
 		if (ImGui::BeginTabBar("ResourceTapBar")) {
 			// 첫 번째 탭 시작
-			if (ImGui::BeginTabItem("Entity"))
+			if (ImGui::BeginTabItem("Project"))
 			{
-				EntityTabBar();
+				ProjectTabBar();
 				ImGui::EndTabItem();
 			}
 
 			// 두 번째 탭 시작
-			if (ImGui::BeginTabItem("FBX"))
-			{
-				ImGui::EndTabItem();
-			}
-
-			// 세 번째 탭 시작
-			if (ImGui::BeginTabItem("Sound"))
+			if (ImGui::BeginTabItem("Example"))
 			{
 				ImGui::EndTabItem();
 			}
@@ -54,17 +48,17 @@ void ImpToolModule::ResourceViewer::Update()
 
 }
 
-void ImpToolModule::ResourceViewer::EntityTabBar()
+void ImpToolModule::ResourceViewer::ProjectTabBar()
 {
 	using namespace ImpEngineModule;
 
-	auto dataList = PathManager::GetDirectoryList(_entityPath);
+	auto dataList = PathManager::GetDirectoryList(_currentPath);
 
-	if (_entityPath != PathManager::GetEntityDataPath())
+	if (_currentPath != _resourcesPath)
 	{
-		if (ImGui::Button("Prev"))
+		if (ImGui::Button("..."))
 		{
-			_entityPath = _entityPath.parent_path();
+			_currentPath = _currentPath.parent_path();
 		}
 	}
 
@@ -76,7 +70,7 @@ void ImpToolModule::ResourceViewer::EntityTabBar()
 			std::string directory = path.filename().string();
 			if (ImGui::Button(directory.c_str()))
 			{
-				_entityPath = path;
+				_currentPath = path;
 			}
 		}
 	}
@@ -89,7 +83,7 @@ void ImpToolModule::ResourceViewer::EntityTabBar()
 			std::string entName = path.filename().string();
 			ImGui::Text(entName.c_str());
 			std::wstring entPath = path.wstring();
-
+			
 			if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
 			{
 				ImGui::Text(entName.c_str());

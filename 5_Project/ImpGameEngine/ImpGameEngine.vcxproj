@@ -179,8 +179,6 @@
     <ClInclude Include="ImpGameEngine.h" />
     <ClInclude Include="ImpGameEngineHeader.h" />
     <ClInclude Include="ImpGameEnginePCH.h" />
-    <ClInclude Include="TestEnum.h" />
-    <ClInclude Include="TestComponent.h" />
     <ClInclude Include="WindowInfomation.h" />
   </ItemGroup>
   <ItemGroup>
@@ -194,8 +192,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Refleciton.cpp" />
-    <ClCompile Include="TestEnum.cpp" />
-    <ClCompile Include="TestComponent.cpp" />
     <ClCompile Include="WindowInfomation.cpp" />
   </ItemGroup>
   <ItemGroup>

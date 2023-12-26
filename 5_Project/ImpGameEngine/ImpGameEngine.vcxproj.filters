@@ -21,12 +21,6 @@
     <Filter Include="source\01.GameEngine">
       <UniqueIdentifier>{df4de963-9ecb-4010-a07f-ba264738de0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\99.Test">
-      <UniqueIdentifier>{6421ca7a-26b4-4d56-9cbc-7115d20fa37a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="header\99.Test">
-      <UniqueIdentifier>{41e1cad3-e5ab-434c-abd9-02be1e4b111c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\99.Reflection">
       <UniqueIdentifier>{66aee9f4-7a4d-42dc-9977-576e61910c89}</UniqueIdentifier>
     </Filter>
@@ -48,15 +42,9 @@
     <ClInclude Include="ComponentHeader.h">
       <Filter>header\00.Define</Filter>
     </ClInclude>
-    <ClInclude Include="TestComponent.h">
-      <Filter>header\99.Test</Filter>
-    </ClInclude>
     <ClInclude Include="ImpGameEngineHeader.h" />
     <ClInclude Include="ExportDefine.h">
       <Filter>header\00.Define</Filter>
-    </ClInclude>
-    <ClInclude Include="TestEnum.h">
-      <Filter>header\99.Test</Filter>
     </ClInclude>
     <ClInclude Include="CameraSystem.h">
       <Filter>header\02.System</Filter>
@@ -72,14 +60,8 @@
     <ClCompile Include="ImpGameEnignePCH.cpp">
       <Filter>source\00.Define</Filter>
     </ClCompile>
-    <ClCompile Include="TestComponent.cpp">
-      <Filter>source\99.Test</Filter>
-    </ClCompile>
     <ClCompile Include="dllmaincpp.cpp">
       <Filter>source\00.Define</Filter>
-    </ClCompile>
-    <ClCompile Include="TestEnum.cpp">
-      <Filter>source\99.Test</Filter>
     </ClCompile>
     <ClCompile Include="Refleciton.cpp">
       <Filter>source\99.Reflection</Filter>

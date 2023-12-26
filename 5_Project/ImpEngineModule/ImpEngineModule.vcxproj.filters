@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineModulePCH.h" />
-    <ClInclude Include="EngineModuleHeader.h" />
     <ClInclude Include="TypeIndex.h">
       <Filter>header\00.Define</Filter>
     </ClInclude>
@@ -133,6 +132,10 @@
     <ClInclude Include="EntityView.h">
       <Filter>header\03.Entity</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>header\04.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineModuleHeader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TypeIndex.cpp">
@@ -206,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="EntityView.cpp">
       <Filter>source\03.Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>source\04.Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

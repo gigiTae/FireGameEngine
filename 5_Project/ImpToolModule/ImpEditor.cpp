@@ -46,8 +46,8 @@ void ImpToolModule::ImpEditor::Update()
 {
 	ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 	
-	//static bool f = true;
-	//ImGui::ShowDemoWindow(&f);
+	static bool f = true;
+	ImGui::ShowDemoWindow(&f);
 
 	_worldViewer->Update();
 	_resourceViewer->Update();

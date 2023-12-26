@@ -1,17 +1,9 @@
 #include "ImpGameEnginePCH.h"
-#include "TestEnum.h"
-#include "TestComponent.h"
 
 /// 리플렉션한 정보를 선언하는 cpp이다. 음 구조가 이상하다고 느끼지만 어쩔수없다....
 
 /// ========================= enum class ================================
 
-REFLECTION_ENUM_BEGIN(Imp::Game)
-REFLECTION_ENUM_MEMBER(DarkSoul)
-REFLECTION_ENUM_MEMBER(MapleStory)
-REFLECTION_ENUM_MEMBER(LOL)
-REFLECTION_ENUM_MEMBER(Overwatch)
-REFLECTION_ENUM_END()
 
 /// ========================== struct ====================================
 
@@ -49,14 +41,9 @@ REFLECTION_MEMBER(_farPlain)
 REFLECTION_MEMBER(_isPerspective)
 REFLECTION_END()
 
-
-/// TestComponent
-REFLECTION_BEGIN(Imp::TestComponent)
-REFLECTION_MEMBER(x)
-REFLECTION_MEMBER(y)
-REFLECTION_MEMBER(z)
-REFLECTION_MEMBER(_isConst)
-REFLECTION_MEMBER(_path)
-REFLECTION_MEMBER(vec)
-REFLECTION_MEMBER(myLoveGame)
+/// Mesh
+REFLECTION_BEGIN(ImpEngineModule::Mesh)
+REFLECTION_MEMBER(_pixelShader)
+REFLECTION_MEMBER(_vertexShader)
+REFLECTION_MEMBER(_texture)
 REFLECTION_END()
