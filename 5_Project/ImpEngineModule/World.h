@@ -30,49 +30,49 @@ namespace ImpEngineModule
 	public:
 #pragma region Event
 		
-		/// Entity들에서 접근이 가능한 최소한의 매니져들을 나타낸다.
+		// Entity들에서 접근이 가능한 최소한의 매니져들을 나타낸다.
 		void Initialize(EventManager* eventMgr, InputManager* inputMgr, ResourceManager* resMgr);
 		
-		/// World Reset
+		// World Reset
 		void Reset() override;
 
-		/// World 시작전에 호출
+		// World 시작전에 호출
 		void Start() override;
 
-		/// 매 프레임 호출 
+		// 매 프레임 호출 
 		void Update(float dt) override;
 
-		/// World 종료
+		// World 종료
 		void Finalize();
 
 #pragma endregion Event
 
 #pragma region Enitty
-		/// Entity 생성
+		// Entity 생성
 		Entity* CreateEntity();
 
-		/// Entity 삭제
+		// Entity 삭제
 		void DestroyEntity(Entity* ent);
 
-		/// Entity 삭제
+		// Entity 삭제
 		void DestroyEntity(size_t id);
 
-		/// Entity 배열 Index 탐색
+		// Entity 배열 Index 탐색
 		Entity* GetByIndex(size_t index)const;
 
-		/// Entity ID로 탐색
+		// Entity ID로 탐색
 		Entity* GetEntity(size_t id)const;
 
-		/// Entity 이름으로 탐색
+		// Entity 이름으로 탐색
 		Entity* GetEntity(const std::string& name)const;
 
-		/// 새로운 Entity ID 발급
+		// 새로운 Entity ID 발급
 		size_t AssignNewID() { return ++_lastEntityID; }
 
-		/// LastEntity ID 획득
+		// LastEntity ID 획득
 		size_t GetLastEntityID()const { return _lastEntityID; }
 
-		/// enitity size
+		// 엔티티Vector의 사이즈를 반환
 		size_t GetSize()const { return _entities.size(); }
 
 		const std::vector<Entity*>& GetEntities()const { return _entities; }
@@ -104,7 +104,7 @@ namespace ImpEngineModule
 		InputManager* GetInputManager()const { return _inputManager; }
 		ResourceManager* GetResourceManager()const { return _resourceManager; }
 		EventManager* GetEventManager()const { return _eventManager; }
-#pragma endregion
+#pragma endregion Manager
 
 	private:
 		size_t _lastEntityID = 0;
@@ -136,6 +136,8 @@ namespace ImpEngineModule
 	{
 		for (Entity* ent : Each<Types...>(isIncludeToBeDestroyed))
 		{
+			// 탬플릿 파리미터팩 
+			// ent,GetComponent<Transform>(),GetComponent<BoxCollider>(),... 등으로 확장한다.
 			viewFunc(ent, ent->template GetComponent<Types>()...);
 		}
 	}

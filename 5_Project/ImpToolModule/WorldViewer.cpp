@@ -24,6 +24,8 @@ void ImpToolModule::WorldViewer::Initialize(ImpEngineModule::EngineModule* engin
 
 void ImpToolModule::WorldViewer::Update()
 {
+	_currentWorldName = _worldManager->GetWorldName();
+
 	if (ImGui::BeginMainMenuBar())
 	{
 		CreateWorldButton();
@@ -31,10 +33,28 @@ void ImpToolModule::WorldViewer::Update()
 		LoadWorldButton();
 
 		SaveWorldButton();
+		
+		ShowWorldNameToText();
 
 		ImGui::EndMainMenuBar();
 	}
 }
+
+void ImpToolModule::WorldViewer::ShowWorldNameToText()
+{
+	std::string showText = "<";
+	std::filesystem::path worldName(_currentWorldName);
+	showText += worldName.string();
+	showText += ">";
+
+	float nameX = ImGui::GetWindowSize().x - ImGui::CalcTextSize(showText.c_str()).x;
+
+	ImGui::SetCursorPosX(nameX);
+	ImGui::PushStyleColor(ImGuiCol_Text, ImGuiColor::SPRING_GREEN);
+	ImGui::Text(showText.c_str());
+	ImGui::PopStyleColor();
+}
+
 
 void ImpToolModule::WorldViewer::SaveWorldButton()
 {
@@ -265,3 +285,4 @@ void ImpToolModule::WorldViewer::FindPathResource(void* object, ImpReflection::T
 	}
 
 }
+

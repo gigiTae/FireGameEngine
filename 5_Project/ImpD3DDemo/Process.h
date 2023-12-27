@@ -53,7 +53,7 @@ private:
 	bool m_resizing;
 
 	// temp
-	ImpMath::Vector3 pos = ImpMath::Vector3(0, 0, -3);
+	ImpMath::Vector3 pos = ImpMath::Vector3(0, 3, -5);
 	ImpMath::Vector3 rot = ImpMath::Vector3(30, 0, 0);
 	ImpMath::Vector3 scale = ImpMath::Vector3(1, 1, 1);
 

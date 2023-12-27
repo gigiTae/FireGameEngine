@@ -32,9 +32,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImpGameEngine.h">
-      <Filter>header\01.GameEngine</Filter>
-    </ClInclude>
     <ClInclude Include="WindowInfomation.h">
       <Filter>header\00.Define</Filter>
     </ClInclude>
@@ -48,6 +45,9 @@
     </ClInclude>
     <ClInclude Include="CameraSystem.h">
       <Filter>header\02.System</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpGameEngine.h">
+      <Filter>header\01.GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

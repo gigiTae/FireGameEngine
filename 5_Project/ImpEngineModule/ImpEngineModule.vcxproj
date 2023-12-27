@@ -149,9 +149,11 @@
     <ClInclude Include="EngineModule.h" />
     <ClInclude Include="EngineModuleHeader.h" />
     <ClInclude Include="EntityResource.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="EventManager.h" />
-    <ClInclude Include="EventEnum.h" />
+    <ClInclude Include="EventSubscriber.h" />
     <ClInclude Include="IEntity.h" />
+    <ClInclude Include="ISubscriber.h" />
     <ClInclude Include="IWorld.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentHandle.h" />
@@ -163,6 +165,7 @@
     <ClInclude Include="EntityView.h" />
     <ClInclude Include="InputEnum.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="PathManager.h" />
     <ClInclude Include="Resource.h" />
@@ -179,8 +182,11 @@
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="EngineModule.cpp" />
     <ClCompile Include="EntityResource.cpp" />
+    <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="EventSubscriber.cpp" />
     <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="ISubscriber.cpp" />
     <ClCompile Include="IWorld.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentHandle.cpp" />
@@ -190,6 +196,7 @@
     <ClCompile Include="EntityIterator.cpp" />
     <ClCompile Include="EntityView.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="PathManager.cpp" />
     <ClCompile Include="pch.cpp">

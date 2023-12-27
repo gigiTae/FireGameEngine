@@ -27,8 +27,8 @@ void ImpToolModule::ImpEditor::Initialize(HWND hWnd, void* device, void* deviceC
 	_engineModule = engineModule;
 	
 	_worldViewer->Initialize(_engineModule);
-	_entityViewer->Initialize(_engineModule);
 	_resourceViewer->Initalize();
+	_entityViewer->Initialize(_engineModule,_resourceViewer.get());
 
 	// ToolCamera
 	_toolCamera = std::make_unique<ToolCamera>();

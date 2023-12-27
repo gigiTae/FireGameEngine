@@ -97,6 +97,9 @@
     <ClInclude Include="Save.h">
       <Filter>header\00.Define</Filter>
     </ClInclude>
+    <ClInclude Include="ImGuiColor.h">
+      <Filter>header\00.Define</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui_widgets.cpp">
@@ -151,6 +154,9 @@
       <Filter>source\03.ToolCamera</Filter>
     </ClCompile>
     <ClCompile Include="Save.cpp">
+      <Filter>source\00.Define</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiColor.cpp">
       <Filter>source\00.Define</Filter>
     </ClCompile>
   </ItemGroup>

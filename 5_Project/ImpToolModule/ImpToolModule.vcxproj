@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="ComponentViewer.h" />
     <ClInclude Include="EntityViewer.h" />
+    <ClInclude Include="ImGuiColor.h" />
     <ClInclude Include="NameCheck.h" />
     <ClInclude Include="ResourceViewer.h" />
     <ClInclude Include="IEditor.h" />
@@ -181,6 +182,7 @@
   <ItemGroup>
     <ClCompile Include="ComponentViewer.cpp" />
     <ClCompile Include="EntityViewer.cpp" />
+    <ClCompile Include="ImGuiColor.cpp" />
     <ClCompile Include="NameCheck.cpp" />
     <ClCompile Include="ResourceViewer.cpp" />
     <ClCompile Include="IEditor.cpp" />

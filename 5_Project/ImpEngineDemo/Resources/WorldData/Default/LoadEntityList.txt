@@ -1,3 +1,0 @@
-EntityData\MainCamera.ent
-EntityData\MainCamera.ent
-EntityData\MainCamera.ent

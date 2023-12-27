@@ -30,14 +30,39 @@ namespace ImpGraphics
 		std::shared_ptr<ResourceType> GetResource(const std::wstring& path)
 		{
 			std::shared_ptr<Resource> resource = _resources[path].lock();
+			std::shared_ptr<ResourceType> resourceTypePtr;
 			if (!resource)
 			{
 				_resources[path] = resource = std::make_shared<ResourceType>(this);
-				resource->Load(path);
+				resourceTypePtr = std::dynamic_pointer_cast<ResourceType>(resource);
+				resourceTypePtr->Load(path);
+			}
+			else
+			{
+				resourceTypePtr = std::dynamic_pointer_cast<ResourceType>(resource);
 			}
 
-			std::shared_ptr<ResourceType> return_value = std::dynamic_pointer_cast<ResourceType>(resource);
-			return return_value;
+			return resourceTypePtr;
+		}
+
+		template<typename ResourceType, typename ...Types>
+		std::shared_ptr<ResourceType> GetResource(const std::wstring& path, Types... args)
+		{
+			// sizeof...(args)
+			std::shared_ptr<Resource> resource = _resources[path].lock();
+			std::shared_ptr<ResourceType> resourceTypePtr;
+			if (!resource)
+			{
+				_resources[path] = resource = std::make_shared<ResourceType>(this);
+				resourceTypePtr = std::dynamic_pointer_cast<ResourceType>(resource);
+				resourceTypePtr->Load(path, args...);
+			}
+			else
+			{
+				resourceTypePtr = std::dynamic_pointer_cast<ResourceType>(resource);
+			}
+
+			return resourceTypePtr;
 		}
 
 		ImpDevice* GetDevice() { return _device; }

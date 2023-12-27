@@ -44,7 +44,6 @@ namespace ImpEngineModule
         /// Component의 활성화 상태를 확인
         bool IsActive() const { return _isActive; }
 
-
         /// 다른 컴포넌트를 가져온다.
         template<typename T>
         T* GetComponent()const;

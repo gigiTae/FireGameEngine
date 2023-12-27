@@ -35,12 +35,12 @@ namespace ImpGraphics
 	{
 		size_t _objectID;
 
-		Vector3 _position;
-		Vector3 _rotation;
-		Vector3 _scale;
+		std::wstring _meshPath;
 
-		std::string meshPath;
-		std::string texturePath; // 텍스처가 여러장이면?
+		std::wstring _vertexShaderPath;
+		std::wstring _pisxelShaderPath;
+
+		//std::string texturePath; // 텍스처가 여러장이면?
 		//Mesh 구조체가 필요하다. FBX Loader에서 어떻게 가져올지 생각해보자.
 		// 근데 skinning이 적용되는 Mesh랑 
 		// animaition 정보가 있는 Mesh랑 
@@ -86,8 +86,11 @@ namespace ImpGraphics
 		/// 그리기 위해 필요한 오브젝트들
 		virtual void SetLight(LightInfo lightInfo) abstract;
 		virtual void SetCamera(CameraInfo cameraInfo) abstract;
-		virtual void SetMeshObject(MeshObjectInfo meshObjectInfo) abstract;
 
+		virtual void AddMeshObejct(MeshObjectInfo meshObjectInfo) abstract;
+		virtual void SetMeshObject(size_t objectID, Matrix transformMatrix) abstract;
+		virtual void DeleteMeshObject(size_t objectID) abstract;
+		
 		// temp 
 		/// IMGUI를 위해서 필요한 Device, DeviceContext 반환
 		// 여기에 ID3D11Device를 써버리면 아마도 게임엔진에서

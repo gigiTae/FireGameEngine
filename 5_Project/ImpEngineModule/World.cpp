@@ -2,6 +2,8 @@
 #include "World.h"
 #include "Entity.h"
 #include "Transform.h"
+#include "Event.h"
+#include "EventManager.h"
 
 ImpEngineModule::World::World()
 	:_lastEntityID(0) ,_entities{},_eventManager(nullptr),
@@ -62,6 +64,7 @@ ImpEngineModule::Entity* ImpEngineModule::World::CreateEntity()
 	Entity* ent = new Entity(this, _lastEntityID);
 
 	_entities.push_back(ent);
+	_eventManager->Emit<Event::OnEntityCreated>({ ent });
 
 	return ent;
 }
@@ -73,7 +76,8 @@ void ImpEngineModule::World::DestroyEntity(Entity* ent)
 		return; 
 	}
 
-	ent->_state = Entity::EntityState::ToBeDestroyed;
+	ent->_state = Entity::EntityState::ToBeDestroyed;   
+	_eventManager->Emit<Event::OnEntityDestroyed>({ ent });
 
 	// 자식들도 모두 삭제한다.
 	auto& children = ent->GetComponent<Transform>()->GetChildren();

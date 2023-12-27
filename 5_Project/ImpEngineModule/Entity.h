@@ -29,60 +29,60 @@ namespace ImpEngineModule
 		~Entity() override;
 
 	public:
-		/// Entity에 할당한 컴포넌트들을 모두 삭제한다.
+		// Entity에 할당한 컴포넌트들을 모두 삭제한다.
 		void DestroyAllComponents() override;
 
-		/// TypeIndex에 해당하는 컴포넌트를 삭제한다.
+		// TypeIndex에 해당하는 컴포넌트를 삭제한다.
 		void DestroyComponent(TypeIndex index);
 
-		/// Component들의 Start를 호출한다.
+		// Component들의 Start를 호출한다.
 		void Start() override;
 
-		/// Component들의 Update를 호출한다.
+		// Component들의 Update를 호출한다.
 		void Update(float dt) override;
 
-		/// World를 가져온다 
+		// World를 가져온다 
 		World* GetWorld()const { return _world; }
 
-		/// Entity 고유의 ID를 가져온다.
+		// Entity 고유의 ID를 가져온다.
 		size_t GetID()const { return _id; }
 
-		/// Entity의 이름을 가져온다.
+		// Entity의 이름을 가져온다.
 		std::string GetName() { return _name; }
 
-		/// Entity의 이름을 변경한다.
+		// Entity의 이름을 변경한다.
 		void SetName(const std::string& name) { _name = name; }
 
-		/// Entity의 현재상태를 가져온다.
+		// Entity의 현재상태를 가져온다.
 		EntityState GetState()const { return _state; }
 
-		/// 컴포넌트를 TypeIndex로 가져온다.
+		// 컴포넌트를 TypeIndex로 가져온다.
 		Component* GetComponent(TypeIndex index);
 
 		const std::unordered_map<TypeIndex, Component*>& GetComponents()const { return _components; }
 
-		/// 리플렉션을 이용한 컴포넌트 추가
+		// 리플렉션을 이용한 컴포넌트 추가
 		Component* AddComponent(void* component, TypeIndex index);
 
-		/// T타입에 해당하는 컴포넌트를 가져온다
+		// T타입에 해당하는 컴포넌트를 가져온다
 		template <typename T>
 		T* GetComponent();
 
-		/// 가변인자 템플릿을 사용해서 T 타입에 해당하는 T(Args...)
-		/// 생성자를 호출하고 Entity에 추가한다.
+		// 가변인자 템플릿을 사용해서 T 타입에 해당하는 T(Args...)
+		// 생성자를 호출하고 Entity에 추가한다.
 		template <typename T, typename... Args>
 		T* AddComponent(Args&&... args);
 
-		/// TypeIndex로 컴포넌트 소유 여부확인
+		// TypeIndex로 컴포넌트 소유 여부확인
 		bool HasComponent(TypeIndex index);
 		
-		/// 컴포넌트를 소유하는지 확인한다.
+		// 컴포넌트를 소유하는지 확인한다.
 		template<typename T>
 		bool HasComponent();
 
-		/// <summary>
-		/// 컴포넌트들을 소유하는지 확인한다.
-		/// </summary>
+		// <summary>
+		// 컴포넌트들을 소유하는지 확인한다.
+		// </summary>
 		template<typename T1, typename T2, typename... Types>
 		bool HasComponent();
 

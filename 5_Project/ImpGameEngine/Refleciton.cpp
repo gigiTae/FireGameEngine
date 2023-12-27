@@ -4,6 +4,12 @@
 
 /// ========================= enum class ================================
 
+/// LightType
+REFLECTION_ENUM_BEGIN(ImpEngineModule::Light::LightType)
+REFLECTION_ENUM_MEMBER(Point)
+REFLECTION_ENUM_MEMBER(Spot)
+REFLECTION_ENUM_MEMBER(Directional)
+REFLECTION_ENUM_END()
 
 /// ========================== struct ====================================
 
@@ -46,4 +52,10 @@ REFLECTION_BEGIN(ImpEngineModule::Mesh)
 REFLECTION_MEMBER(_pixelShader)
 REFLECTION_MEMBER(_vertexShader)
 REFLECTION_MEMBER(_texture)
+REFLECTION_END()
+
+/// Light
+REFLECTION_BEGIN(ImpEngineModule::Light)
+REFLECTION_MEMBER(_type)
+REFLECTION_MEMBER(_intensity)
 REFLECTION_END()

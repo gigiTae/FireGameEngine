@@ -2,6 +2,7 @@
 
 namespace ImpToolModule
 {
+	class ResourceViewer;
 
 	/// <summary>
 	/// World의 Entity들의 정보를 보여주는 GUI
@@ -14,7 +15,7 @@ namespace ImpToolModule
 		~EntityViewer();
 
 	public:
-		void Initialize(ImpEngineModule::EngineModule* engineModule);
+		void Initialize(ImpEngineModule::EngineModule* engineModule, ResourceViewer* resViewer);
 
 		void Update();
 
@@ -45,6 +46,7 @@ namespace ImpToolModule
 		ImpEngineModule::World* _world = nullptr;
 		ImpEngineModule::Entity* _selectEntity = nullptr;
 		ImpEngineModule::WorldManager* _worldManager = nullptr;
+		ImpToolModule::ResourceViewer* _resourceView = nullptr;
 
 		bool _isShowPopup = false;
 		std::string _searchName;

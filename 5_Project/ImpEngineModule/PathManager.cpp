@@ -4,7 +4,7 @@
 std::filesystem::path ImpEngineModule::PathManager::GetResourcesPath()
 {
 	std::filesystem::path path = std::filesystem::current_path();
-	path += "/Resources/";
+	path += "\\Resources";
 
 	return 	path;
 }

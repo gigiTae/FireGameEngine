@@ -51,6 +51,12 @@
     <Filter Include="source\03.Entity">
       <UniqueIdentifier>{f19acf87-062b-474e-b791-3a802643af30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="header\07.Event">
+      <UniqueIdentifier>{4d6a5a10-24a3-4d5f-8bed-61ebbe1c85ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\07.Event">
+      <UniqueIdentifier>{9ad0e560-8a09-4cb1-8e0a-33ecaff3e191}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineModulePCH.h" />
@@ -93,9 +99,6 @@
     <ClInclude Include="EventManager.h">
       <Filter>header\05.Manager</Filter>
     </ClInclude>
-    <ClInclude Include="EventEnum.h">
-      <Filter>header\00.Define</Filter>
-    </ClInclude>
     <ClInclude Include="EngineModule.h">
       <Filter>header\01.EngineModule</Filter>
     </ClInclude>
@@ -136,6 +139,18 @@
       <Filter>header\04.Component</Filter>
     </ClInclude>
     <ClInclude Include="EngineModuleHeader.h" />
+    <ClInclude Include="Light.h">
+      <Filter>header\04.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ISubscriber.h">
+      <Filter>header\07.Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSubscriber.h">
+      <Filter>header\07.Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>header\07.Event</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TypeIndex.cpp">
@@ -212,6 +227,18 @@
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>source\04.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>source\04.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="ISubscriber.cpp">
+      <Filter>source\07.Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSubscriber.cpp">
+      <Filter>source\07.Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>source\07.Event</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -125,7 +125,6 @@ void ImpEngineModule::WorldManager::LoadWorld()
 	}
 
 	// 4.생성한 Entity들을 계층구조로 연결한다.
-
 	for (auto& entPath : startEntityList)
 	{
 		BuildEntityHierachy(entPath);

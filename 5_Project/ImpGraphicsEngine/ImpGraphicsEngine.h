@@ -25,7 +25,10 @@ namespace ImpGraphics
 		/// 그리기 위해 필요한 오브젝트들
 		virtual void SetLight(LightInfo lightInfo) override;
 		virtual void SetCamera(CameraInfo cameraInfo) override;
-		virtual void SetMeshObject(MeshObjectInfo meshObjectInfo) override;
+
+		virtual void AddMeshObejct(MeshObjectInfo meshObjectInfo) override;
+		virtual void SetMeshObject(size_t objectID, Matrix transformMatrix) override;
+		virtual void DeleteMeshObject(size_t objectID) override;
 
 		// temp 
 		/// IMGUI를 위해서 필요한 Device, DeviceContext 반환

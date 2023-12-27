@@ -37,6 +37,12 @@ ImpEngineModule::EntityResource* ImpEngineModule::ResourceManager::GetEntityReso
 	return iter->second.get();
 }
 
+void ImpEngineModule::ResourceManager::LoadResource(const std::wstring& path)
+{
+
+
+}
+
 void ImpEngineModule::ResourceManager::LoadEntityList(const std::wstring& path)
 {
 	// 1. txt 파일을 읽는다.

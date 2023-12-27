@@ -28,5 +28,6 @@
 
 #include "Save.h"
 #include "NameCheck.h"
+#include "ImGuiColor.h"
 
 #endif // !IMP_TOOL_MODULE_PCH

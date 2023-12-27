@@ -62,9 +62,20 @@ void ImpGraphics::ImpGraphicsEngine::SetCamera(CameraInfo cameraInfo)
 	_renderer->SetCamera(cameraInfo);
 }
 
-void ImpGraphics::ImpGraphicsEngine::SetMeshObject(MeshObjectInfo meshObjectInfo)
-{
 
+void ImpGraphics::ImpGraphicsEngine::AddMeshObejct(MeshObjectInfo meshObjectInfo)
+{
+	_renderer->AddMeshObejct(meshObjectInfo);
+}
+
+void ImpGraphics::ImpGraphicsEngine::SetMeshObject(size_t objectID, Matrix transformMatrix)
+{
+	_renderer->SetMeshObject(objectID, transformMatrix);
+}
+
+void ImpGraphics::ImpGraphicsEngine::DeleteMeshObject(size_t objectID)
+{
+	_renderer->DeleteMeshObject(objectID);
 }
 
 void* ImpGraphics::ImpGraphicsEngine::GetDevice()

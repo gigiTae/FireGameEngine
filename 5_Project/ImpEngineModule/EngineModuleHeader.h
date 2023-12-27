@@ -34,6 +34,7 @@
 #include "Transform.h"
 #include "Camera.h"
 #include "Mesh.h"
+#include "Light.h"
 
 /// EngineModule
 #include "EngineModule.h"

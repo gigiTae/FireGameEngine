@@ -31,7 +31,6 @@
 #include "TypeIndex.h"
 #include "InputEnum.h"
 #include "ResourceEnum.h"
-#include "EventEnum.h"
 
 /// 수학라이브러리
 #include "../ImpStructure/ImpMath.h"

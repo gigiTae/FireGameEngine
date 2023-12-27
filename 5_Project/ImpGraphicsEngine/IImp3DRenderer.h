@@ -45,6 +45,9 @@ namespace ImpGraphics
 
 		virtual void SetLight(LightInfo lightInfo) abstract;
 		virtual void SetCamera(CameraInfo cameraInfo) abstract;
-		virtual void SetMeshObject(MeshObjectInfo meshObjectInfo) abstract;
+
+		virtual void AddMeshObejct(MeshObjectInfo meshObjectInfo) abstract;
+		virtual void SetMeshObject(size_t objectID, Matrix _transformMatrix) abstract;
+		virtual void DeleteMeshObject(size_t _objectID) abstract;
 	};
 }

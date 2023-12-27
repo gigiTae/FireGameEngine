@@ -13,4 +13,7 @@
 
 // temp: OutputDebugString 쓰려고 include
 #include <windows.h>
+
+/// C++ STL
+#include <vector>
 #endif //PCH_H

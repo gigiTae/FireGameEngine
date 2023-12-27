@@ -21,6 +21,7 @@ namespace ImpMath
 	// 라디안을 각도
 	constexpr float RadianToDegree(float radian);
 
+
 	struct Matrix;
 
 	struct Vector3

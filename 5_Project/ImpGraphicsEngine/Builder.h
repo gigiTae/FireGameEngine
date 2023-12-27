@@ -22,13 +22,16 @@ namespace ImpGraphics
 				case ImpGraphics::ObjectType::MeshObject:
 					return CreateMeshObject(args...);
 				case ImpGraphics::ObjectType::HelperObject:
-					break;
+					return nullptr;
 				default:
-					break;
+					return nullptr;
 			}
+			return nullptr;
 		}
 
-		MeshObject* CreateMeshObject(std::wstring meshPath, std::wstring shaderPath);
+		MeshObject* CreateMeshObject(std::wstring meshPath, std::wstring vertexShaderPath, std::wstring pixelShaderPath);
+		MeshObject* CreateMeshObject(std::wstring meshPath, std::wstring vertexShaderPath, std::wstring pixelShaderPath, 
+			std::wstring vertexShaderPath2, std::wstring pixelShaderPath2);
 
 	private:
 		ResourceManager* _resourceManager;

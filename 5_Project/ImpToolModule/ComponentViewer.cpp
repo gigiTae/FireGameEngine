@@ -50,7 +50,6 @@ void ImpToolModule::ComponentViewer::Update(ImpEngineModule::Entity* ent)
 
 			ViewComponentInfomation(component, name, type);
 
-
 			// 컴포넌트 삭제 (트랜스폼은 제외한다)
 			if (name == "ImpEngineModule::Transform")
 			{
@@ -139,7 +138,9 @@ void ImpToolModule::ComponentViewer::ViewComponentInfomation(void* object, const
 			currentIndex = indexMatch[0];
 		}
 
-		if (ImGui::BeginCombo(name.c_str(), memberNames[currentIndex].c_str()))
+		std::string fureName = ImpStringHelper::EraseUnderbar(name);
+
+		if (ImGui::BeginCombo(fureName.c_str(), memberNames[currentIndex].c_str()))
 		{
 			for (int i = 0; i < members.size(); ++i)
 			{
@@ -247,14 +248,16 @@ void ImpToolModule::ComponentViewer::ViewPrimitiveType(void* object, const std::
 
 		if (ImGui::BeginDragDropTarget())
 		{
-			const ImGuiPayload* payLoad = ImGui::AcceptDragDropPayload("EntityPath");
-
+			const ImGuiPayload* payLoad = ImGui::AcceptDragDropPayload("ResourcePath");
 			if (payLoad)
 			{
 				const wchar_t* receiveData = static_cast<const wchar_t*>(payLoad->Data);
 
 				std::wstring path = receiveData;
 				*data = path;
+
+				// TODO:: 경로를 받으면 리소스의 형태에따라서 리소스를 로드해야한다. 
+
 			}
 		}
 

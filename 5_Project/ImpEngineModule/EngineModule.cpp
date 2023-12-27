@@ -34,7 +34,7 @@ void ImpEngineModule::EngineModule::Initialize(HWND hWnd, std::wstring startWorl
 	_inputManager->Initalize(hWnd);
 	_resourceManager->Initailize(startWorld);
 	_worldManager->Initialize(startWorld, _world.get(), _resourceManager.get());
-
+	_eventManager->Initialize(_world.get());
 	_worldManager->LoadWorld();
 
 	// 메인 카메라 설정

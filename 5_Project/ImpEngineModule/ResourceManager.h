@@ -23,6 +23,9 @@ namespace ImpEngineModule
 		/// Entity리소스를 경로로 얻는다.
 		EntityResource* GetEntityResource(const std::wstring& path);
 
+		/// 리소스의 확장자에 맞는 리소스를 로드한다.
+		void LoadResource(const std::wstring& path);
+
 		/// 로드할 Entity들을 담은 List를 로드한다.
 		void LoadEntityList(const std::wstring& path);
 

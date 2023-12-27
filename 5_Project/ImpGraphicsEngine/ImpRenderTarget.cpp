@@ -9,8 +9,8 @@ using namespace ImpGraphics;
 ImpRenderTarget::ImpRenderTarget(ImpDevice* device)
 	:_device(device),
 	_renderTargetView(nullptr),
-	_depthStencilView(nullptr)
-
+	_depthStencilView(nullptr),
+	_deferredRenderTargetView(), deferredViewSize(4)
 {
 	
 }
@@ -19,6 +19,16 @@ ImpRenderTarget::~ImpRenderTarget()
 {
 	ReleaseCOM(_depthStencilView);
 	ReleaseCOM(_renderTargetView);
+
+	for (size_t i = 0; i < _deferredRenderTargetView.size(); i++)
+	{
+		ReleaseCOM(_deferredRenderTargetView[i]);
+	}
+
+	for (size_t i = 0; i < _deferredShaderResourceView.size(); i++)
+	{
+		ReleaseCOM(_deferredShaderResourceView[i]);
+	}
 }
 
 void ImpRenderTarget::Initialize(int width, int height)
@@ -43,6 +53,54 @@ void ImpRenderTarget::Initialize(int width, int height)
 	}
 	ReleaseCOM(backBuffer);
 
+	/// Deferred Rendering을 위한 준비
+	D3D11_TEXTURE2D_DESC textureDesc {};
+	textureDesc.Width = width;
+	textureDesc.Height = height;
+	textureDesc.MipLevels = 1;
+	textureDesc.ArraySize = 1;
+	textureDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+	textureDesc.SampleDesc.Count = 1;
+	textureDesc.Usage = D3D11_USAGE_DEFAULT;
+	textureDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
+
+	ID3D11Texture2D* temp;
+	std::vector<ID3D11Texture2D*> textures;
+	for (size_t i = 0; i < deferredViewSize; i++)
+	{
+		HR(device->CreateTexture2D(&textureDesc, 0, &temp));
+		textures.push_back(temp);
+	}
+
+	ID3D11RenderTargetView* tempRenderTarget;
+	D3D11_RENDER_TARGET_VIEW_DESC rendertargetViewDesc {};
+
+	rendertargetViewDesc.Format = textureDesc.Format;
+	rendertargetViewDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
+
+	for (size_t i = 0; i < deferredViewSize; i++)
+	{
+		HR(device->CreateRenderTargetView(textures[i], &rendertargetViewDesc, &tempRenderTarget));
+		_deferredRenderTargetView.push_back(tempRenderTarget);
+	}
+
+	ID3D11ShaderResourceView* tempShaderResourceView;
+	D3D11_SHADER_RESOURCE_VIEW_DESC shaderResourceViewDesc{};
+
+	shaderResourceViewDesc.Format = textureDesc.Format;
+	shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+	shaderResourceViewDesc.Texture2D.MipLevels = 1;
+
+	for (size_t i = 0; i < deferredViewSize; i++)
+	{
+		HR(device->CreateShaderResourceView(textures[i], &shaderResourceViewDesc, &tempShaderResourceView));
+		_deferredShaderResourceView.push_back(tempShaderResourceView);
+	}
+
+	for (size_t i = 0; i < textures.size(); i++)
+	{
+		ReleaseCOM(textures[i]);
+	}
 	// Create the depth/stencil buffer and view.
 
 	D3D11_TEXTURE2D_DESC depthStencilDesc{};
@@ -52,17 +110,6 @@ void ImpRenderTarget::Initialize(int width, int height)
 	depthStencilDesc.MipLevels = 1;
 	depthStencilDesc.ArraySize = 1;
 	depthStencilDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
-
-// 	bool _enable4xMsaa;
-// 	UINT _4xMsaaQuality;
-// 	// Use 4X MSAA? --must match swap chain MSAA values.
-// 	if (_enable4xMsaa)
-// 	{
-// 		depthStencilDesc.SampleDesc.Count = 4;
-// 		depthStencilDesc.SampleDesc.Quality = _4xMsaaQuality - 1;
-// 	}
-// 	// No MSAA
-// 	else
 	
 	depthStencilDesc.SampleDesc.Count = 1;
 	depthStencilDesc.SampleDesc.Quality = 0;
@@ -71,6 +118,10 @@ void ImpRenderTarget::Initialize(int width, int height)
 	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	depthStencilDesc.CPUAccessFlags = 0;
 	depthStencilDesc.MiscFlags = 0;
+
+	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc{};
+	depthStencilViewDesc.Format = textureDesc.Format;
+	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 
 	ID3D11Texture2D* depthStencilBuffer;
 	HR(device->CreateTexture2D(&depthStencilDesc, 0, &depthStencilBuffer));
@@ -124,7 +175,6 @@ void ImpRenderTarget::Clear()
 
 	// 뎁스스탠실 뷰를 클리어한다.
 	deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-	Bind();
 }
 
 void ImpRenderTarget::Bind()
@@ -133,4 +183,25 @@ void ImpRenderTarget::Bind()
 	// 추측으로는 IMGUI 에서 렌더 타겟이 여러 개가 되어서 바인딩을 해줘야 하는걸로 보인다.
 	/// 렌더타겟뷰, 뎁스/스탠실뷰를 파이프라인에 바인딩한다.
 	_device->GetDeviceContext()->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView);
+}
+
+void ImpRenderTarget::FirstPassBind()
+{
+	_device->GetDeviceContext()->OMSetRenderTargets(2, &_deferredRenderTargetView[0], _depthStencilView);
+}
+
+void ImpRenderTarget::FirstPassClear()
+{
+	ID3D11DeviceContext* deviceContext = _device->GetDeviceContext();
+	assert(deviceContext);
+
+	deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
+	const float blackBackgroundColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	const float blackBackgroundColor2[4] = { 1.0f, 0.0f, 0.0f, 0.0f };
+	for (size_t i = 0; i < 1; i++)
+	{
+		deviceContext->ClearRenderTargetView(_deferredRenderTargetView[0], blackBackgroundColor);
+		deviceContext->ClearRenderTargetView(_deferredRenderTargetView[1], blackBackgroundColor2);
+	}
 }

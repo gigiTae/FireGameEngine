@@ -39,6 +39,8 @@ namespace ImpToolModule
 		/// 컴포넌트 정보를 순회하면서 들고있는 경로 정보를 벡터에 담는다.
 		void FindPathResource(void* object, ImpReflection::Type* type, std::vector<std::wstring>& resources);
 
+		// 현재 월드의 이름을 표시한다.
+		void ShowWorldNameToText();
 
 	private:
 		ImpEngineModule::World* _world =nullptr;

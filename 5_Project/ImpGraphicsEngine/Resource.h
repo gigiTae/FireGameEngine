@@ -19,8 +19,6 @@ namespace ImpGraphics
 			: _resourceManager(resourceManager) {};
 		virtual ~Resource() {};
 
-		virtual void Load(const std::wstring& path) abstract;
-
 	protected:
 		ResourceManager* _resourceManager;
 	};
@@ -31,7 +29,7 @@ namespace ImpGraphics
 		VBIB(ResourceManager* resourceManager);
 		virtual ~VBIB();
 
-		virtual void Load(const std::wstring& path) override;
+		void Load(const std::wstring& path);
 
 		ID3D11Buffer** GetVB() { return &_VB; }
 		ID3D11Buffer* GetIB() { return _IB; }
@@ -49,7 +47,7 @@ namespace ImpGraphics
 		Shader(ResourceManager* resourceManager);
 		virtual ~Shader();
 
-		virtual void Load(const std::wstring& path) override;
+		void Load(const std::wstring& vertexShaderPath, const std::wstring& pixelShaderPath);
 
 		void SetConstantBuffer(DirectX::XMMATRIX transformMatrix);
 

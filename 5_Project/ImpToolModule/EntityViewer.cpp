@@ -1,5 +1,6 @@
 #include "ImpToolModulePCH.h"
 #include "EntityViewer.h"
+#include "ResourceViewer.h"
 
 ImpToolModule::EntityViewer::EntityViewer()
 {
@@ -11,10 +12,11 @@ ImpToolModule::EntityViewer::~EntityViewer()
 
 }
 
-void ImpToolModule::EntityViewer::Initialize(ImpEngineModule::EngineModule* engineModule)
+void ImpToolModule::EntityViewer::Initialize(ImpEngineModule::EngineModule* engineModule, ResourceViewer* resViewer)
 {
 	_world = engineModule->GetWorld();
 	_worldManager = engineModule->GetWorldManager();
+	_resourceView = resViewer;
 }
 
 void ImpToolModule::EntityViewer::Update()
@@ -249,7 +251,7 @@ void ImpToolModule::EntityViewer::SaveEntityButton(ImpEngineModule::Entity* ent)
 
 	if (ImGui::Button(saveButton.c_str()))
 	{
-		std::filesystem::path path = ImpEngineModule::PathManager::GetEntityDataPath();
+		std::filesystem::path path =_resourceView->GetCurrentResourcePath();
 
 		path += "/";
 		Save::SaveEntity(path, ent);
@@ -274,18 +276,30 @@ void ImpToolModule::EntityViewer::DropEntity(ImpEngineModule::World* world)
 {
 	if (ImGui::BeginDragDropTarget())
 	{
-		const ImGuiPayload* payLoad = ImGui::AcceptDragDropPayload("EntityPath");
+		const ImGuiPayload* payLoad = ImGui::AcceptDragDropPayload("ResourcePath");
 
 		if (payLoad)
 		{
 			const wchar_t* receiveData = static_cast<const wchar_t*>(payLoad->Data);
 
-			ImpEngineModule::Entity* ent = world->CreateEntity();
+			// 확장자를 확인한다
+			std::filesystem::path path(receiveData);
+			if (path.extension() != L".ent")
+			{
+				return;
+			}
 
+			// TODO :: 리소스에대한 생성삭제에대한 처리가 필요하다.
+			ImpEngineModule::Entity* ent = world->CreateEntity();
 			ImpEngineModule::EntityResource entRes{ receiveData };
 
 			entRes.Load();
 			entRes.Clone(ent);
+		
+			// 이름중복 확인
+			std::string entName = ent->GetName();
+			ImpToolModule::NameCheck::CheckNameDuplication(world, ent, entName);
+			ent->SetName(entName);
 		}
 
 	}

@@ -34,18 +34,19 @@ void VBIB::Load(const std::wstring& path)
 	{
 		DirectX::XMFLOAT3 Pos;
 		DirectX::XMFLOAT4 Color;
+		DirectX::XMFLOAT2 tex;
 	};
 
 	Vertex vertices[] =
 	{
-		{ XMFLOAT3(-1.0f, -1.0f, -0.0f), XMFLOAT4((const float*)&Colors::White)   },
-		{ XMFLOAT3(-1.0f, +1.0f, 0.0f), XMFLOAT4((const float*)&Colors::Black)   },
-		{ XMFLOAT3(+1.0f, +1.0f, 0.0f), XMFLOAT4((const float*)&Colors::Red)     },	// 우상 증가
-		{ XMFLOAT3(+1.0f, -1.0f, 0.0f), XMFLOAT4((const float*)&Colors::Green)   },
-		{ XMFLOAT3(-1.0f, -1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Blue)    },
-		{ XMFLOAT3(-1.0f, +1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Yellow)  },
-		{ XMFLOAT3(+1.0f, +1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Cyan)    },
-		{ XMFLOAT3(+1.0f, -1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Magenta) }
+		{ XMFLOAT3(-1.0f, -1.0f, -0.0f), XMFLOAT4((const float*)&Colors::White)  , XMFLOAT2(0.0f,1.0f) },
+		{ XMFLOAT3(-1.0f, +1.0f, 0.0f), XMFLOAT4((const float*)&Colors::Black)   , XMFLOAT2(0.0f,0.0f) },
+		{ XMFLOAT3(+1.0f, +1.0f, 0.0f), XMFLOAT4((const float*)&Colors::Red)     , XMFLOAT2(1.0f,0.0f) },	// 우상 증가
+		{ XMFLOAT3(+1.0f, -1.0f, 0.0f), XMFLOAT4((const float*)&Colors::Green)   , XMFLOAT2(1.0f,1.0f) },
+		{ XMFLOAT3(-1.0f, -1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Blue)   , XMFLOAT2(0.0f,0.0f) },
+		{ XMFLOAT3(-1.0f, +1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Yellow) , XMFLOAT2(0.0f,1.0f) },
+		{ XMFLOAT3(+1.0f, +1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Cyan)   , XMFLOAT2(1.0f,1.0f) },
+		{ XMFLOAT3(+1.0f, -1.0f, +1.0f), XMFLOAT4((const float*)&Colors::Magenta), XMFLOAT2(1.0f,0.0f) }
 	};
 
 	D3D11_BUFFER_DESC vbd{};
@@ -108,18 +109,24 @@ Shader::Shader(ResourceManager* resourceManager)
 // 	_FX(nullptr),
 // 	_tech(nullptr),
 // 	_fxTM(nullptr),
-	_inputLayout(nullptr)
+	_inputLayout(nullptr),
+	_vertexShader(nullptr),
+	_pixelShader(nullptr),
+	_constantBuffer(nullptr)
 {
 
 }
 
 Shader::~Shader()
 {
+	ReleaseCOM(_constantBuffer);
+	ReleaseCOM(_pixelShader);
+	ReleaseCOM(_vertexShader);
 	ReleaseCOM(_inputLayout)
 /*	ReleaseCOM(_FX);*/
 }
 
-void Shader::Load(const std::wstring& path)
+void Shader::Load(const std::wstring& vertexShaderPath, const std::wstring& pixelShaderPath)
 {
 	/*std::ifstream fin(path, std::ios::binary);
 
@@ -158,11 +165,11 @@ void Shader::Load(const std::wstring& path)
 
 	// 마지막 nullptr은 에러메시지를 받을 때 포인터를 집어넣는 것이다
 	ID3D10Blob* vertexShaderBuffer = nullptr;
-	D3DCompileFromFile(L"../ImpGraphicsEngine/VertexShader.hlsl", nullptr, nullptr, "VS", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
+	D3DCompileFromFile(vertexShaderPath.c_str(), nullptr, nullptr, "VS", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
 		&vertexShaderBuffer, nullptr);
 
 	ID3D10Blob* pixelShaderBuffer = nullptr;
-	D3DCompileFromFile(L"../ImpGraphicsEngine/PixelShader.hlsl", nullptr, nullptr, "PS", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
+	D3DCompileFromFile(pixelShaderPath.c_str(), nullptr, nullptr, "PS", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
 		&pixelShaderBuffer, nullptr);
 
 	device->CreateVertexShader(vertexShaderBuffer->GetBufferPointer(), 
@@ -175,10 +182,11 @@ void Shader::Load(const std::wstring& path)
 	D3D11_INPUT_ELEMENT_DESC vertexDesc[] =
 	{
 		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
-		{"COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}
+		{"COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
+		{"TEXCOORD",    0, DXGI_FORMAT_R32G32_FLOAT, 0, 28, D3D11_INPUT_PER_VERTEX_DATA, 0}
 	};
 
-	device->CreateInputLayout(vertexDesc, 2, vertexShaderBuffer->GetBufferPointer(), 
+	device->CreateInputLayout(vertexDesc, 3, vertexShaderBuffer->GetBufferPointer(), 
 		vertexShaderBuffer->GetBufferSize(), &_inputLayout);
 
 	ReleaseCOM(vertexShaderBuffer);

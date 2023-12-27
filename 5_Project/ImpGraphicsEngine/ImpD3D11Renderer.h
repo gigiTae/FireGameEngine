@@ -39,7 +39,10 @@ namespace ImpGraphics
 
 		virtual void SetLight(LightInfo lightInfo) override;
 		virtual void SetCamera(CameraInfo cameraInfo) override;
-		virtual void SetMeshObject(MeshObjectInfo meshObjectInfo) override;
+
+		virtual void AddMeshObejct(MeshObjectInfo meshObjectInfo) override;
+		virtual void SetMeshObject(size_t objectID, Matrix transformMatrix) override;
+		virtual void DeleteMeshObject(size_t objectID) override;
 
 		// temp
 		virtual void* GetDevice() override;
@@ -59,6 +62,7 @@ namespace ImpGraphics
 
 		ImpCamera* _camera;
 
+		std::unordered_map<size_t, IObject*> _objects;
 		//temp
 		IObject* _object;
 		Factory* _factory;

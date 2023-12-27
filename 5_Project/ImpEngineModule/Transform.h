@@ -66,7 +66,7 @@ namespace ImpEngineModule
 		// 자식이 없는지
 		bool IsLeaf()const { return _children.empty(); }
 
-		// 자신의 하위 계층에 있는지 확인한다.
+		// 자신의 하위 계층이 있는지 확인한다.
 		bool IsDescendant(Transform* transform);
 
 
