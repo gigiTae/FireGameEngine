@@ -24,6 +24,47 @@ namespace ImpMath
 
 	struct Matrix;
 
+	struct Vector2
+	{
+		Vector2(float x = 0.0f, float y = 0.0f); // 생성자
+
+		Vector2(const Vector2& rhs) = default; // 복사 생성자
+		Vector2& operator=(const Vector2& rhs) = default; // 복사 대입 연산자
+
+		// 덧셈 연산자 오버로딩 + +=
+		Vector2 operator+(const Vector2& rhs) const;
+		void operator+=(const Vector2& rhs);
+
+		// 뺄셈 연산자 오버로딩 - -=
+		Vector2 operator-(const Vector2& rhs) const;
+		void operator-=(const Vector2& rhs);
+
+		// 스칼라 곱 *, *= 
+		Vector2 operator*(const float scalar) const;
+		void operator*=(const float scalar);
+
+		// 스칼라 나눗셈 /, /=
+		Vector2 operator/(const float scalar) const;
+		void operator/=(const float scalar);
+
+		// 논리 연산자 오버로딩 ==, !=
+		bool operator==(const Vector2& rhs) const;
+		bool operator!=(const Vector2& rhs) const;
+
+		// 벡터의 크기 계산
+		float Length() const;
+		// 비교 등을 할 때 루트 연산을 줄이기 위해 제곱 버전도 제공
+		float LengthSquared() const;
+		// Normalize 연산
+		Vector2 Normalize() const;
+
+		static const Vector2 Zero;
+
+		/// 멤버 변수
+	public:
+		float x, y;
+	};
+
 	struct Vector3
 	{
 		Vector3(float x = 0.0f, float y = 0.0f, float z = 0.0f); // 생성자
@@ -91,7 +132,7 @@ namespace ImpMath
 		Vector4(const Vector4& rhs) = default; // 복사 생성자
 		Vector4& operator=(const Vector4& rhs) = default; // 복사 대입 연산자
 
-		// 덧셈 연산자 오버로딩 + +=
+		// 덧셈 연산자 오버로딩 + +=		
 		Vector4 operator+(const Vector4& rhs) const;
 		void operator+=(const Vector4& rhs);
 

@@ -69,7 +69,7 @@ namespace ImpEngineModule
 		{
 			auto& vec = iter->second;
 
-			vec.erase(std::find(vec.begin, vec.end(), subscriber), vec.end());
+			vec.erase(std::find(vec.begin(), vec.end(), subscriber), vec.end());
 
 			if (vec.size() == 0)
 			{
@@ -84,7 +84,7 @@ namespace ImpEngineModule
 		TypeIndex index = GetTypeIndex<T>();
 		auto iter = _subscribers.find(index);
 
-		if (iter != _subscribers.end())
+		if (iter == _subscribers.end())
 		{
 			std::vector<ISubscriber*> vec;
 			vec.push_back(subscriber);

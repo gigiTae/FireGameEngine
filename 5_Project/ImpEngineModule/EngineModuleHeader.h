@@ -29,12 +29,17 @@
 #include "WorldManager.h"
 #include "ResourceManager.h"
 #include "CameraManager.h"
+#include "EventManager.h"
 
 /// Component
 #include "Transform.h"
 #include "Camera.h"
 #include "Mesh.h"
 #include "Light.h"
+
+/// Event
+#include "EventSubscriber.h"
+#include "Event.h"
 
 /// EngineModule
 #include "EngineModule.h"

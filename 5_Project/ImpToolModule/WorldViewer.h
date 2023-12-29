@@ -42,6 +42,10 @@ namespace ImpToolModule
 		// 현재 월드의 이름을 표시한다.
 		void ShowWorldNameToText();
 
+		// 엔티티 리소를 저장한다
+		void SaveEntityResources(const std::vector<std::wstring>& pathResources,
+			const std::filesystem::path& currentWorldPath);
+
 	private:
 		ImpEngineModule::World* _world =nullptr;
 		ImpEngineModule::WorldManager* _worldManager = nullptr;

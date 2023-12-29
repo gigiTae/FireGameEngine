@@ -1,42 +1,40 @@
 #pragma once
 
-#include "ExportDefine.h"
-#include "WindowInfomation.h"
- 
-namespace ImpGraphics {	class IImpGraphicsEngine; }
-namespace ImpEngineModule {	class EngineModule;}
+#include "IImpEngine.h"
+
+namespace ImpGraphics { class IImpGraphicsEngine; }
+namespace ImpEngineModule { class EngineModule; }
 
 namespace ImpGameEngine
 {
 	class CameraSystem;
+	class RenderingSystem;
+
 	// <summary>
 	// 게임엔진
 	// 
 	// </summary>
-	class IMP_ENGNIE_API ImpGameEngine
+	class ImpGameEngine : public IImpEngine
 	{
 	public:
 		ImpGameEngine();
 		~ImpGameEngine();
 
 		// GameEngine 초기화
-		void Initialize(WindowInfomation info);
-		
+		void Initialize(WindowInfomation info) override;
+
 		// 게임엔진 루프	
-		void Process();
-		
+		void Process() override;
+
 		// GameEngine 종료
-		void Finalize();
+		void Finalize() override;
 
 	private:
 		ImpGraphics::IImpGraphicsEngine* _graphicsEngine;
 		ImpEngineModule::EngineModule* _engineModule;
 
 		CameraSystem* _cameraSystem;
-
-#ifdef IMP_EDITOR_MODE
-		ImpToolModule::IEditor*_editor;
-#endif 
+		RenderingSystem* _renderingSystem;
 	};
 
 

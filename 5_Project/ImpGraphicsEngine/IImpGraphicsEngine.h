@@ -2,8 +2,17 @@
 #include "../ImpStructure/ImpMath.h"
 #include <string>
 #pragma comment(lib, "d3d11.lib")
-// temp
-#pragma comment(lib, "../ImpGraphicsEngine/Effects11d.lib")
+#pragma comment(lib, "../x64/Debug/ImpFBXLoader.lib")
+
+#ifdef IMPGRAPHICS
+#define IMPGRAPHICS __declspec(dllexport)
+#else
+#define IMPGRAPHICS __declspec(dllimport)
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif 
 
 using namespace ImpMath;
 
@@ -25,10 +34,10 @@ namespace ImpGraphics
 		Vector3 _rotation;
 		Vector3 _scale;
 
-		bool _isPerspective;
-		float _fieldOfView;
-		float _nearPlain;
-		float _farPlain;
+		bool _isPerspective = false;
+		float _fieldOfView = false;
+		float _nearPlain = false;
+		float _farPlain = false;
 	};
 
 	struct MeshObjectInfo
@@ -39,15 +48,6 @@ namespace ImpGraphics
 
 		std::wstring _vertexShaderPath;
 		std::wstring _pisxelShaderPath;
-
-		//std::string texturePath; // 텍스처가 여러장이면?
-		//Mesh 구조체가 필요하다. FBX Loader에서 어떻게 가져올지 생각해보자.
-		// 근데 skinning이 적용되는 Mesh랑 
-		// animaition 정보가 있는 Mesh랑 
-		// 정적인 Mesh가 같을까?
-		// 아닌 거 같다.
-		// 상속 구조로 만들어볼까?
-		//Mesh* _mesh;
 	};
 
 	/// <summary>
@@ -73,29 +73,43 @@ namespace ImpGraphics
 		virtual ~IImpGraphicsEngine() {};
 
 		/// 기본 인터페이스
-		virtual bool Initialize(int hinst, int hWnd, int screenWidth, int screenHeight) abstract;
-		virtual void Update(float deltaTime) abstract;
-		virtual void BeginRender() abstract;
-		virtual void Render(RendererType rendererType) abstract;
-		virtual void EndRender() abstract;
-		virtual void Finalize() abstract;
+		virtual IMPGRAPHICS bool Initialize(int hinst, int hWnd, int screenWidth, int screenHeight) abstract;
+		virtual IMPGRAPHICS void Update(float deltaTime) abstract;
+		virtual IMPGRAPHICS void BeginRender() abstract;
+		virtual IMPGRAPHICS void Render(RendererType rendererType) abstract;
+		virtual IMPGRAPHICS void EndRender() abstract;
+		virtual IMPGRAPHICS void Finalize() abstract;
 
 		/// 창 크기 변환
-		virtual void SetClientSize(int width, int height) abstract;
+		virtual IMPGRAPHICS void SetClientSize(int width, int height) abstract;
 
 		/// 그리기 위해 필요한 오브젝트들
-		virtual void SetLight(LightInfo lightInfo) abstract;
-		virtual void SetCamera(CameraInfo cameraInfo) abstract;
+		virtual IMPGRAPHICS void SetLight(LightInfo lightInfo) abstract;
+		virtual IMPGRAPHICS void SetCamera(CameraInfo cameraInfo) abstract;
 
-		virtual void AddMeshObejct(MeshObjectInfo meshObjectInfo) abstract;
-		virtual void SetMeshObject(size_t objectID, Matrix transformMatrix) abstract;
-		virtual void DeleteMeshObject(size_t objectID) abstract;
-		
+		virtual IMPGRAPHICS void AddMeshObejct(MeshObjectInfo meshObjectInfo) abstract;
+		virtual IMPGRAPHICS void SetMeshObject(size_t objectID, Matrix transformMatrix) abstract;
+		virtual IMPGRAPHICS void DeleteMeshObject(size_t objectID) abstract;
+
 		// temp 
 		/// IMGUI를 위해서 필요한 Device, DeviceContext 반환
 		// 여기에 ID3D11Device를 써버리면 아마도 게임엔진에서
 		// D3D를 include 해야할 것 같다. 그렇다고 void* 가 맞는걸까?
-		virtual void* GetDevice() abstract;
-		virtual void* GetDeviceContext() abstract;
+		virtual IMPGRAPHICS void* GetDevice() abstract;
+		virtual IMPGRAPHICS void* GetDeviceContext() abstract;
+	};
+
+	class EngineExporter
+	{
+	public:
+		static IMPGRAPHICS IImpGraphicsEngine* GetEngine();
+		static IMPGRAPHICS void DeleteEngine();
+
+	private:
+		static IImpGraphicsEngine* _engine;
 	};
 }
+
+#ifdef __cplusplus
+}
+#endif 

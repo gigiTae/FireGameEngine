@@ -1,6 +1,9 @@
 #pragma once
 #include "IEditor.h"
 
+
+namespace IImpGraphicsEngine { class IImpGraphicsEngine; }
+
 namespace ImpToolModule
 {
 	class WorldViewer;
@@ -22,7 +25,9 @@ namespace ImpToolModule
 
 	public:
 		// Editor 초기화
-		void Initialize(HWND hWnd, void* device, void* deviceContext, ImpEngineModule::EngineModule* engineModule)override;
+		void Initialize(HWND hWnd, void* device, void* deviceContext,
+			ImpEngineModule::EngineModule* engineModule,
+			ImpGraphics::IImpGraphicsEngine* grahicsEngnie)override;
 
 		// Editor 종료
 		void Finalize()override;
@@ -45,6 +50,7 @@ namespace ImpToolModule
 
 	private:
 		ImpEngineModule::EngineModule* _engineModule;
+		ImpGraphics::IImpGraphicsEngine* _graphicsEngine;
 
 		std::unique_ptr<WorldViewer> _worldViewer;
 		std::unique_ptr<EntityViewer> _entityViewer;

@@ -5,38 +5,40 @@ using namespace DirectX;
 
 namespace ImpGraphics
 {
-	class Vertex
+	struct Vertex
 	{
-		// helper 오브젝트를 위해 존재
-		// Axis, Grid 등
 		struct PosColor
 		{
 			XMFLOAT3 Pos;
 			XMFLOAT4 Color;
 		};
 
-		struct Basic
+		struct PosColorTex
+		{
+			XMFLOAT3 Pos;
+			XMFLOAT4 Color;
+			XMFLOAT2 Tex;
+		};
+
+		struct QuadVertex
+		{
+			XMFLOAT3 Pos;
+			XMFLOAT2 Tex;
+		};
+
+		struct PosNormal
 		{
 			XMFLOAT3 Pos;
 			XMFLOAT3 Normal;
-			XMFLOAT2 Tex;
-
-			/// 기술을 하나 추가할 때마다 Vertex에 필요한 정보가 늘어난다.
-			//XMFLOAT3 Tangent; // Normal Map을 입히기 위해서 필요하다
-			// weight의 총합이 1이므로 3개만 보내면 된다.
-			//XMFLOAT3 weight; 
-			// 무조건 4개 이하라고 가정하고 하는 듯 하다. 셰이더 코드에도 그렇게 되어있음.
-			//UINT32 BoneIndices[4];
 		};
 	};
 
-	class InputLayouts
+	class InputLayoutDesc
 	{
 	public:
-		void InitAll(ID3D11Device* device);
-		void DestroyAll();
-
-		ID3D11InputLayout* _posColor;
-		ID3D11InputLayout* _basic;
+		static const D3D11_INPUT_ELEMENT_DESC PosColor[2];
+		static const D3D11_INPUT_ELEMENT_DESC PosColorTex[3];
+		static const D3D11_INPUT_ELEMENT_DESC QuadVertex[2];
+		static const D3D11_INPUT_ELEMENT_DESC PosNormal[2];
 	};
 }

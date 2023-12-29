@@ -2,8 +2,11 @@
 
 #include <d3d11.h>
 
+namespace IImpGraphicsEngine { class IImpGraphicsEngine; }
+
 namespace ImpToolModule
 {
+
 	/// <summary>
 	/// Editor Interface
 	/// ImGui , dx11 사용
@@ -16,7 +19,8 @@ namespace ImpToolModule
 		/// <summary>
 		/// Editor 초기화, dx11,winAPI,imgui를 사용한다.
 		/// </summary>
-		virtual void Initialize(HWND hWnd, void* device, void* deviceContext, ImpEngineModule::EngineModule* engineModule) abstract;
+		virtual void Initialize(HWND hWnd, void* device, void* deviceContext,
+			ImpEngineModule::EngineModule* engineModule, ImpGraphics::IImpGraphicsEngine* grahicsEngnie) abstract;
 
 		/// <summary>
 		/// 종료 함수

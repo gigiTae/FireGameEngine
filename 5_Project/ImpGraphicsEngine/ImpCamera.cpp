@@ -68,7 +68,7 @@ DirectX::XMFLOAT4X4 ImpGraphics::ImpCamera::GetProjTM()
 	return _projTM;
 }
 
-void ImpGraphics::ImpCamera::SetScreen(int width, int height)
+void ImpGraphics::ImpCamera::SetScreenSize(int width, int height)
 {
 	_screenWidth = width;
 	_screenHeight = height;

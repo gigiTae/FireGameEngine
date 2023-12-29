@@ -11,7 +11,6 @@ namespace ImpGraphics
 	{
 	public:
 		MeshObject(std::shared_ptr<VBIB> vbib, std::shared_ptr<Shader> shader);
-		MeshObject(std::shared_ptr<VBIB> vbib, std::shared_ptr<Shader> shader, std::shared_ptr<Shader> shader2);
 		virtual ~MeshObject();
 
 		virtual void Update(ImpCamera* camera) override;
@@ -21,8 +20,8 @@ namespace ImpGraphics
 
 	private:
 		std::shared_ptr<VBIB> _VBIB;
+
 		std::shared_ptr<Shader> _shader;
-		std::shared_ptr<Shader> _shader2;
 
 		DirectX::XMFLOAT4X4 _worldTM;
 		DirectX::XMFLOAT4X4 _viewTM;

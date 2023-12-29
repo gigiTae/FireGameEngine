@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraManager.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="EngineModule.h" />
     <ClInclude Include="EngineModuleHeader.h" />
     <ClInclude Include="EntityResource.h" />
@@ -180,6 +181,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraManager.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="EngineModule.cpp" />
     <ClCompile Include="EntityResource.cpp" />
     <ClCompile Include="Event.cpp" />

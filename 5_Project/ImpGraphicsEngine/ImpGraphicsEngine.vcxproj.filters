@@ -22,14 +22,17 @@
     <Filter Include="Resource\Object\Mesh">
       <UniqueIdentifier>{cb610ff1-eb19-4f45-bf3c-9e17222db1ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Temp">
-      <UniqueIdentifier>{b641b143-f2bc-4cb5-9108-45a888526516}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Management">
       <UniqueIdentifier>{6b46a59c-a853-49a1-82be-258a9fa8b1af}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource\Shader">
       <UniqueIdentifier>{90020fba-00f7-4410-8cda-3386291a7477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Management\Loader">
+      <UniqueIdentifier>{3a982e6e-e01e-4d48-a0bf-28abd049c9c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Object\IObject">
+      <UniqueIdentifier>{0d6d496a-9dff-43e4-ba77-943dac15fde6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,12 +81,6 @@
     <ClInclude Include="ObjectManager.h">
       <Filter>Resource\Management</Filter>
     </ClInclude>
-    <ClInclude Include="IObject.h">
-      <Filter>Resource\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Effects.h">
-      <Filter>DirectX11</Filter>
-    </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Resource\Object</Filter>
     </ClInclude>
@@ -96,8 +93,20 @@
     <ClInclude Include="Builder.h">
       <Filter>Resource\Management</Filter>
     </ClInclude>
+    <ClInclude Include="ImpLoader.h">
+      <Filter>Resource\Management\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.h">
+      <Filter>Resource\Object\IObject</Filter>
+    </ClInclude>
     <ClInclude Include="MeshObject.h">
-      <Filter>Resource\Object</Filter>
+      <Filter>Resource\Object\IObject</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadObject.h">
+      <Filter>Resource\Object\IObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpObject.h">
+      <Filter>Resource\Object\IObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +146,6 @@
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Resource\Management</Filter>
     </ClCompile>
-    <ClCompile Include="Effects.cpp">
-      <Filter>DirectX11</Filter>
-    </ClCompile>
     <ClCompile Include="Light.cpp">
       <Filter>Resource\Object</Filter>
     </ClCompile>
@@ -149,8 +155,20 @@
     <ClCompile Include="Builder.cpp">
       <Filter>Resource\Management</Filter>
     </ClCompile>
+    <ClCompile Include="ImpLoader.cpp">
+      <Filter>Resource\Management\Loader</Filter>
+    </ClCompile>
     <ClCompile Include="MeshObject.cpp">
-      <Filter>Resource\Object</Filter>
+      <Filter>Resource\Object\IObject</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadObject.cpp">
+      <Filter>Resource\Object\IObject</Filter>
+    </ClCompile>
+    <ClCompile Include="IImpGraphicsEngine.cpp">
+      <Filter>GraphicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpObject.cpp">
+      <Filter>Resource\Object\IObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +188,12 @@
       <Filter>Resource\Shader</Filter>
     </FxCompile>
     <FxCompile Include="SecondPassPS.hlsl">
+      <Filter>Resource\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="FirstNormalVS.hlsl">
+      <Filter>Resource\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="FirstNormalPS.hlsl">
       <Filter>Resource\Shader</Filter>
     </FxCompile>
   </ItemGroup>

@@ -36,9 +36,6 @@
       <Filter>header\00.Define</Filter>
     </ClInclude>
     <ClInclude Include="ImpGameEnginePCH.h" />
-    <ClInclude Include="ComponentHeader.h">
-      <Filter>header\00.Define</Filter>
-    </ClInclude>
     <ClInclude Include="ImpGameEngineHeader.h" />
     <ClInclude Include="ExportDefine.h">
       <Filter>header\00.Define</Filter>
@@ -47,6 +44,15 @@
       <Filter>header\02.System</Filter>
     </ClInclude>
     <ClInclude Include="ImpGameEngine.h">
+      <Filter>header\01.GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingSystem.h">
+      <Filter>header\02.System</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpToolEngine.h">
+      <Filter>header\01.GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="IImpEngine.h">
       <Filter>header\01.GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,6 +74,15 @@
     </ClCompile>
     <ClCompile Include="CameraSystem.cpp">
       <Filter>source\02.System</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderingSystem.cpp">
+      <Filter>source\02.System</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpToolEngine.cpp">
+      <Filter>source\01.GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="IImpEngine.cpp">
+      <Filter>source\01.GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

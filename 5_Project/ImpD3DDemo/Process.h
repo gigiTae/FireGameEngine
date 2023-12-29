@@ -5,6 +5,7 @@
 #include "GameTimer.h" // 일단은 Demo 이므로 정밀한 Time 관리가 필요 없다고 가정하고 그냥 가져다 쓴다.
 
 #include "../ImpStructure/ImpMath.h"
+#include "InputManager.h"
 
 // Todo: 경로 어떻게 할지 정하고 변경해야 됨
 namespace ImpGraphics { class IImpGraphicsEngine; }
@@ -33,7 +34,7 @@ private:
 private:
 	/// ---------- WinAPI, Graphics Engine ----------
 	// 3D Graphics Engine
-	std::unique_ptr <ImpGraphics::IImpGraphicsEngine> m_pRenderer;
+	ImpGraphics::IImpGraphicsEngine* m_pRenderer;
 	//ImpGraphics::IImp3DRenderer* m_pRenderer;
 
 	/// ---------- Timer ----------
@@ -53,9 +54,19 @@ private:
 	bool m_resizing;
 
 	// temp
-	ImpMath::Vector3 pos = ImpMath::Vector3(0, 3, -5);
-	ImpMath::Vector3 rot = ImpMath::Vector3(30, 0, 0);
+	ImpMath::Vector3 pos = ImpMath::Vector3(0, 0, -5);
+	ImpMath::Vector3 rot = ImpMath::Vector3(0, 10, 0);
 	ImpMath::Vector3 scale = ImpMath::Vector3(1, 1, 1);
+
+	void Strafe(float distance);
+	void Walk(float distance);
+	void WorldUpDown(float distance);
+
+	void Yaw(float angle);
+	void Pitch(float angle);
+	void Roll(float angle);
+
+	ImpMath::Matrix _rotMatrix;
 
 	bool isPerspective = bool(true);
 	float fov = float(0.25f * 3.1415f);

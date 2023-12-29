@@ -5,42 +5,208 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="소스 파일\Test">
+      <UniqueIdentifier>{c5dc0868-1750-4f24-b9c3-172a25d45fc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UML">
-      <UniqueIdentifier>{4d14096a-eb12-4bd5-9a94-89e48398f247}</UniqueIdentifier>
+    <Filter Include="소스 파일\Loader">
+      <UniqueIdentifier>{01ee5e56-6afe-46a6-bc3a-1d8431f1b226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="문서 파일">
+      <UniqueIdentifier>{2b33a091-e60f-4495-bad3-2c86ac2ca5da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\example">
+      <UniqueIdentifier>{d6068933-3bb7-41a5-a7d6-9a2626dc708e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Common.cpp">
+      <Filter>소스 파일\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>소스 파일\Test</Filter>
+    </ClCompile>
     <ClCompile Include="Parser.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="IFBXLoader.cpp">
+      <Filter>소스 파일\Loader</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Common.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="FbxLoader.cpp">
+      <Filter>소스 파일\Loader</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayAnimation.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayCache.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayCamera.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayCommon.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayGenericInfo.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayGlobalSettings.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayHierarchy.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayLight.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayLink.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayLodGroup.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayMarker.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayMaterial.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayMesh.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayNurb.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayPatch.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayPivotsAndLimits.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayPose.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayShape.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplaySkeleton.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayTexture.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayUserProperties.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\main.cxx">
+      <Filter>소스 파일\example</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
+      <Filter>소스 파일\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLoader.cpp">
+      <Filter>소스 파일\Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Parser.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Test</Filter>
     </ClInclude>
     <ClInclude Include="Geometry.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Test</Filter>
     </ClInclude>
     <ClInclude Include="Common.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="IFBXLoader.h">
+      <Filter>소스 파일\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="FbxLoader.h">
+      <Filter>소스 파일\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayAnimation.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayCache.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayCamera.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayCommon.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayGenericInfo.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayGlobalSettings.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayHierarchy.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayLight.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayLink.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayLodGroup.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayMarker.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayMaterial.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayMesh.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayNurb.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayPatch.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayPivotsAndLimits.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayPose.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayShape.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplaySkeleton.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayTexture.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\DisplayUserProperties.h">
+      <Filter>소스 파일\example</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>소스 파일\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshLoader.h">
+      <Filter>소스 파일\Loader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd">
-      <Filter>UML</Filter>
+      <Filter>문서 파일</Filter>
     </None>
+    <None Include="README.md">
+      <Filter>문서 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\samples\ImportScene\CMakeLists.txt">
+      <Filter>소스 파일\example</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -62,6 +62,7 @@ namespace ImpGraphics
 
 		ImpCamera* _camera;
 
+		IObject* _quadObjectForDeferred;
 		std::unordered_map<size_t, IObject*> _objects;
 		//temp
 		IObject* _object;

@@ -33,7 +33,10 @@ namespace ImpEngineModule
 		void AddScale(const ImpMath::Vector3& deltaScale) { _scale += deltaScale; }
 
 		// 최종행렬을 얻는다.
-		ImpMath::Matrix GetFinalMatrix()const { return _finalMatrix; }
+		ImpMath::Matrix GetFinalMatrix()const 
+		{ 
+			return _finalMatrix; 
+		}
 
 		// 로컬행렬을 가져온다.
 		ImpMath::Matrix GetLocalMatrix()const { return _localMatrix; }

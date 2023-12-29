@@ -21,7 +21,7 @@ void ImpEngineModule::EventManager::Finalize()
 
 }
 
-void ImpEngineModule::EventManager::Update()
+void ImpEngineModule::EventManager::Update ()
 {
 
 }

@@ -1,7 +1,10 @@
 #include "ImpToolModulePCH.h"
 #include "ComponentViewer.h"
+#include "Rebind.h"
 
 ImpToolModule::ComponentViewer::ComponentViewer()
+	:_viewComponent(nullptr), _reflectComponents{}, _graphicsEngine(nullptr)
+	, _viewEntity(nullptr), _isRebindEntity(false)
 {
 	using namespace ImpReflection;
 
@@ -20,10 +23,18 @@ ImpToolModule::ComponentViewer::ComponentViewer()
 	}
 }
 
+void ImpToolModule::ComponentViewer::Initialize(ImpGraphics::IImpGraphicsEngine* grahphicsEngnie)
+{
+	_graphicsEngine = grahphicsEngnie;
+}
+
 void ImpToolModule::ComponentViewer::Update(ImpEngineModule::Entity* ent)
 {
 	using namespace ImpEngineModule;
 	using namespace ImpReflection;
+
+	_isRebindEntity = false;
+	_viewEntity = ent;
 
 	ImGui::Begin("ComponentViewer");
 
@@ -47,6 +58,7 @@ void ImpToolModule::ComponentViewer::Update(ImpEngineModule::Entity* ent)
 
 			std::string name = type->GetFullName();
 			Component* component = iter.second;
+			_viewComponent = component;
 
 			ViewComponentInfomation(component, name, type);
 
@@ -73,12 +85,29 @@ void ImpToolModule::ComponentViewer::Update(ImpEngineModule::Entity* ent)
 		// 삭제할 컴포넌트 삭제
 		if (eraseIndex != ImpEngineModule::EXCEPTION)
 		{
+			Component* component = ent->GetComponent(eraseIndex);
+			Mesh* mesh = dynamic_cast<Mesh*>(component);
+
+			// 메쉬를 삭제하는 경우 바인딩을 해제한다.
+			if (mesh != nullptr)
+			{
+				mesh->SetActive(false);
+				Bind::RebindMeshObject(ent, _graphicsEngine);
+			}
+
 			ent->DestroyComponent(eraseIndex);
 		}
 
 	}
 
 	ImGui::End();
+
+
+	// 다시 그래픽스 엔진에 바인딩이 필요한 경우
+	if (_isRebindEntity)
+	{
+		Bind::Rebind(ent, _graphicsEngine);
+	}
 }
 
 void ImpToolModule::ComponentViewer::ViewComponentInfomation(void* object, const std::string& name, ImpReflection::Type* type)
@@ -220,7 +249,7 @@ void ImpToolModule::ComponentViewer::ViewPrimitiveType(void* object, const std::
 	else if (type->GetFullName() == "float")
 	{
 		float* data = reinterpret_cast<float*>(object);
-		ImGui::DragFloat(fureName.c_str(), data,0.1f);
+		ImGui::DragFloat(fureName.c_str(), data, 0.1f);
 	}
 	else if (type->GetFullName() == "double")
 	{
@@ -244,7 +273,9 @@ void ImpToolModule::ComponentViewer::ViewPrimitiveType(void* object, const std::
 
 		std::string sData = std::filesystem::path(*data).filename().string();
 
-		ImGui::InputText(fureName.c_str(), &sData);
+		if (ImGui::InputText(fureName.c_str(), &sData))
+		{
+		}
 
 		if (ImGui::BeginDragDropTarget())
 		{
@@ -256,8 +287,7 @@ void ImpToolModule::ComponentViewer::ViewPrimitiveType(void* object, const std::
 				std::wstring path = receiveData;
 				*data = path;
 
-				// TODO:: 경로를 받으면 리소스의 형태에따라서 리소스를 로드해야한다. 
-
+				_isRebindEntity = true;
 			}
 		}
 
@@ -325,7 +355,6 @@ void ImpToolModule::ComponentViewer::ViewAddComponent(ImpEngineModule::Entity* e
 				ImGui::SetItemDefaultFocus(); // 선택된 항목에 초점을 맞춤
 			}
 		}
-
 		ImGui::EndCombo();
 	}
 
@@ -345,8 +374,12 @@ void ImpToolModule::ComponentViewer::ViewAddComponent(ImpEngineModule::Entity* e
 		if (!ent->HasComponent(index))
 		{
 			ent->AddComponent(type->Invoke(), index);
+
+			if ("ImpEngineModule::Mesh" == componentName)
+			{
+				Bind::RebindMeshObject(ent, _graphicsEngine);
+			}
+
 		}
-
 	}
-
 }

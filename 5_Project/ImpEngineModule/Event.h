@@ -14,10 +14,17 @@ namespace ImpEngineModule::Event
 		Entity* entity;
 	};
 	
+	// Entity Start 호출
+	struct OnEntityStarted
+	{
+		Entity* entity;
+	};
+
 	// Entity 삭제 이벤트
 	struct OnEntityDestroyed
 	{
 		Entity* entity;
 	};
+
 
 }

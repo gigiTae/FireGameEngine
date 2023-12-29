@@ -18,6 +18,85 @@ constexpr float RadianToDegree(float radian)
 
 #pragma endregion Util
 
+#pragma region Vector2
+
+Vector2::Vector2(float x /*= 0.0f*/, float y /*= 0.0f*/)
+	:x(x), y(y)
+{
+}
+
+Vector2 Vector2::operator+(const Vector2& rhs) const
+{
+	return Vector2(x + rhs.x, y + rhs.y);
+}
+
+void Vector2::operator+=(const Vector2& rhs)
+{
+	x += rhs.x;
+	y += rhs.y;
+}
+
+Vector2 Vector2::operator-(const Vector2& rhs) const
+{
+	return Vector2(x + rhs.x, y - rhs.y);
+}
+
+void Vector2::operator-=(const Vector2& rhs)
+{
+	x -= rhs.x;
+	y -= rhs.y;
+}
+
+ImpMath::Vector2 Vector2::operator*(const float scalar) const
+{
+	return Vector2(x * scalar, y * scalar);
+}
+
+void Vector2::operator*=(const float scalar)
+{
+	x *= scalar;
+	y *= scalar;
+}
+
+ImpMath::Vector2 Vector2::operator/(const float scalar) const
+{
+	return Vector2(x / scalar, y / scalar);
+}
+
+void Vector2::operator/=(const float scalar)
+{
+	x /= scalar;
+	y /= scalar;
+}
+
+bool Vector2::operator==(const Vector2& rhs) const
+{
+	return x == rhs.x && y == rhs.y;
+}
+
+bool Vector2::operator!=(const Vector2& rhs) const
+{
+	return !operator==(rhs);
+}
+
+float Vector2::Length() const
+{
+	return sqrt(x * x + y * y);
+}
+
+float Vector2::LengthSquared() const
+{
+	return x * x + y * y;
+}
+
+ImpMath::Vector2 Vector2::Normalize() const
+{
+	return Vector2(x / Length(), y / Length());
+}
+
+const ImpMath::Vector2 ImpMath::Vector2::Zero = {0, 0};
+
+#pragma endregion Vector2
 
 #pragma region Vector3
 Vector3::Vector3(float x /*= 0.0f*/, float y /*= 0.0f*/, float z /*= 0.0f*/)

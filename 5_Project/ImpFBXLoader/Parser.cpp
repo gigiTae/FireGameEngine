@@ -1,12 +1,14 @@
 #include "Parser.h"
+#include "../ImpStructure/ImpMesh.h"
+using namespace ImpStructure;
 
 #include "Common.h"
 #include "Geometry.h"
 
-FBXLoad::Parser::Parser(const char* fileName, Scene* scene)
-	: _scene{ scene }
+FBXLoad::Parser::Parser(const char* fileName)
+	: _scene{ new Scene()}
 {
-	assert(fileName && scene);
+	assert(fileName && _scene);
 	FBXSDK_printf("\n>> 파일 이름: \"%s\" \n", fileName);
 
 	if (InitilazeFbx())

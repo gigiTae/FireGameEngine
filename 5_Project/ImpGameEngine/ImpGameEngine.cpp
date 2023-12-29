@@ -1,15 +1,14 @@
 #include "ImpGameEnginePCH.h"
 #include "ImpGameEngine.h"
 #include "CameraSystem.h"
+#include "RenderingSystem.h"
 
 #pragma comment(lib, "../ImpLib/ImpGraphicsEngine.lib")
-#include "../ImpGraphicsEngine/ImpGraphicsEngine.h"
+#include "../ImpGraphicsEngine/IImpGraphicsEngine.h"
 
 ImpGameEngine::ImpGameEngine::ImpGameEngine()
 	:_graphicsEngine(nullptr), _engineModule(nullptr),_cameraSystem(nullptr)
-#ifdef IMP_EDITOR_MODE
-	, _editor(nullptr)
-#endif
+	,_renderingSystem(nullptr)
 {
 }
 
@@ -18,9 +17,11 @@ ImpGameEngine::ImpGameEngine::~ImpGameEngine()
 
 void ImpGameEngine::ImpGameEngine::Initialize(WindowInfomation info)
 {
-	_graphicsEngine = new ImpGraphics::ImpGraphicsEngine();
+	_graphicsEngine = ImpGraphics::EngineExporter::GetEngine();
+
 	_engineModule = new ImpEngineModule::EngineModule();
 	_cameraSystem = new CameraSystem();
+	_renderingSystem = new RenderingSystem();
 
 	// 1. 그래픽스 엔진 초기화 
 #pragma warning(disable : 4311)
@@ -38,14 +39,10 @@ void ImpGameEngine::ImpGameEngine::Initialize(WindowInfomation info)
 
 	// 4. System 초기화
 	_cameraSystem->Initialize(_graphicsEngine,_engineModule);
+	_renderingSystem->Initialize(_graphicsEngine, _engineModule);
 
-#ifdef IMP_EDITOR_MODE
-	_editor = new ImpToolModule::ImpEditor();
-	_editor->Initialize(info._hWnd, _graphicsEngine->GetDevice(),
-		_graphicsEngine->GetDeviceContext(), _engineModule);
-
-	_cameraSystem->SetToolCamera(_editor->GetToolCamera()); 
-#endif 
+	// 5. 게임루프 시작
+	_engineModule->Start();
 }
 
 void ImpGameEngine::ImpGameEngine::Process()
@@ -78,20 +75,14 @@ void ImpGameEngine::ImpGameEngine::Process()
 			}
 
 			float dt = _engineModule->Update();			
-			_graphicsEngine->Update(dt);
 
-#ifdef IMP_EDITOR_MODE
-			_editor->NewFrame();
-			_editor->Update();
-#endif // IMP_EDITOR_MODE
+			_renderingSystem->Update();
+
+			_graphicsEngine->Update(dt);
 
 			_graphicsEngine->SetCamera(_cameraSystem->GetCameraInfo());
 			_graphicsEngine->BeginRender();
 			_graphicsEngine->Render(ImpGraphics::IImpGraphicsEngine::RendererType::Forward);
-			   
-#ifdef IMP_EDITOR_MODE
-			_editor->EndRender(); 
-#endif // IMP_EDITOR_MODE
 
 			_graphicsEngine->EndRender();
 		}
@@ -101,17 +92,17 @@ void ImpGameEngine::ImpGameEngine::Process()
 
 void ImpGameEngine::ImpGameEngine::Finalize()
 {
+	_renderingSystem->Finalize();
+
 	_engineModule->Finalize();
 	_graphicsEngine->Finalize();
 
-#ifdef IMP_EDITOR_MODE
-	_editor->Finalize();
-	delete _editor;
-#endif // IMP_EDITOR_MODE
-
 	// 메모리 해제
-	delete _graphicsEngine;
+
+	ImpGraphics::EngineExporter::DeleteEngine();
+
 	delete _engineModule;
 	delete _cameraSystem;
+	delete _renderingSystem;
 }
 

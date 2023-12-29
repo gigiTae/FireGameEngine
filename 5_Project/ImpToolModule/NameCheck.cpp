@@ -12,12 +12,12 @@ void ImpToolModule::NameCheck::CheckNameDuplication(ImpEngineModule::World* worl
 	}
 }
 
-bool ImpToolModule::NameCheck::FindSameName(const std::vector<ImpEngineModule::Entity*>& entities,
+bool ImpToolModule::NameCheck::FindSameName(const std::vector<std::shared_ptr<ImpEngineModule::Entity>>& entities,
 	ImpEngineModule::Entity* ent, std::string& newName)
 {
-	for (ImpEngineModule::Entity* entity : entities)
+	for (const std::shared_ptr<ImpEngineModule::Entity>& entity : entities)
 	{
-		if (  ent != entity && newName == entity->GetName() &&
+		if (  ent != entity.get() && newName == entity->GetName() &&
 			entity->GetState() == ImpEngineModule::Entity::EntityState::Active)
 		{
 			return true;

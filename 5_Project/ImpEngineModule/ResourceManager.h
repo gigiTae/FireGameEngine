@@ -38,7 +38,6 @@ namespace ImpEngineModule
 	private:
 		std::vector<std::filesystem::path> _worldDataList;
 		std::unordered_map<std::wstring, std::unique_ptr<EntityResource>> _entityData;
-
 	};
 
 

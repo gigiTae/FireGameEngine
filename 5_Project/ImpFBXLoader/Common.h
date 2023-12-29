@@ -6,7 +6,10 @@
 
 namespace FBXLoad
 { 
-	struct SceneData; 
+	inline namespace Test
+	{
+		struct SceneData;
 
-	void Import(const char* file);
+		void Import(const char* file);
+	}
 }

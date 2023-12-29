@@ -1,6 +1,7 @@
 #include "ImpToolModulePCH.h"
 #include "EntityViewer.h"
 #include "ResourceViewer.h"
+#include "Rebind.h"
 
 ImpToolModule::EntityViewer::EntityViewer()
 {
@@ -12,11 +13,12 @@ ImpToolModule::EntityViewer::~EntityViewer()
 
 }
 
-void ImpToolModule::EntityViewer::Initialize(ImpEngineModule::EngineModule* engineModule, ResourceViewer* resViewer)
+void ImpToolModule::EntityViewer::Initialize(ImpEngineModule::EngineModule* engineModule, ResourceViewer* resViewer, ImpGraphics::IImpGraphicsEngine* grahphicsEngnie)
 {
 	_world = engineModule->GetWorld();
 	_worldManager = engineModule->GetWorldManager();
 	_resourceView = resViewer;
+	_graphicsEngine = grahphicsEngnie;
 }
 
 void ImpToolModule::EntityViewer::Update()
@@ -44,7 +46,7 @@ void ImpToolModule::EntityViewer::Update()
 		if (_searchName.empty())
 		{
 			// 검색하지 않았을때 일반적으로 표시하는 GUI
-			for (Entity* ent : _world->GetEntities())
+			for (const std::shared_ptr<Entity>& ent : _world->GetEntities())
 			{
 				// Root Entity만 표시한다.
 				if (!ent->GetComponent<Transform>()->IsRoot())
@@ -52,18 +54,18 @@ void ImpToolModule::EntityViewer::Update()
 					continue;
 				}
 
-				ShowEntityGUI(ent);
+				ShowEntityGUI(ent.get());
 			}
 		}
 		else // 검색을 했을때 보여주는 GUI
 		{
-			for (Entity* ent : _world->GetEntities())
+			for (const std::shared_ptr<Entity>& ent : _world->GetEntities())
 			{
 				size_t index = ent->GetName().find(_searchName);
 
 				if (index != std::string::npos)
 				{
-					ShowEntityGUIWithoutChild(ent);
+					ShowEntityGUIWithoutChild(ent.get());
 				}
 			}
 		}
@@ -300,6 +302,8 @@ void ImpToolModule::EntityViewer::DropEntity(ImpEngineModule::World* world)
 			std::string entName = ent->GetName();
 			ImpToolModule::NameCheck::CheckNameDuplication(world, ent, entName);
 			ent->SetName(entName);
+
+			Bind::Rebind(ent,_graphicsEngine);
 		}
 
 	}

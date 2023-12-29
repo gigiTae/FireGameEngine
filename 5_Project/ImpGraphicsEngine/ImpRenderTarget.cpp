@@ -157,6 +157,13 @@ void ImpRenderTarget::OnResize(int width, int height)
 	// will be destroying.  Also release the old depth/stencil buffer.
 	ReleaseCOM(_depthStencilView);
 	ReleaseCOM(_renderTargetView);
+	for (size_t i = 0; i < _deferredRenderTargetView.size(); i++)
+	{
+		ReleaseCOM(_deferredRenderTargetView[i]);
+		ReleaseCOM(_deferredShaderResourceView[i]);
+	}
+	_deferredRenderTargetView.clear();
+	_deferredShaderResourceView.clear();
 
 	// Resize the swap chain and recreate the render target view.
 	IDXGISwapChain* swapChain = _device->GetSwapChain();
@@ -198,10 +205,21 @@ void ImpRenderTarget::FirstPassClear()
 	deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
 	const float blackBackgroundColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	const float blackBackgroundColor2[4] = { 1.0f, 0.0f, 0.0f, 0.0f };
+	const float blackBackgroundColor2[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	for (size_t i = 0; i < 1; i++)
 	{
 		deviceContext->ClearRenderTargetView(_deferredRenderTargetView[0], blackBackgroundColor);
 		deviceContext->ClearRenderTargetView(_deferredRenderTargetView[1], blackBackgroundColor2);
 	}
+}
+
+void ImpRenderTarget::Unbind()
+{
+	ID3D11DeviceContext* deviceContext = _device->GetDeviceContext();
+
+	ID3D11ShaderResourceView* pSRV = NULL;
+	deviceContext->PSSetShaderResources(0, 1, &pSRV);
+
+	pSRV = NULL;
+	deviceContext->PSSetShaderResources(1, 1, &pSRV);
 }

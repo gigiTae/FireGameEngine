@@ -6,7 +6,8 @@ namespace ImpGraphics
 	enum class ObjectType
 	{
 		MeshObject,
-		HelperObject
+		HelperObject,
+		QuadObject,
 	};
 
 	enum class TextureType

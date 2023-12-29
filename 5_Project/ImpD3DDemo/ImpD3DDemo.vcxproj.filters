@@ -30,6 +30,9 @@
     <ClCompile Include="GameTimer.cpp">
       <Filter>Timer</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -42,6 +45,12 @@
       <Filter>BaseWindow</Filter>
     </ClInclude>
     <ClInclude Include="GameTimer.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
       <Filter>Timer</Filter>
     </ClInclude>
   </ItemGroup>

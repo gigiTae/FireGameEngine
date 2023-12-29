@@ -97,8 +97,6 @@ void ImpEngineModule::InputManager::Update()
 		deltaMousePosition = { currentMousePosition.x - prevMousePosition.x,
 		 currentMousePosition.y - prevMousePosition.y };
 
-
-
 	}
 	// 포커스해제되어 예외처리 진행
 	else

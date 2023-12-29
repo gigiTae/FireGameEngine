@@ -3,7 +3,7 @@
 #include "InputManager.h"
 
 ImpEngineModule::Transform::Transform() :_parent(nullptr), _children{},
-_finalMatrix{}, _localMatrix{}, _position{}, _rotation{}, _scale{}
+_finalMatrix{}, _localMatrix{}
 {}
 
 void ImpEngineModule::Transform::Update(float dt)
@@ -63,7 +63,7 @@ void ImpEngineModule::Transform::UpdateLocalMatrix()
 	Matrix translation = Matrix::MakeTranslationMatrix(_position);
 
 	// SRT
-	_finalMatrix = translation * rot * scale;
+	_localMatrix = scale * rot * translation;
 }
 
 void ImpEngineModule::Transform::UpdateFinalMatrix()

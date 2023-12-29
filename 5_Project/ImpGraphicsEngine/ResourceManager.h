@@ -11,9 +11,12 @@
 // IObjectBase* _newObject = CreateObject<MeshObject*>(buildInfo);
 // 일단 책을 읽고 각 객체가 해야 하는 일이 뭐일지 부터 정해보자
 
+namespace FBXLoad { class IFBXLoader; }
+
 namespace ImpGraphics
 {
 	class ImpDevice;
+	class ImpLoader;
 
 	class ResourceManager 
 	{
@@ -66,9 +69,14 @@ namespace ImpGraphics
 		}
 
 		ImpDevice* GetDevice() { return _device; }
+		ImpLoader* GetImpLoader() { return _impLoader; }
+		FBXLoad::IFBXLoader* GetFBXLoader() { return _fbxLoader; }
 	private:
 		std::unordered_map<std::wstring, std::weak_ptr<Resource>> _resources;
-		// FBX 로더
-		ImpDevice* _device;
+
+		ImpDevice* _device; // DirectX 관련 리소스들 Load용
+		// FBX 로더 
+		ImpLoader* _impLoader;
+		FBXLoad::IFBXLoader* _fbxLoader;
 	};
 }

@@ -27,10 +27,9 @@ void ImpEngineModule::World::Reset()
 {
 	_lastEntityID = 0;
 
-	for (Entity* ent : _entities)
+	for (std::shared_ptr<Entity>& ent : _entities)
 	{
 		ent->DestroyAllComponents();
-		delete ent;
 	}
 
 	_entities.clear();
@@ -38,15 +37,16 @@ void ImpEngineModule::World::Reset()
 
 void ImpEngineModule::World::Start()
 {
-	for (Entity* ent : _entities)
+	for (std::shared_ptr<Entity>& ent : _entities)
 	{
 		ent->Start();
+		_eventManager->Emit<Event::OnEntityStarted>({ ent.get()});
 	}
 }
 
 void ImpEngineModule::World::Update(float dt)
 {
-	for (Entity* ent : _entities)
+	for (std::shared_ptr<Entity>& ent : _entities)
 	{
 		ent->Update(dt);
 	}
@@ -59,14 +59,31 @@ void ImpEngineModule::World::Finalize()
 
 ImpEngineModule::Entity* ImpEngineModule::World::CreateEntity()
 {
-	/// TODO : 나중에는 오브젝트 풀을 사용해서 관리한다.
 	++_lastEntityID;
-	Entity* ent = new Entity(this, _lastEntityID);
+	std::shared_ptr<Entity> ent = std::make_shared<Entity>(this, _lastEntityID);
 
 	_entities.push_back(ent);
-	_eventManager->Emit<Event::OnEntityCreated>({ ent });
+	_eventManager->Emit<Event::OnEntityCreated>({ ent.get()});
 
-	return ent;
+	return ent.get();
+}
+
+void ImpEngineModule::World::RegisterEntity(const std::shared_ptr<Entity>& ent)
+{	
+	for (auto& ent : _entities)
+	{
+		if (ent.get() == ent.get())
+		{
+			assert(!L"중복으로 등록한 Entity입니다");
+		}
+	}
+
+	ent->_world = this;
+	ent->_id = AssignNewID();
+	ent->_state = Entity::EntityState::Active;
+	_entities.push_back(ent);
+
+	ent->Start();
 }
 
 void ImpEngineModule::World::DestroyEntity(Entity* ent)
@@ -94,7 +111,7 @@ ImpEngineModule::Entity* ImpEngineModule::World::GetByIndex(size_t index) const
 	if (_entities.size() <= index)
 		return nullptr;
 
-	return _entities[index];
+	return _entities[index].get();
 }
 
 void ImpEngineModule::World::DestroyEntity(size_t id)
@@ -111,11 +128,11 @@ void ImpEngineModule::World::DestroyEntity(size_t id)
 
 ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(const std::string& name) const
 {
-	for (Entity* ent : _entities)
+	for ( const std::shared_ptr<Entity>& ent : _entities)
 	{
 		if (name == ent->_name)
 		{
-			return ent;
+			return ent.get();
 		}
 	}
 	return nullptr;
@@ -123,11 +140,11 @@ ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(const std::string& na
 
 ImpEngineModule::Entity* ImpEngineModule::World::GetEntity(size_t id) const
 {
-	for (Entity* ent : _entities)
+	for (const std::shared_ptr<Entity>& ent : _entities)
 	{
 		if (id == ent->_id)
 		{
-			return ent;
+			return ent.get();
 		}
 	}
 	return nullptr;

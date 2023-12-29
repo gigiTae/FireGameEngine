@@ -56,6 +56,8 @@ void ImpToolModule::WorldViewer::ShowWorldNameToText()
 }
 
 
+
+
 void ImpToolModule::WorldViewer::SaveWorldButton()
 {
 	if (ImGui::BeginMenu("Save"))
@@ -205,11 +207,11 @@ void ImpToolModule::WorldViewer::SaveWorld()
 		}
 	}
 
-	for (Entity* ent : _world->GetEntities())
+	for (const std::shared_ptr<Entity>& ent : _world->GetEntities())
 	{
 		if (ent->GetState() == Entity::EntityState::Active)
 		{
-			 Save::SaveEntity(worldPath, ent);
+			 Save::SaveEntity(worldPath, ent.get());
 		}
 	}
 
@@ -225,7 +227,7 @@ void ImpToolModule::WorldViewer::SaveResources(const std::filesystem::path& path
 
 	std::vector<std::wstring> pathResources;
 
-	for (auto ent : _world->GetEntities())
+	for (const auto& ent : _world->GetEntities())
 	{
 		for (auto& component : ent->GetComponents())
 		{
@@ -236,27 +238,48 @@ void ImpToolModule::WorldViewer::SaveResources(const std::filesystem::path& path
 		}
 	}
 
+	// 2. 경로가 비어있다면 저장하지 않는다
+	pathResources.erase(std::remove_if(pathResources.begin(), pathResources.end(), [](std::wstring path)
+		{
+			if (path.empty()) return true;
+			return false;
+		}), pathResources.end());
 
-	// 2. 경로들을 모두 상대경로로 바꿔줘야한다.
+
+	// 3. 경로들을 모두 상대경로로 바꿔줘야한다.
 	for (auto& path : pathResources)
 	{
 		PathManager::EraseResourcePath(path);
 	}
 
-	// 3. 경로들을 확장자명을 수정해서 저장한다.
-	std::filesystem::path loadEntityPath = path;
+	// 4. 파일 형식에 따라서 분류해서 저장한다.
+	SaveEntityResources(pathResources, path);
+
+
+}
+
+
+void ImpToolModule::WorldViewer::SaveEntityResources(const std::vector<std::wstring>& pathResources,
+	const std::filesystem::path& currentWorldPath)
+{
+	std::filesystem::path loadEntityPath = currentWorldPath;
 	loadEntityPath += "/LoadEntityList.txt";
 
 	std::wofstream  loadEntityText(loadEntityPath);
 
 	assert(loadEntityText.is_open() && "파일열기 실패");
-
 	for (auto& path : pathResources)
 	{
+		// .ent 확장자만 저장을 한다
+		if (path.substr(path.find_last_of('.')) != L".ent")
+		{
+			continue;
+		}
+
 		loadEntityText << path << '\n';
 	}
-
 	loadEntityText.close();
+
 }
 
 void ImpToolModule::WorldViewer::FindPathResource(void* object, ImpReflection::Type* type, std::vector<std::wstring>& resources)

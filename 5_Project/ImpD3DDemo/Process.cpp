@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "Process.h"
 
-#include "../ImpGraphicsEngine/ImpGraphicsEngine.h"
-
+#include "../ImpGraphicsEngine/IImpGraphicsEngine.h"
 using namespace ImpGraphics;
 
 Process::Process()
@@ -15,13 +14,12 @@ Process::Process()
 	CreateHWND(L"D3DEngine Demo", WS_OVERLAPPEDWINDOW, m_windowPosX, m_windowPosY, m_screenWidth, m_screenHeight);
 	ShowWindow(m_hWnd, SW_SHOWNORMAL);
 
-	m_pRenderer = std::make_unique<ImpGraphicsEngine>();
-	//m_pRenderer = new ImpD3D11Renderer;
+	m_pRenderer = EngineExporter::GetEngine();
 }
 
 Process::~Process()
 {
-
+	EngineExporter::DeleteEngine();
 }
 
 bool Process::Init(HINSTANCE hInstance)
@@ -32,8 +30,39 @@ bool Process::Init(HINSTANCE hInstance)
 #pragma warning(default : 4311)
 #pragma warning(default : 4302)
 
+	InputManager::GetInstance().Init(m_hWnd);
 	m_timer = std::make_unique<GameTimer>();
 	m_timer->Reset();
+
+// 	MeshObjectInfo info;
+// 	info._objectID = 1;
+// 	info._meshPath = L"Resources/Imp/mm.fbx";
+// 	info._pisxelShaderPath = L"../ImpGraphicsEngine/FirstNormalPS.hlsl";
+// 	info._vertexShaderPath = L"../ImpGraphicsEngine/FirstNormalVS.hlsl";
+// 
+// 	m_pRenderer->AddMeshObejct(info);
+
+// 	info;
+// 	info._objectID = 2;
+// 	info._meshPath = L"Resources/Imp/dd.fbx";
+// 	info._pisxelShaderPath = L"../ImpGraphicsEngine/FirstNormalPS.hlsl";
+// 	info._vertexShaderPath = L"../ImpGraphicsEngine/FirstNormalVS.hlsl";
+// 
+// 	m_pRenderer->AddMeshObejct(info);
+
+// 	info;
+// 	info._objectID = 3;
+// 	info._meshPath = L"Resources/Imp/Axis.fbx";
+// 	info._pisxelShaderPath = L"../ImpGraphicsEngine/FirstNormalPS.hlsl";
+// 	info._vertexShaderPath = L"../ImpGraphicsEngine/FirstNormalVS.hlsl";
+// 
+// 	m_pRenderer->AddMeshObejct(info);
+
+// 	Matrix iden = Matrix::Identity();
+// 	m_pRenderer->SetMeshObject(1, iden);
+// 	m_pRenderer->SetMeshObject(2, iden);
+	//m_pRenderer->SetMeshObject(3, iden);
+
 	return true;
 }
 
@@ -203,10 +232,8 @@ void Process::UpdateTimer()
 
 void Process::Update()
 {
+	InputManager::GetInstance().Update();
 	UpdateTimer();
-	/// 엔진 업데이트
-	m_pRenderer->Update(m_timer->DeltaTime());
-
 	/// 카메라 사용 예시
 	ImpGraphics::CameraInfo cameraInfo;
 
@@ -220,6 +247,54 @@ void Process::Update()
 
 	m_pRenderer->SetCamera(cameraInfo);
 	///
+
+	if (InputManager::GetInstance().IsGetKey('W'))
+	{
+		Walk(0.001f);
+	}
+	if (InputManager::GetInstance().IsGetKey('S'))
+	{
+		Walk(-0.001f);
+	}
+	if (InputManager::GetInstance().IsGetKey('D'))
+	{
+		Strafe(0.001f);
+	}
+	if (InputManager::GetInstance().IsGetKey('A'))
+	{
+		Strafe(-0.001f);
+	}
+	if (InputManager::GetInstance().IsGetKey('E'))
+	{
+		WorldUpDown(0.001f);
+	}
+	if (InputManager::GetInstance().IsGetKey('Q'))
+	{
+		WorldUpDown(-0.001f);
+	}
+	static Matrix aa = Matrix::Identity();
+	if (InputManager::GetInstance().IsGetKey('V'))
+	{
+		aa._21 += 0.001f;
+		m_pRenderer->SetMeshObject(1, aa);
+	}
+	if (InputManager::GetInstance().IsGetKeyDown('B'))
+	{
+
+	}
+
+	if (InputManager::GetInstance().IsGetKey(VK_RBUTTON))
+	{
+		float dx = (2.25f * static_cast<float>(InputManager::GetInstance().GetDeltaPosition().x) * (3.141592f / 180.0f));
+		float dy = (2.25f * static_cast<float>(InputManager::GetInstance().GetDeltaPosition().y) * (3.141592f / 180.0f));
+		
+		//RotateY(dx);
+		Pitch(dy);
+		Yaw(dx);
+	}
+
+	/// 엔진 업데이트
+	m_pRenderer->Update(m_timer->DeltaTime());
 }
 
 void Process::Render()
@@ -232,4 +307,66 @@ void Process::Render()
  
  	/// 그리기를 끝낸다.
  	m_pRenderer->EndRender();
+}
+
+void Process::Strafe(float distance)
+{
+	//mPosition = XMFLOAT3(mRight.x * d + mPosition.x, mRight.y * d + mPosition.y, mRight.z * d + mPosition.z);
+	_rotMatrix = ImpMath::Matrix::MakeRotationMatrixRollPitchYaw(rot);
+
+	pos = ImpMath::Vector3(_rotMatrix._11 * distance + pos.x,
+		_rotMatrix._12 * distance + pos.y, _rotMatrix._13 * distance + pos.z);
+}
+
+void Process::Walk(float distance)
+{
+	//mPosition = XMFLOAT3(mLook.x * d + mPosition.x, mLook.y * d + mPosition.y, mLook.z * d + mPosition.z);
+	_rotMatrix = ImpMath::Matrix::MakeRotationMatrixRollPitchYaw(rot);
+
+	pos = ImpMath::Vector3(_rotMatrix._31 * distance + pos.x,
+		_rotMatrix._32 * distance + pos.y, _rotMatrix._33 * distance + pos.z);
+}
+
+void Process::WorldUpDown(float distance)
+{
+	_rotMatrix = ImpMath::Matrix::MakeRotationMatrixRollPitchYaw(rot);
+
+	pos = ImpMath::Vector3(_rotMatrix._21 * distance + pos.x,
+		_rotMatrix._22 * distance + pos.y, _rotMatrix._23 * distance + pos.z);
+}
+
+void Process::Yaw(float angle)
+{
+	ImpMath::Vector3 rotation = rot;
+	_rotMatrix = ImpMath::Matrix::MakeRotationMatrixRollPitchYaw(rotation);
+
+	ImpMath::Vector3 up{ 0, 1, 0 };
+	up = up.Normalize();
+
+	rotation += up * angle;
+	rot = rotation;
+}
+
+void Process::Pitch(float angle)
+{
+	ImpMath::Vector3 rotation = rot;
+	_rotMatrix = ImpMath::Matrix::MakeRotationMatrixRollPitchYaw(rotation);
+
+	ImpMath::Vector3 right{ 1, 0, 0 };
+	right = right.Normalize();
+
+	rotation += right * angle;
+	rot = rotation;
+}
+
+void Process::Roll(float angle)
+{
+	ImpMath::Vector3 rotation = rot;
+	_rotMatrix = ImpMath::Matrix::MakeRotationMatrixRollPitchYaw(rotation);
+
+	ImpMath::Vector3 look{ 0, 0, 1 };
+	look = look.Normalize();
+
+	rotation += look * angle;
+	rot = rotation;
 }

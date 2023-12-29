@@ -1,5 +1,7 @@
 #pragma once
 
+namespace ImpGameEngine { class IImpEngine; }
+
 class Application
 {
 public:
@@ -21,7 +23,7 @@ private:
 	void InitializeWindow(HINSTANCE hInstance);
 
 private:
-	ImpGameEngine::ImpGameEngine _gameEngine; 
+	ImpGameEngine::IImpEngine* _gameEngine; 
 	ImpGameEngine::WindowInfomation _info;
 };
 

@@ -39,6 +39,12 @@
     <Filter Include="source\03.ToolCamera">
       <UniqueIdentifier>{4d32e051-d099-4079-9933-ea81b3e6b1c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="header\04.Rebind">
+      <UniqueIdentifier>{f61a515f-4bfd-4a19-b7b2-0c34e5fb5d27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\04.Rebind">
+      <UniqueIdentifier>{aa656ba4-b40c-453e-9278-302dd5c8d522}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imstb_truetype.h">
@@ -100,6 +106,9 @@
     <ClInclude Include="ImGuiColor.h">
       <Filter>header\00.Define</Filter>
     </ClInclude>
+    <ClInclude Include="Rebind.h">
+      <Filter>header\04.Rebind</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui_widgets.cpp">
@@ -158,6 +167,9 @@
     </ClCompile>
     <ClCompile Include="ImGuiColor.cpp">
       <Filter>source\00.Define</Filter>
+    </ClCompile>
+    <ClCompile Include="Rebind.cpp">
+      <Filter>source\04.Rebind</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

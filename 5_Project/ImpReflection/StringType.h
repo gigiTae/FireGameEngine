@@ -58,7 +58,6 @@ namespace ImpReflection
 			std::wstring* strObj = reinterpret_cast<std::wstring*>(object);
 			strObj->clear();
 
-			/// TODO : 아마 오류 발생 예정
 			for (size_t i = begin + 1; i < end-1; i += 2) {
 				wchar_t ch = static_cast<unsigned char>(data[i]) | (static_cast<unsigned char>(data[i + 1]) << 8);
 				strObj->push_back(ch);

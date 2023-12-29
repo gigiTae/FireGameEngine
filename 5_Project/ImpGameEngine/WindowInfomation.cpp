@@ -24,6 +24,7 @@ LRESULT CALLBACK ImpGameEngine::WindowInfomation::WndProc(HWND hWnd, UINT messag
 #ifdef IMP_EDITOR_MODE
 	case WM_MOVE:
 	{
+
 	}
 	break;
 #endif // EDITOR_MODE

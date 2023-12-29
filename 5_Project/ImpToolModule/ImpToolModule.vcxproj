@@ -161,6 +161,7 @@
     <ClInclude Include="EntityViewer.h" />
     <ClInclude Include="ImGuiColor.h" />
     <ClInclude Include="NameCheck.h" />
+    <ClInclude Include="Rebind.h" />
     <ClInclude Include="ResourceViewer.h" />
     <ClInclude Include="IEditor.h" />
     <ClInclude Include="imconfig.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="EntityViewer.cpp" />
     <ClCompile Include="ImGuiColor.cpp" />
     <ClCompile Include="NameCheck.cpp" />
+    <ClCompile Include="Rebind.cpp" />
     <ClCompile Include="ResourceViewer.cpp" />
     <ClCompile Include="IEditor.cpp" />
     <ClCompile Include="imgui.cpp" />

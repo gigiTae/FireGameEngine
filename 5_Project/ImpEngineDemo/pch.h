@@ -22,7 +22,6 @@
 #include <memory.h>
 
 /// GameEngine lib
-#include "../ImpGameEngine/ImpGameEngine.h"
 #include "../ImpGameEngine/WindowInfomation.h"
 
 #endif //PCH_H

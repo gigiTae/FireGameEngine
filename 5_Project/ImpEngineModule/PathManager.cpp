@@ -120,8 +120,25 @@ void ImpEngineModule::PathManager::EraseResourcePath(std::wstring& path)
 	std::filesystem::path resouresPath = GetResourcesPath();
 	std::filesystem::path currentPath(path);
 
+	if (currentPath.is_relative())
+	{
+		return;
+	}
+
 	std::wstring  relativePath = currentPath.wstring().substr(resouresPath.wstring().size());
 
 	path = relativePath;
+}
+
+std::wstring ImpEngineModule::PathManager::GetExtension(const std::wstring& path)
+{
+	size_t start = path.find_last_of('.');
+
+	if (start == std::wstring::npos)
+	{
+		return std::wstring();
+	}
+
+	return path.substr(start);
 }
 

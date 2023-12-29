@@ -2,6 +2,7 @@
 #include "Mesh.h"
 
 ImpEngineModule::Mesh::Mesh()
+	:_isBindGraphics(false)
 {
 
 }
@@ -15,9 +16,10 @@ ImpEngineModule::Component* ImpEngineModule::Mesh::Clone() const
 {
 	Mesh* clone = new Mesh();
 
-	clone->_texture = _texture;
+	clone->_fbx = _fbx;
 	clone->_pixelShader = _pixelShader;
 	clone->_vertexShader = _vertexShader;
+	clone->_isBindGraphics = false;
 
 	return clone;
 }

@@ -13,9 +13,7 @@
 #include "../ImpReflection/ImpReflectionHeader.h"
 #include "../ImpEngineModule/EngineModuleHeader.h"
 
-#ifdef IMP_EDITOR_MODE
 #include "../ImpToolModule/ImpToolModuleHeader.h"
-#endif
 
 
 #endif //IMP_GAME_ENIGNE_PCH_H6

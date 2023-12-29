@@ -22,10 +22,13 @@ namespace ImpEngineModule
 
 		// 초기화
 		void Initialize(HWND hWnd, std::wstring startWorld);
-		
+
+		// 게임루프 시작시 호출
+		void Start();
+	
 		// EngineModule들의 루프
 		float Update();
-		
+
 		//종료
 		void Finalize();
 

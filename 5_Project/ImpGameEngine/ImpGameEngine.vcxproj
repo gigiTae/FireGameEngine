@@ -174,16 +174,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CameraSystem.h" />
-    <ClInclude Include="ComponentHeader.h" />
     <ClInclude Include="ExportDefine.h" />
+    <ClInclude Include="IImpEngine.h" />
     <ClInclude Include="ImpGameEngine.h" />
     <ClInclude Include="ImpGameEngineHeader.h" />
     <ClInclude Include="ImpGameEnginePCH.h" />
+    <ClInclude Include="ImpToolEngine.h" />
+    <ClInclude Include="RenderingSystem.h" />
     <ClInclude Include="WindowInfomation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraSystem.cpp" />
     <ClCompile Include="dllmaincpp.cpp" />
+    <ClCompile Include="IImpEngine.cpp" />
     <ClCompile Include="ImpGameEngine.cpp" />
     <ClCompile Include="ImpGameEnignePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -191,12 +194,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ImpToolEngine.cpp" />
+    <ClCompile Include="RenderingSystem.cpp" />
     <ClCompile Include="Refleciton.cpp" />
     <ClCompile Include="WindowInfomation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImpEngineModule\ImpEngineModule.vcxproj">
       <Project>{acac880a-714e-488e-beb5-b39522e8532e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ImpGraphicsEngine\ImpGraphicsEngine.vcxproj">
+      <Project>{ea7dd778-6992-491d-a3a3-c2c8924f8674}</Project>
     </ProjectReference>
     <ProjectReference Include="..\ImpReflection\ImpReflection.vcxproj">
       <Project>{811d721d-e9ca-4c14-a941-622532f2e6aa}</Project>

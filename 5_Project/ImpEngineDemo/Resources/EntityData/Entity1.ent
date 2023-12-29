@@ -1,0 +1,18 @@
+ID<1>
+ImpEngineModule::Transform{
+  _position = ImpMath::Vector3{
+    x = float{0.000000}
+    y = float{0.000000}
+    z = float{0.000000}
+    }
+  _rotation = ImpMath::Vector3{
+    x = float{0.000000}
+    y = float{0.000000}
+    z = float{0.000000}
+    }
+  _scale = ImpMath::Vector3{
+    x = float{0.000000}
+    y = float{0.000000}
+    z = float{0.000000}
+    }
+}

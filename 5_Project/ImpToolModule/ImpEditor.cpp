@@ -18,26 +18,30 @@ ImpToolModule::ImpEditor::ImpEditor()
 ImpToolModule::ImpEditor::~ImpEditor()
 {}
 
-void ImpToolModule::ImpEditor::Initialize(HWND hWnd, void* device, void* deviceContext, ImpEngineModule::EngineModule* engineModule)
+void ImpToolModule::ImpEditor::Initialize(HWND hWnd, void* device, void* deviceContext, ImpEngineModule::EngineModule* engineModule, ImpGraphics::IImpGraphicsEngine* grahicsEngnie)
 {
 	// ImGui √ ±‚»≠
 	InitializeImGui(hWnd, reinterpret_cast<ID3D11Device*>(device),
 		reinterpret_cast<ID3D11DeviceContext*>(deviceContext));
 
 	_engineModule = engineModule;
-	
+	_graphicsEngine = grahicsEngnie;
+
 	_worldViewer->Initialize(_engineModule);
 	_resourceViewer->Initalize();
-	_entityViewer->Initialize(_engineModule,_resourceViewer.get());
+	_entityViewer->Initialize(_engineModule, _resourceViewer.get(),_graphicsEngine);
+	_componentViewer->Initialize(_graphicsEngine);
 
 	// ToolCamera
 	_toolCamera = std::make_unique<ToolCamera>();
 	_toolCamera->Initialize(_engineModule);
 }
 
+
 void ImpToolModule::ImpEditor::Finalize()
 {
 	FinalizeImGui();
+
 
 	_toolCamera->Finalize();
 }

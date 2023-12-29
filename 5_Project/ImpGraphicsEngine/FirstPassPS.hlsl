@@ -16,7 +16,7 @@ PixelOut PS(VertexOut pin)
     PixelOut pOut;
     
     pOut.PosH = normalize(pin.PosH);
-    pOut.Color = pin.Color;
+    pOut.Color = float4(pin.Color.xyz, pin.PosH.z / pin.PosH.w);
     
     return pOut;
 }

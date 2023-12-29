@@ -26,6 +26,9 @@
 #include "../ImpEngineModule/EngineModuleHeader.h"
 #include "../ImpReflection/ImpReflectionHeader.h"
 
+#pragma comment(lib, "../ImpLib/ImpGraphicsEngine.lib")
+#include "../ImpGraphicsEngine/ImpGraphicsEngine.h"
+
 #include "Save.h"
 #include "NameCheck.h"
 #include "ImGuiColor.h"

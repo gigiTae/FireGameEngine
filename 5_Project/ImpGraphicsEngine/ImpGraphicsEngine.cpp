@@ -54,7 +54,6 @@ void ImpGraphics::ImpGraphicsEngine::SetClientSize(int width, int height)
 
 void ImpGraphics::ImpGraphicsEngine::SetLight(LightInfo lightInfo)
 {
-
 }
 
 void ImpGraphics::ImpGraphicsEngine::SetCamera(CameraInfo cameraInfo)

@@ -57,6 +57,9 @@
     <Filter Include="source\07.Event">
       <UniqueIdentifier>{9ad0e560-8a09-4cb1-8e0a-33ecaff3e191}</UniqueIdentifier>
     </Filter>
+    <Filter Include="header\08.Physics">
+      <UniqueIdentifier>{de85d033-8966-4251-9ffd-ec6d5e6846be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineModulePCH.h" />
@@ -117,9 +120,6 @@
     <ClInclude Include="IEntity.h">
       <Filter>header\03.Entity</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>header\02.World</Filter>
-    </ClInclude>
     <ClInclude Include="IWorld.h">
       <Filter>header\02.World</Filter>
     </ClInclude>
@@ -150,6 +150,12 @@
     </ClInclude>
     <ClInclude Include="Event.h">
       <Filter>header\07.Event</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>header\02.World</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>header\05.Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>source\07.Event</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>source\05.Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

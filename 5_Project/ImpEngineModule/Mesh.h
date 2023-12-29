@@ -22,13 +22,20 @@ namespace ImpEngineModule
 		void SetPixelShaderPath(std::wstring path) { _pixelShader = path; }
 		std::wstring GetVertexShaderPath() const { return _vertexShader; }
 		void SetVertexShaderPath(std::wstring path) { _vertexShader = path; }
-		std::wstring GetMeshPath() const { return _texture; }
-		void SetMeshPath(std::wstring val) { _texture = val; }
+		std::wstring GetFBXPath() const { return _fbx; }
+		void SetFBXPath(std::wstring val) { _fbx = val; }
 
+		// 현재 그래픽스에 연결되어있는지
+		bool IsBindGraphics() const { return _isBindGraphics; }
+		
+		// 그래픽스와 연결상태를 지정한다.
+		void SetBindGraphics(bool val) { _isBindGraphics = val; }
 	private:
-		std::wstring _pixelShader;
-		std::wstring _vertexShader;
-		std::wstring _texture;
+		std::wstring _pixelShader = L"../ImpGraphicsEngine/FirstNormalPS.hlsl";
+		std::wstring _vertexShader = L"../ImpGraphicsEngine/FirstNormalVS.hlsl";
+		std::wstring _fbx;
+
+		bool _isBindGraphics;
 
 		REFLECTION_FRIEND(ImpEngineModule::Mesh);
 	};

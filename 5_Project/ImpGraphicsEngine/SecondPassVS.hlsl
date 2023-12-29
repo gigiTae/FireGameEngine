@@ -1,7 +1,6 @@
 struct VS_INPUT
 {
     float3 Position : POSITION;
-    float4 Color : COLOR;
     float2 TexCoord : TEXCOORD;
 };
 
@@ -17,6 +16,7 @@ VS_OUTPUT VS(VS_INPUT input)
 
     output.Position = float4(input.Position, 1.0f);
     output.TexCoord = input.TexCoord;
+
     //output.Position = float4(1.0f, 1.0f, 1.0f, 1.0f);
     //output.TexCoord = float2(1.0f, 1.0f);
 

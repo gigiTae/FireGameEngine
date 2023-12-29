@@ -81,8 +81,6 @@ void ImpToolModule::ResourceViewer::ViewProjectTabBar()
 
 void ImpToolModule::ResourceViewer::ViewEditFile()
 {
-
-
 	// 폴더 추가 버튼
 	if (ImGui::Button("Add"))
 	{

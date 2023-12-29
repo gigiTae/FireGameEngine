@@ -2,9 +2,13 @@
 #include "EntityResource.h"
 #include "Entity.h"
 
-ImpEngineModule::EntityResource::EntityResource(const std::wstring& path)
-	:Resource(ResourceCategory::Entity,path)
-{}
+
+ImpEngineModule::EntityResource::EntityResource(const std::wstring& path, size_t poolSize /*= 1*/)
+	:Resource(ResourceCategory::Entity, path), _poolSize(poolSize),
+	_entity{}, _entityPool{}
+{
+
+}
 
 ImpEngineModule::EntityResource::~EntityResource()
 {
@@ -13,23 +17,53 @@ ImpEngineModule::EntityResource::~EntityResource()
 
 void ImpEngineModule::EntityResource::Load()
 {
-	/// Entity Prefab을 가지고 있는다. 
+	// Entity Prefab을 가지고 있는다. 
 	const std::wstring& path = GetPath();
-	
+
 	_entity = std::make_unique<Entity>();
 
-	/// Entity의 이름은 파일명
+	// Entity의 이름은 파일명
 	std::filesystem::path filePath(path);
 
 	std::string name = filePath.filename().string();
 	ImpStringHelper::RemoveSubstring(name, ".ent");
-	
+
 	_entity->SetName(name);
 
 	LoadEntity();
+
+	FillEntityPool();
 }
 
-ImpEngineModule::Entity* ImpEngineModule::EntityResource::Clone()
+std::shared_ptr<ImpEngineModule::Entity> ImpEngineModule::EntityResource::GetEntity()
+{
+	// Pool에서 사용가능한 오브젝트를 가져온다.
+	for (auto& ent : _entityPool)
+	{
+		if (ent.use_count() == 1)
+		{
+			return ent;
+		}
+	}
+
+	// 사용가능한 오브젝트가 없는경우 새로 생성한다.
+	std::shared_ptr<ImpEngineModule::Entity> ent(Clone());
+	_entityPool.push_back(ent);
+
+#ifdef _DEBUG
+	// 오브젝트풀의 사이즈가 늘어났으므로 로그를 남긴다.
+	std::wstring log = L"Entity Pool Resize : ";
+	log += std::filesystem::path(_entity->GetName()).c_str();
+	log += L"(";
+	log += std::to_wstring(_entityPool.size());
+	log += L")";
+	OutputDebugString(log.c_str());	
+#endif 
+
+	return ent;
+}
+
+ImpEngineModule::Entity* ImpEngineModule::EntityResource::Clone()const
 {
 	Entity* ent = new Entity(*_entity);
 
@@ -50,12 +84,13 @@ void ImpEngineModule::EntityResource::LoadEntity()
 		size_t nowRead = 0, open = 0, close = 0;
 
 		nowRead = fileContent.find('\n') + 1;
-		 
+
 		std::string typeName = ImpStringHelper::GetTypeName(fileContent, nowRead);
 
 		if (typeName.empty())
 		{
 			// 깡통 Entity의 경우
+			assert(!L"깡통 Entity입니다");
 			return;
 		}
 		// 리플렉션을 이용해서 Entity 정보를 불러온다.
@@ -89,6 +124,17 @@ void ImpEngineModule::EntityResource::LoadEntity()
 		assert(!"파일읽기에 실패하였습니다.");
 	}
 
+}
+
+void ImpEngineModule::EntityResource::FillEntityPool()
+{
+	// 문제점 : 동일한 포인터를 가진 요소들로 복사된다.
+	//_entityPool.assign(_poolSize, std::make_shared<Entity>(_entity));
+
+	for (size_t i = 0; i < _poolSize; ++i)
+	{
+		_entityPool.push_back(std::make_shared<Entity>(*_entity.get()));
+	}
 }
 
 void ImpEngineModule::EntityResource::Clone(Entity* ent) const

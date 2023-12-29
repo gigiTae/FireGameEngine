@@ -2,7 +2,9 @@
 
 #ifndef IMP_TOOL_MODULE_HEADER
 #define IMP_TOOL_MODULE_HEADER
- 
+
+#include "../ImpGraphicsEngine/IImpGraphicsEngine.h"
+
 #include "imgui.h"
 
 #include "IEditor.h"

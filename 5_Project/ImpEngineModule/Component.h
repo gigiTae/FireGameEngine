@@ -16,39 +16,42 @@ namespace ImpEngineModule
         Component();
         virtual ~Component();
 
-        /// ===== !복사생성 반드시 정의하세요! ====== 
+        // ===== !복사생성 반드시 정의하세요! ====== 
         virtual Component* Clone()const abstract;
-        /// =======================================
+        // =======================================
 
-        /// World와 Entity를 연결한다.
+        // World와 Entity를 연결한다.
         void Set(World* world, Entity* ent);
 
-        /// Component의 초기상태를 결정한다.
+        // Component의 초기상태를 결정한다.
         virtual void Initialize() {};
 
-        /// 게임 World에 들어가지전에 호출한다.
+        // 게임 World에 들어가지전에 호출한다.
         virtual void Start() {};
 
-        /// 이번 프레임의 로직을 구현.
+        // 이번 프레임의 로직을 구현.
         virtual void Update(float dt)  {};
         
-        /// Component의 상태틀 초기화한다.
+        // Component의 상태틀 초기화한다.
         virtual void Finalize() {};
 
-        /// World 획득
+        // World 획득
         World* GetWorld() const { return _world; }
 
-        /// Entity 획득
+        // Entity 획득
         Entity* GetEntity()const { return _entity; }
 
-        /// Component의 활성화 상태를 확인
+        // Component의 활성화 상태를 확인
         bool IsActive() const { return _isActive; }
 
-        /// 다른 컴포넌트를 가져온다.
+        // 컴포넌트의 활성화 여부를 설정
+        void SetActive(bool isActive) { _isActive = isActive; }
+
+        // 다른 컴포넌트를 가져온다.
         template<typename T>
         T* GetComponent()const;
 
-        /// 컴포넌트를 추가한다.
+        // 컴포넌트를 추가한다.
         template<typename T,typename... Types>
         T* AddComponent(Types ...);
 

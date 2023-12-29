@@ -33,8 +33,8 @@ ImpEngineModule::Entity& ImpEngineModule::Entity::operator=(const Entity& other)
 ImpEngineModule::Entity::Entity(const Entity& other)
 	:_world(other._world), _state(other._state), _name(other._name)
 {
-	_id = _world->AssignNewID();
-
+	_id = 0;
+	
 	// 컴포넌트들의 복사
 	for (const auto& [index, component] : other._components)
 	{

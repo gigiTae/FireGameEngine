@@ -31,6 +31,8 @@ const ImpGraphics::CameraInfo& ImpGameEngine::CameraSystem::GetCameraInfo()
 	else
 	{
 		ImpEngineModule::Entity* mainCamera = _engineModule->GetCameraManager()->GetMainCamera();
+		
+		assert(mainCamera && "메인카메라가 존재하지 않습니다");
 		SetCameraInfo(mainCamera);
 	}
 

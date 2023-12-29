@@ -51,6 +51,11 @@ namespace ImpEngineModule
 		// Entity 생성
 		Entity* CreateEntity();
 
+		// 엔티티를 외부에서 등록한다
+		// 등록한 엔티티는 고유의 ID받고 해당월드와 연결된다.
+		// 그후에는 Start를 호출한다. 
+		void RegisterEntity(const std::shared_ptr<Entity>& ent);
+
 		// Entity 삭제
 		void DestroyEntity(Entity* ent);
 
@@ -75,27 +80,27 @@ namespace ImpEngineModule
 		// 엔티티Vector의 사이즈를 반환
 		size_t GetSize()const { return _entities.size(); }
 
-		const std::vector<Entity*>& GetEntities()const { return _entities; }
+		const std::vector<std::shared_ptr<Entity>>& GetEntities()const { return _entities; }
 
-		/// <summary>
-		/// 가변인자에 해당하는 타입의 컴포넌트를 들고있는 Entity들만 쿼리하여
-		/// 전달받은 함수를 호출한다.
-		/// </summary>
-		/// <typeparam name="...Types">쿼리할 컴포넌트 타입들</typeparam>
-		/// <param name="viewFunc">람다함수</param>
-		/// <param name="isIncludeToBeDestroyed">삭제예정인 Entity 포함여부</param>
+		// <summary>
+		// 가변인자에 해당하는 타입의 컴포넌트를 들고있는 Entity들만 쿼리하여
+		// 전달받은 함수를 호출한다.
+		// </summary>
+		// <typeparam name="...Types">쿼리할 컴포넌트 타입들</typeparam>
+		// <param name="viewFunc">람다함수</param>
+		// <param name="isIncludeToBeDestroyed">삭제예정인 Entity 포함여부</param>
 		template<typename... Types>
 		void Each(typename std::common_type<std::function<void(Entity*, ComponentHandle<Types>...)>>::type viewFunc,
 			bool isIncludeToBeDestroyed = false);
 
-		/// 가변인자에 해당하는 타입의 View를 제공한다.
+		// 가변인자에 해당하는 타입의 View를 제공한다.
 		template<typename... Types>
 		Internal::EntityComponentView<Types...> Each(bool isIncludeToBeDestroyed);
 
-		/// 모든 Entity들에 인자로 받은 함수를 실행한다.
+		// 모든 Entity들에 인자로 받은 함수를 실행한다.
 		void All(std::function<void(Entity*)> viewFunc, bool isIncludeToBeDestroyed = false);
 
-		/// 모든 엔티티를 순회가능한 EntityView가져온다.
+		// 모든 엔티티를 순회가능한 EntityView가져온다.
 		Internal::EntityView All(bool isIncludeToBeDestroyed = false);
 
 #pragma endregion Entity
@@ -108,7 +113,7 @@ namespace ImpEngineModule
 
 	private:
 		size_t _lastEntityID = 0;
-		std::vector<Entity*> _entities;
+		std::vector<std::shared_ptr<Entity>> _entities;
 
 		EventManager* _eventManager;
 		ResourceManager* _resourceManager;

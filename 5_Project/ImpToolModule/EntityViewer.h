@@ -15,7 +15,8 @@ namespace ImpToolModule
 		~EntityViewer();
 
 	public:
-		void Initialize(ImpEngineModule::EngineModule* engineModule, ResourceViewer* resViewer);
+		void Initialize(ImpEngineModule::EngineModule* engineModule, ResourceViewer* resViewer,
+			ImpGraphics::IImpGraphicsEngine* grahphicsEngnie);
 
 		void Update();
 
@@ -47,6 +48,7 @@ namespace ImpToolModule
 		ImpEngineModule::Entity* _selectEntity = nullptr;
 		ImpEngineModule::WorldManager* _worldManager = nullptr;
 		ImpToolModule::ResourceViewer* _resourceView = nullptr;
+		ImpGraphics::IImpGraphicsEngine* _graphicsEngine = nullptr;
 
 		bool _isShowPopup = false;
 		std::string _searchName;

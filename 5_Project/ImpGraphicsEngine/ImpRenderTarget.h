@@ -4,6 +4,8 @@ namespace ImpGraphics
 {
 	class ImpDevice;
 
+	// 포워드 렌더링 용 렌더 타겟이랑 디퍼드 렌더링용 렌더 타겟을 구별하는게 좋을
+	// 것 같은데 
 	class ImpRenderTarget
 	{
 	public:
@@ -14,9 +16,11 @@ namespace ImpGraphics
 		void OnResize(int width, int height);
 
 		void Clear();
+		void Bind();
+
 		void FirstPassClear();
 		void FirstPassBind();
-		void Bind();
+		void Unbind();
 
 		std::vector<ID3D11ShaderResourceView*> GetShaderResourceView()
 		{ return _deferredShaderResourceView; }

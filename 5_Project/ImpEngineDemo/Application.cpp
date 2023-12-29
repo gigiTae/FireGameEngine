@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Application.h"
+#include "../ImpGameEngine/IImpEngine.h"
 
 Application::Application()
 	:_gameEngine{}, _info()
@@ -14,22 +15,31 @@ Application::~Application()
 
 void Application::Initialize(HINSTANCE hInstance)
 {
+	// ToolEngine 시작
+	_gameEngine = ImpGameEngine::EngineExporter::GetToolEngine();
+	
+	// GameEngine 시작
+	//_gameEngine = ImpGameEngine::EngineExporter::GetGameEngine();
+
+
 	_info._hInstance = hInstance;
 
-	/// Window 초기화
+	// Window 초기화
 	InitializeWindow(hInstance);
 
-	_gameEngine.Initialize(_info);
+	_gameEngine->Initialize(_info);
 }
 
 void Application::Process()
 {
-	_gameEngine.Process();
+	_gameEngine->Process();
 }
 
 void Application::Finalize()
 {
-	_gameEngine.Finalize();
+	_gameEngine->Finalize();
+
+	ImpGameEngine::EngineExporter::DeleteEngine();
 }
 
 
